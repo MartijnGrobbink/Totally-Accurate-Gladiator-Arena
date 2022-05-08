@@ -16,6 +16,10 @@ public class FieldOfView : MonoBehaviour
     [SerializeField] private LayerMask obstructionMask;
 
     public List<GameObject> objectsInView;
+
+    public List<GameObject> Ally;
+    public List<GameObject> Enemies;
+    public List<GameObject> Weapons;
     // Start is called before the first frame update
     private void Start()
     {
@@ -32,6 +36,8 @@ public class FieldOfView : MonoBehaviour
         {
             yield return wait;
             FieldOfViewCheck();
+            if (objectsInView.Count != 0)
+                FOVFilter(objectsInView);
         }
     }
 
@@ -44,8 +50,8 @@ public class FieldOfView : MonoBehaviour
             Debug.Log(rangeChecks[i].name);
             CheckInView(rangeChecks[i]);
         }
-        if(objectsInView.Count != 0)
-        CheckIfStillInRange();
+        if (objectsInView.Count != 0)
+            CheckIfStillInRange();
     }
     private void CheckInView(Collider interactable)
     {
@@ -55,7 +61,7 @@ public class FieldOfView : MonoBehaviour
         Vector3 directionToTarget = (target.position - transform.position).normalized;
         //look if the interactable is within the triangle 
         //angle is defided by 2 because half of the triange is positive and the other half is negative
-        
+
         //NOTE don't forget filter tags so you don't trigger the ai with you own team members
         if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
         {
@@ -64,8 +70,8 @@ public class FieldOfView : MonoBehaviour
             //look if there is no obstuction
             if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
             {
-                if(objectsInView.Contains(interactable.gameObject) != true)
-                objectsInView.Add(interactable.gameObject);
+                if (objectsInView.Contains(interactable.gameObject) != true && interactable.gameObject != gameObject)
+                    objectsInView.Add(interactable.gameObject);
             }
             else
             {
@@ -82,9 +88,55 @@ public class FieldOfView : MonoBehaviour
         for (int i = 0; i < objectsInView.Count; i++)
         {
             float dist = (gameObject.transform.position - objectsInView[i].transform.position).magnitude;
-            if(dist > radius)
+            if (dist > radius)
             {
                 objectsInView.Remove(objectsInView[i].gameObject);
+            }
+        }
+    }
+
+    private void FOVFilter(List<GameObject> rawData)
+    {
+        for (int i = 0; i < rawData.Count; i++)
+        {
+
+            if (rawData[i].tag == gameObject.tag && Ally.Contains(rawData[i]) != true)
+            {
+                Ally.Add(rawData[i]);
+            }
+            else if (rawData[i].CompareTag("Weapon") && Weapons.Contains(rawData[i]) != true)
+            {
+                Weapons.Add(rawData[i]);
+            }
+            else if (Enemies.Contains(rawData[i]) != true && Weapons.Contains(rawData[i]) != true && Ally.Contains(rawData[i]) != true)
+            {
+                Enemies.Add(rawData[i]);
+            }
+        }
+        CheckIfStillSeen(rawData);
+    }
+
+    private void CheckIfStillSeen(List<GameObject> rawData)
+    {
+        for (int i = 0; i < Ally.Count; i++)
+        {
+            if (rawData.Contains(Ally[i]) == false)
+            {
+                Ally.Remove(Ally[i]);
+            }
+        }
+        for (int i = 0; i < Weapons.Count; i++)
+        {
+            if (rawData.Contains(Weapons[i]) == false)
+            {
+                Weapons.Remove(Weapons[i]);
+            }
+        }
+        for (int i = 0; i < Enemies.Count; i++)
+        {
+            if (rawData.Contains(Enemies[i]) == false)
+            {
+                Enemies.Remove(Enemies[i]);
             }
         }
     }

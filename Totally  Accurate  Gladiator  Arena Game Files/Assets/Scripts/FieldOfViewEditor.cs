@@ -23,13 +23,31 @@ public class FieldOfViewEditor : Editor
         Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngle01 * fov.radius);
         Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngle02 * fov.radius);
         //if the target can see the player draw a green line from the target to the player
-        if (fov.objectsInView.Count != 0)
+        if (fov.Ally.Count != 0)
         {
 
-            for (int i = 0; i < fov.objectsInView.Count; i++)
+            for (int i = 0; i < fov.Ally.Count; i++)
             {
             Handles.color = Color.green;
-            Handles.DrawLine(fov.transform.position, fov.objectsInView[i].transform.position);
+            Handles.DrawLine(fov.transform.position, fov.Ally[i].transform.position);
+            }
+        }
+        if (fov.Weapons.Count != 0)
+        {
+
+            for (int i = 0; i < fov.Weapons.Count; i++)
+            {
+                Handles.color = Color.cyan;
+                Handles.DrawLine(fov.transform.position, fov.Weapons[i].transform.position);
+            }
+        }
+        if (fov.Enemies.Count != 0)
+        {
+
+            for (int i = 0; i < fov.Enemies.Count; i++)
+            {
+                Handles.color = Color.red;
+                Handles.DrawLine(fov.transform.position, fov.Enemies[i].transform.position);
             }
         }
     }
