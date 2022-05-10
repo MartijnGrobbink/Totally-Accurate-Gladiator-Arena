@@ -47,7 +47,6 @@ public class FieldOfView : MonoBehaviour
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
         for (int i = 0; i < rangeChecks.Length; i++)
         {
-            Debug.Log(rangeChecks[i].name);
             CheckInView(rangeChecks[i]);
         }
         if (objectsInView.Count != 0)

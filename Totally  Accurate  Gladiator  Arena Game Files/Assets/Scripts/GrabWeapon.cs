@@ -7,25 +7,14 @@ public class GrabWeapon : MonoBehaviour
 {
     [SerializeField] private float distanceTimer;
     [SerializeField] private Transform handPivot;
-    public GameObject weaponHeld;
     private NavMeshAgent agent;
     private Coroutine checkDistance;
 
-    public GameObject weapon;
-    public bool dropWeapon;
+    public GameObject weaponHeld;
 
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        WalkToItem(weapon);
-    }
-
-    private void Update()
-    {
-        if(dropWeapon == true)
-        {
-            DropItem();
-        }
     }
 
     public void WalkToItem(GameObject weapon)
@@ -67,6 +56,5 @@ public class GrabWeapon : MonoBehaviour
         rigidBody.useGravity = true;
 
         weaponHeld = null;
-        dropWeapon = false;
     }
 }
