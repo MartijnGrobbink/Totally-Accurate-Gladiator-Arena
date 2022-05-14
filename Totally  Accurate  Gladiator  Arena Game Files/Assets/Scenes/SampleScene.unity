@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 389580352}
   - component: {fileID: 389580351}
   m_Layer: 7
-  m_Name: Weapon
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2380,11 +2380,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4c49eca9056d74384b0c8d91ee77a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceTimer: 0
   handPivot: {fileID: 543971213}
   weaponHeld: {fileID: 0}
-  weapon: {fileID: 180421708}
-  dropWeapon: 0
+  GetWeapon: {fileID: 180421708}
 --- !u!1 &1941988984
 GameObject:
   m_ObjectHideFlags: 0
