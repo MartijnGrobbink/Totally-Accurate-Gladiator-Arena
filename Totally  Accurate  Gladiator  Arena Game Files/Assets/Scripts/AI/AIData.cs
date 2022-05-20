@@ -5,6 +5,7 @@ using UnityEngine;
 public class AIData : MonoBehaviour
 {
     public List<GameObject> Teams = new List<GameObject>();
+    public Transform teamBase;
 
     void Start()
     {

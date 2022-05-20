@@ -35,13 +35,13 @@ public class FieldOfView : MonoBehaviour
         while (true)
         {
             yield return wait;
-            FieldOfViewCheck();
+            RangeCheck();
             if (objectsInView.Count != 0)
                 FOVFilter(objectsInView);
         }
     }
 
-    private void FieldOfViewCheck()
+    private void RangeCheck()
     {
         //look if target is with in circle range
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
