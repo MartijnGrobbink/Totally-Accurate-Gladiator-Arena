@@ -26,14 +26,12 @@ public class SearchWeapon : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log(movement.currentDistance);
-        if(movement.currentDistance < 1.5f)
+        if (movement.currentDistance < 1.5f)
         {
-
             if (nextDestinationChosen == true)
             {
+                movement.StopWalking(data.agent);
                 nextDestinationChosen = false;
-                data.lastDestination = data.currentDestination;
 
                 Crossing chooseDestination = data.currentDestination.GetComponent<Crossing>();
                 ChooseNextDestination(chooseDestination);
@@ -41,31 +39,34 @@ public class SearchWeapon : StateMachineBehaviour
         }
     }
 
-    private void ChooseNextDestination(Crossing nextCrossing)
+    private void ChooseNextDestination(Crossing crossing)
     {
-        //Debug.Log(nextCrossing);
-        int random = Random.Range(0, nextCrossing.nextCrossings.Count);
+        int random = Random.Range(0, crossing.nextCrossings.Count);
 
-        if (nextCrossing.nextCrossings[random] != data.lastDestination && nextDestinationChosen == false)
+        if (crossing.nextCrossings[random] != data.lastDestination)
         {
-            data.currentDestination = nextCrossing.nextCrossings[random].transform;
-
-            movement.StopWalking(data.agent);
-
-            movement.Walk(data.agent, data.currentDestination);
-            nextDestinationChosen = true;
+            SetDestination(crossing, random);
+        }
+        else if (random != crossing.nextCrossings.Count)
+        {
+            SetDestination(crossing, random + 1);
         }
         else
-        {
-            Crossing chooseDestination = data.lastDestination.GetComponent<Crossing>();
-            ChooseNextDestination(chooseDestination);
-        }
+            SetDestination(crossing, 0);
     }
 
+    private void SetDestination(Crossing crossing, int i)
+    {
+        data.lastDestination = data.currentDestination;
+        data.currentDestination = crossing.nextCrossings[i].transform;
+
+        nextDestinationChosen = true;
+        movement.Walk(data.agent, data.currentDestination);
+    }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
