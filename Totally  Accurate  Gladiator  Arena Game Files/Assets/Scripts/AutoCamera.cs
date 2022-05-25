@@ -6,17 +6,18 @@ public class AutoCamera : MonoBehaviour
 {
     //camera and sectors
     public GameObject camera01;
+
     public GameObject sector1;
     public GameObject sector2;
     public GameObject sector3;
     public GameObject sector4;
 
-    private int sector1Points = 0;
-    private int sector2Points = 0;
-    private int sector3Points = 0;
-    private int sector4Points = 0;
+    Dictionary<GameObject, int> SectorPoints = new Dictionary<GameObject, int>();
 
     public Transform Sec1Cam;
+    public Transform Sec2Cam;
+    public Transform Sec3Cam;
+    public Transform Sec4Cam;
     public float t;
     public float speed;
 
@@ -24,8 +25,6 @@ public class AutoCamera : MonoBehaviour
     private GameObject[] sectors;
 
     //lista ou array com as varias posicoes de camera para os varios sectors
-
-    
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +38,8 @@ public class AutoCamera : MonoBehaviour
     void Update()
     {
         //every 10 secs check change sector
-        Vector3 a = transform.position;
-        Vector3 b = Sec1Cam.position;
-        transform.position = Vector3.MoveTowards(a, Vector3.Lerp(a,b,t), speed);
+        
+        
 
     }
 
@@ -53,9 +51,12 @@ public class AutoCamera : MonoBehaviour
 
     public void moveCamera(Vector3 position)
     {
-        //move camera to different sector positions?
-        this.transform.position = position;
-        
+        Vector3 a = transform.position;
+        Vector3 b = Sec1Cam.position;
+        Vector3 c = Sec2Cam.position;
+        transform.position = Vector3.MoveTowards(a, Vector3.Lerp(a, b, t), speed);
+
+
     }
 
     public void ChangeSector()

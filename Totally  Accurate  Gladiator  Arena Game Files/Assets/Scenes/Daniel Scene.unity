@@ -225,6 +225,9 @@ MonoBehaviour:
   sector3: {fileID: 1442368435}
   sector4: {fileID: 1082224621}
   Sec1Cam: {fileID: 1087132889}
+  Sec2Cam: {fileID: 493192772}
+  Sec3Cam: {fileID: 227706839}
+  Sec4Cam: {fileID: 838605338}
   t: 0.1
   speed: 0.2
 --- !u!1 &227706838
