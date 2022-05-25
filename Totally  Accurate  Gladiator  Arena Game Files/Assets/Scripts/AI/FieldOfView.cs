@@ -35,13 +35,14 @@ public class FieldOfView : MonoBehaviour
         while (true)
         {
             yield return wait;
-            FieldOfViewCheck();
+            RangeCheck();
             if (objectsInView.Count != 0)
                 FOVFilter(objectsInView);
+            CheckIfStillSeen(objectsInView);
         }
     }
 
-    private void FieldOfViewCheck()
+    private void RangeCheck()
     {
         //look if target is with in circle range
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
@@ -112,31 +113,39 @@ public class FieldOfView : MonoBehaviour
                 Enemies.Add(rawData[i]);
             }
         }
-        CheckIfStillSeen(rawData);
     }
 
     private void CheckIfStillSeen(List<GameObject> rawData)
     {
-        for (int i = 0; i < Ally.Count; i++)
+        if(rawData.Count != 0)
         {
-            if (rawData.Contains(Ally[i]) == false)
+            for (int i = 0; i < Ally.Count; i++)
             {
-                Ally.Remove(Ally[i]);
+                if (rawData.Contains(Ally[i]) == false)
+                {
+                    Ally.Remove(Ally[i]);
+                }
+            }
+            for (int i = 0; i < Weapons.Count; i++)
+            {
+                if (rawData.Contains(Weapons[i]) == false)
+                {
+                    Weapons.Remove(Weapons[i]);
+                }
+            }
+            for (int i = 0; i < Enemies.Count; i++)
+            {
+                if (rawData.Contains(Enemies[i]) == false)
+                {
+                    Enemies.Remove(Enemies[i]);
+                }
             }
         }
-        for (int i = 0; i < Weapons.Count; i++)
+        else
         {
-            if (rawData.Contains(Weapons[i]) == false)
-            {
-                Weapons.Remove(Weapons[i]);
-            }
-        }
-        for (int i = 0; i < Enemies.Count; i++)
-        {
-            if (rawData.Contains(Enemies[i]) == false)
-            {
-                Enemies.Remove(Enemies[i]);
-            }
+            Ally.Clear();
+            Weapons.Clear();
+            Enemies.Clear();
         }
     }
 }
