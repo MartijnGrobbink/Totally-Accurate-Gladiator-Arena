@@ -12,6 +12,7 @@ public class AIData : MonoBehaviour
 
     [HideInInspector] public Transform lastDestination;
     [HideInInspector] public Transform currentDestination;
+    [HideInInspector] public Transform nextDestination;
 
     void Start()
     {
