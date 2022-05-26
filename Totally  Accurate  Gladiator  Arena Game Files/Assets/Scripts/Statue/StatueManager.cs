@@ -15,6 +15,8 @@ public class StatueManager : MonoBehaviour
 
     public List<GameObject> inRange;
 
+    private static bool BeingContested = false;
+
     private void Start()
     {
         movement = gameObject.GetComponent<WalkToPosition>();
@@ -74,6 +76,7 @@ public class StatueManager : MonoBehaviour
     private void Contested()
     {
         movement.StopWalking(agent);
+        setBeingContested(true);
     }
 
     private void NotContested()
@@ -82,12 +85,25 @@ public class StatueManager : MonoBehaviour
         if (contestantData != null)
         {
             MoveToBase();
+            setBeingContested(false);
+
         }
         else
         {
             Debug.LogError("No AIdata found");
         }
     }
+
+    public bool getBeingContested ()
+    {
+        return BeingContested;
+    }
+
+    public void setBeingContested(bool newValue)
+    {
+        BeingContested = newValue;
+    }
+
 //--------------------------------------------------------------------Movement-------------------------------------------------------
     private void MoveToBase()
     {
