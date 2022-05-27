@@ -11,169 +11,100 @@ public class NewCamera : MonoBehaviour
     public Sector sector2;
     public Sector sector3;
     public Sector sector4;
+    private List<Sector> sectorList = new List<Sector>();
+
     public Sector currentSector;
     
     public GameObject cubo;
 
     private StatueManager statues;
 
-    Dictionary<Sector, int> SectorPoints = new Dictionary<Sector, int>();
-
-    public Transform currSecCam;
-    public Transform Sec1Cam;
-    public Transform Sec2Cam;
-    public Transform Sec3Cam;
-    public Transform Sec4Cam;
-    public Transform targetCam;
     public float t;
     public float speed;
-    public bool changedSec = false;
 
     //--------------------------------------------------------------------------
     void Start()
     {
-        //every2 seconds remove 1 points
-        //check higer point sector 10 sec
-        SectorPoints[sector1] = 0;
-        SectorPoints[sector2] = 0;
-        SectorPoints[sector3] = 0;
-        SectorPoints[sector4] = 0;
+        sectorList.Add(sector1);
+        sectorList.Add(sector2);
+        sectorList.Add(sector3);
+        sectorList.Add(sector4);
 
-        InvokeRepeating(nameof(ChangeSector), 1f, 3f);
+        //Start the function at xf seconds and repeat it every yf seconds (sector update)
+        InvokeRepeating(nameof(ChangeSector), 5f, 3f);
+
+        //every 2 seconds remove 1 point in each sector
+        InvokeRepeating(nameof(DecreasePoints), 2f, 2f);
     }
 
     void Update()
     {
-        UpdatePoints();
+        IncreasePoints();
 
-        if (changedSec)
-        {
-            Vector3 a = currSecCam.transform.position;
-            Vector3 b = targetCam.position;
-            //Vector3 c = Sec2Cam.position;
+        // Lerp from the current position of the camera to the sector which has the highest number of points
+        Vector3 a = transform.position;
+        Vector3 b = currentSector.getSectorCamera().transform.position;
 
-            transform.position = Vector3.MoveTowards(a, Vector3.Lerp(a, b, t), speed);
-
-            Debug.Log("Before " + currSecCam.position + " " + targetCam.position + " " + transform.position);
-
-            currSecCam = targetCam;
-
-            Debug.Log("After " + currSecCam.position + " " + targetCam.position + " " + transform.position);
-            //Vector3 a = transform.position;
-            //Vector3 b = Sec2Cam.position;
-            //transform.position = Vector3.MoveTowards(a, Vector3.Lerp(a, b, t), speed);
-            changedSec = false;
-        }
-
-
+        // * Time.deltaTime keeps the speed steady across all computers 
+        transform.position = Vector3.MoveTowards(a, Vector3.Lerp(a, b, t), speed * Time.deltaTime);
     }
 
     //--------------------------------------------------------------------------
-    public void UpdatePoints()
+    public void IncreasePoints()
+    //if statue inside zone and being contested give sector 1 points + 1 point per frame while being contested
+    //if AI took a hit/damage give sector 1 point
     {
-        if(sector1.triggered)
-        {
+        if(sector1.triggered) {
             sector1.AddPoints(1);
         }
-        if (sector2.triggered)
-        {
+        
+        if (sector2.triggered) {
             sector2.AddPoints(1);
         }
-        if (sector3.triggered)
-        {
+
+        if (sector3.triggered) {
             sector3.AddPoints(1);
         }
-        if (sector4.triggered)
-        {
+
+        if (sector4.triggered) {
             sector4.AddPoints(1);
         }
 
         //if (statues.getBeingContested())
-        //{
+    }
 
-        //}
-
-        //if statue inside zone and being contested give sector 1 points + 1 point per second while being contested
-        //if AI took a hit/damage give sector 1 point
+    public void DecreasePoints() {
+    //  called every 2 seconds to remove 1 point of each sector
+        for (int i = 0; i < 4; i++) {
+            sectorList[i].AddPoints(-1);
+        }
     }
 
    
-    //--------------------------------------------------------------------------
-    public void moveCamera(Transform cam)
-    {
-        Vector3 a = currSecCam.transform.position;
-        Vector3 b = cam.position;
-        //Vector3 c = Sec2Cam.position;
-        transform.position = Vector3.MoveTowards(a, Vector3.Lerp(a, b, t), speed);
-
-        Debug.Log("Before " + currSecCam.position + " " + cam.position + " " + transform.position);
-
-        currSecCam = cam;
-
-        Debug.Log("After " + currSecCam.position + " " + cam.position + " " + transform.position);
-
-    }
-
-    //--------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
+    //check if there is a sector with higher points than the current one
+    //if higher and only higher change current sector to that one
     public void ChangeSector()
     {
-        var keyOfMaxValue = SectorPoints.Aggregate((x, y) => (x.Value > y.Value) ? x : y).Key; 
+        var tempSector = CheckHigherPoints();
 
-        if (keyOfMaxValue.transform.position != currentSector.transform.position)
-        {
-
-            if (keyOfMaxValue.transform.position == sector1.transform.position)
-            {
-                //moveCamera(Sec1Cam);
-                targetCam = Sec1Cam;
-
-                
-            }
-            else if (keyOfMaxValue.transform.position == sector2.transform.position)
-            {
-                //moveCamera(Sec2Cam);
-                targetCam = Sec2Cam;
-            }
-            else if (keyOfMaxValue.transform.position == sector3.transform.position)
-            {
-                //moveCamera(Sec3Cam);
-                targetCam = Sec3Cam;
-            }
-            else if (keyOfMaxValue.transform.position == sector4.transform.position)
-            {
-                //moveCamera(Sec4Cam);
-                targetCam = Sec4Cam;
-            }
-
-            currentSector = keyOfMaxValue;
-            changedSec = true;
-
-            Debug.Log("current " + currentSector.name + " " + currentSector.transform.position);
-            Debug.Log("Max " + keyOfMaxValue.name + " " + keyOfMaxValue.transform.position + " " + SectorPoints[keyOfMaxValue]);
-
-        }
-
-        //check if there is a sector with higher points than the current one
-
-        //if higher and only higher change current sector to that one
-
-        //moveCamera()
+        if (tempSector != currentSector) currentSector = tempSector;
     }
 
+    // Go through all 4 sectors and check which one has the highest number of points
     private Sector CheckHigherPoints()
     {
-        int[] points = new int[] { sector1.GetPoints(), sector2.GetPoints(), sector3.GetPoints(), sector4.GetPoints() };
-        int max = points.Max();
-        if (max == 0)
-            return sector1;
-        if (max == 1)
-            return sector2;
-        if (max == 2)
-            return sector3;
-        if (max == 3)
-            return sector4;
+        var max = sector1.GetPoints();
+        var index = 0;
 
+        for(int i = 0; i < sectorList.Count; i++){
+            if(sectorList[i].GetPoints() > max){
+                max = sectorList[i].GetPoints();
+                index = i;
+            }
+        }
+
+        return sectorList[index];
     }
-
 
 }

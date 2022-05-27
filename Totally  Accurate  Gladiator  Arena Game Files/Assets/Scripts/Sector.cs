@@ -5,9 +5,10 @@ using UnityEngine;
 public class Sector : MonoBehaviour
 {
 
-    public int points = 0;
-
+    private int points = 0;
+    public Transform sectorCamera; 
     public bool triggered = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,20 +21,25 @@ public class Sector : MonoBehaviour
         
     }
 
+    // When object enters the sector, it's triggered
     private void OnTriggerEnter(Collider other)
     {
-        
         triggered = !triggered;
     }
 
+    // Points
     public void AddPoints(int changePoints)
     {
         points += changePoints;
-
     }
 
     public int GetPoints()
     {
         return points;
+    }
+
+    // Sector Camera
+    public Transform getSectorCamera(){
+        return this.sectorCamera;
     }
 }
