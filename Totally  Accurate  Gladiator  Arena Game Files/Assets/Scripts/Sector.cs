@@ -8,8 +8,8 @@ public class Sector : MonoBehaviour
     private int points = 0;
     public Transform sectorCamera; 
     public bool triggered = false;
-
-    // Start is called before the first frame update
+    private string tag;
+    // Starts called before the first frame update
     void Start()
     {
         
@@ -25,9 +25,18 @@ public class Sector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         triggered = !triggered;
+  
+        tag = other.tag;  }
+
+ 
+
+    private void OnTriggerExit(Collider other) {
+        tag = "";
     }
 
-    // Points
+    public string getColliderTag(){
+        return tag;
+    }   // Points
     public void AddPoints(int changePoints)
     {
         points += changePoints;

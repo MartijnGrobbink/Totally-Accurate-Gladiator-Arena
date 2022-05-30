@@ -31,7 +31,7 @@ public class NewCamera : MonoBehaviour
         sectorList.Add(sector4);
 
         //Start the function at xf seconds and repeat it every yf seconds (sector update)
-        InvokeRepeating(nameof(ChangeSector), 5f, 3f);
+        InvokeRepeating(nameof(ChangeSector), 3f, 3f);
 
         //every 2 seconds remove 1 point in each sector
         InvokeRepeating(nameof(DecreasePoints), 2f, 2f);
@@ -50,9 +50,9 @@ public class NewCamera : MonoBehaviour
     }
 
     //--------------------------------------------------------------------------
+   
+   
     public void IncreasePoints()
-    //if statue inside zone and being contested give sector 1 points + 1 point per frame while being contested
-    //if AI took a hit/damage give sector 1 point
     {
         if(sector1.triggered) {
             sector1.AddPoints(1);
@@ -70,9 +70,18 @@ public class NewCamera : MonoBehaviour
             sector4.AddPoints(1);
         }
 
-        //if (statues.getBeingContested())
+        if (sector1.triggered & sector1.getColliderTag() == "Statue")
+        {
+            Debug.Log("Entrou no if");
+            // while (statues.getBeingContested())
+            // {
+            //     sector1.AddPoints(2);
+            // }
+        }
+        //else if (sector1.triggered & Health.getBeingDamaged())
+            //sector1.AddPoints(1);
     }
-
+    
     public void DecreasePoints() {
     //  called every 2 seconds to remove 1 point of each sector
         for (int i = 0; i < 4; i++) {
