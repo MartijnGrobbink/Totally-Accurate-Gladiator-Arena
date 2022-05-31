@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponStats : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class WeaponStats : MonoBehaviour
     public bool WaitEffect;
 
     public bool CanShieldAttack;
-
     //Actions To Be Taken With Weapon
     public GameObject EnemyAttacked;
 
@@ -26,6 +26,17 @@ public class WeaponStats : MonoBehaviour
 
     private float SwingCooldown;
     private float SwingTime;
+
+    //Images Of Each Weapon
+    public Image WeaponInUse;
+
+    public Image axe;
+    public Image keyboard;
+    public Image fish;
+    public Image chicken;
+    public Image sword;
+    public Image shield;
+    public Image club;
 
 
     void Start()
@@ -43,6 +54,7 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = true;
 
             CanShieldAttack = false;
+            WeaponInUse = axe;
         }
 
         if (gameObject.tag == "Keyboard")
@@ -57,6 +69,7 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = true;
 
             CanShieldAttack = false;
+            WeaponInUse = keyboard;
         }
 
         if (gameObject.tag == "Fish")
@@ -71,6 +84,7 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = false;
 
             CanShieldAttack = false;
+            WeaponInUse = fish;
         }
 
         if (gameObject.tag == "Chicken")
@@ -85,6 +99,7 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = false;
 
             CanShieldAttack = false;
+            WeaponInUse = chicken;
         }
 
         if (gameObject.tag == "Sword")
@@ -99,6 +114,7 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = false;
 
             CanShieldAttack = false;
+            WeaponInUse = sword;
         }
 
         if (gameObject.tag == "Shield")
@@ -113,6 +129,7 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = true;
 
             CanShieldAttack = true;
+            WeaponInUse = shield;
         }
 
         if (gameObject.tag == "Club")
@@ -127,6 +144,7 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = false;
 
             CanShieldAttack = false;
+            WeaponInUse = club;
         }
 
         //Setting variables

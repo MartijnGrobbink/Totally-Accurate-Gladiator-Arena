@@ -504,7 +504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 862, y: 217}
+  m_AnchoredPosition: {x: 862, y: 23}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53554988
@@ -619,7 +619,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: John
+  m_Text: Jimmy
 --- !u!222 &53923646
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -662,7 +662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 611, y: 88}
+  m_AnchoredPosition: {x: 611, y: 149}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &62253633
@@ -1331,7 +1331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 862, y: 88}
+  m_AnchoredPosition: {x: 862, y: 149}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &224808227
@@ -1766,6 +1766,111 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 49}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &437650718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 437650719}
+  m_Layer: 0
+  m_Name: VikingTeamStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &437650719
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437650718}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274305478}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -904, y: -187}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &453543652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 453543653}
+  m_Layer: 0
+  m_Name: GamerTeamTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &453543653
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453543652}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274305478}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -845, y: -377}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &525507302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 525507303}
+  m_Layer: 0
+  m_Name: RomanTeamTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &525507303
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525507302}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274305478}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -845, y: 193}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &538965929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1778,7 +1883,7 @@ GameObject:
   - component: {fileID: 538965932}
   - component: {fileID: 538965931}
   m_Layer: 0
-  m_Name: 'TeamMemberBImage '
+  m_Name: MemberBImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1841,6 +1946,474 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538965929}
   m_CullTransparentMesh: 1
+--- !u!1 &570620389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 570620390}
+  - component: {fileID: 570620391}
+  - component: {fileID: 570620395}
+  - component: {fileID: 570620393}
+  - component: {fileID: 570620392}
+  - component: {fileID: 570620394}
+  - component: {fileID: 570620398}
+  - component: {fileID: 570620399}
+  - component: {fileID: 570620400}
+  - component: {fileID: 570620401}
+  - component: {fileID: 570620396}
+  - component: {fileID: 570620397}
+  m_Layer: 0
+  m_Name: Tetsing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &570620390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1457776657}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &570620391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70664044ee117a240b9d149d831335a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UC: {fileID: 0}
+  UF: {fileID: 0}
+  killer: 
+  killerteamR: 0
+  killerteamG: 0
+  killerteamB: 0
+  killed: 
+  killedteamR: 0
+  killedteamG: 0
+  killedteamB: 0
+  TheWeapon: {fileID: 0}
+  memberit: 0
+  doit: 0
+  cavemenkiller: 0
+  knightskiller: 0
+  gamerskiller: 0
+  romanskiller: 0
+  vikingskiller: 0
+  cavemenkilled: 0
+  knightskilled: 0
+  gamerskilled: 0
+  romanskilled: 0
+  vikingskilled: 0
+  theaxe: 0
+  thekeyboard: 0
+  thefish: 0
+  thechicken: 0
+  thesword: 0
+  theshield: 0
+  theclub: 0
+  MemberAtheaxe: 0
+  MemberAthekeyboard: 0
+  MemberBthefish: 0
+  MemberBthechicken: 0
+  MemberLeaderthesword: 0
+  MemberLeadertheshield: 0
+  MemberLeadertheclub: 0
+--- !u!114 &570620392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1fac1d8c025f64fb53fa2550b8508b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIKillerHold: {fileID: 0}
+  UIWeaponHold: {fileID: 0}
+  UIDeadHold: {fileID: 0}
+  UIKillerA: {fileID: 0}
+  UIWeaponA: {fileID: 0}
+  UIDeadA: {fileID: 0}
+  UIKillerB: {fileID: 0}
+  UIWeaponB: {fileID: 0}
+  UIDeadB: {fileID: 0}
+  UIKillerC: {fileID: 0}
+  UIWeaponC: {fileID: 0}
+  UIDeadC: {fileID: 0}
+  UIKillerD: {fileID: 0}
+  UIWeaponD: {fileID: 0}
+  UIDeadD: {fileID: 0}
+--- !u!114 &570620393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1345342cc10651f4392284f65815abbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UITeamNameText: {fileID: 0}
+  UISectionB: {fileID: 0}
+  UITeamAKilledText: {fileID: 0}
+  UITeamAKillsText: {fileID: 0}
+  UITeamBKilledText: {fileID: 0}
+  UITeamBKillsText: {fileID: 0}
+  UITeamCKilledText: {fileID: 0}
+  UITeamCKillsText: {fileID: 0}
+  UITeamDKilledText: {fileID: 0}
+  UITeamDKillsText: {fileID: 0}
+  TeamVikingsKills: 0
+  TeamCavemenKills: 0
+  TeamRomansKills: 0
+  TeamKnightsKills: 0
+  TeamGamersKills: 0
+  UIUsedWeaponA: {fileID: 0}
+  UIUsedWeaponB: {fileID: 0}
+  UIUsedWeaponC: {fileID: 0}
+  ActivateTeamSelected: 0
+  cavemenActive: 0
+  vikingsActive: 0
+  gamersActive: 0
+  romansActive: 0
+  knightsActive: 0
+  UsedWeaponSlotA: {fileID: 0}
+  UsedWeaponSlotB: {fileID: 0}
+  UsedWeaponSlotC: {fileID: 0}
+--- !u!114 &570620394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b350e932790a04085ce38b7a537c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UTS: {fileID: 0}
+  UMS: {fileID: 0}
+  USS: {fileID: 0}
+  USTS: {fileID: 0}
+  kills: 
+  MostUsed: 
+  CavemenPoints: 0
+  CavemenMemberAImage: {fileID: 0}
+  CavemenMemberLeaderImage: {fileID: 0}
+  CavemenMemberBImage: {fileID: 0}
+  CavemenMemberAKills: 0
+  CavemenMemberADeaths: 0
+  CavemenMemberLeaderKills: 0
+  CavemenMemberLeaderDeaths: 0
+  CavemenMemberBKills: 0
+  CavemenMemberBDeaths: 0
+  CapturedStatues: 0
+  StatuePoints: 0
+  capturingA: 0
+  capturingB: 0
+  GamersKilled: 0
+  KnightsKilled: 0
+  RomansKilled: 0
+  VikingsKilled: 0
+  CavemenMemberAActiveWeapon: {fileID: 0}
+  CavemenMemberLeaderActiveWeapon: {fileID: 0}
+  CavemenMemberBActiveWeapon: {fileID: 0}
+  axe: 0
+  keyboard: 0
+  fish: 0
+  chicken: 0
+  sword: 0
+  shield: 0
+  club: 0
+  timer: 0
+--- !u!114 &570620395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66f17f456ecaea4b891cf3d332914bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UTS: {fileID: 0}
+  UIMemberAImage: {fileID: 0}
+  UIMemberLeaderImage: {fileID: 0}
+  UIMemberBImage: {fileID: 0}
+  UITeamMemberAWeaponImage: {fileID: 0}
+  UITeamMemberLeaderWeaponImage: {fileID: 0}
+  UITeamMemberBWeaponImage: {fileID: 0}
+  UITeamMemberAKillsText: {fileID: 0}
+  UITeamMemberADeathsText: {fileID: 0}
+  UITeamMemberLeaderKillsText: {fileID: 0}
+  UITeamMemberLeaderDeathsText: {fileID: 0}
+  UITeamMemberBKillsText: {fileID: 0}
+  UITeamMemberBDeathsText: {fileID: 0}
+--- !u!114 &570620396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05d5f7ae6ae0b2d4285198850752779c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UTS: {fileID: 0}
+  UITeamCavemen: {fileID: 0}
+  UITeamCavemenTarget: {fileID: 0}
+  UITeamCavemenStartPos: {fileID: 0}
+  UITeamCavemenTextPoints: {fileID: 0}
+  UITeamRomans: {fileID: 0}
+  UITeamRomansTarget: {fileID: 0}
+  UITeamRomansStartPos: {fileID: 0}
+  UITeamRomansTextPoints: {fileID: 0}
+  UITeamKnights: {fileID: 0}
+  UITeamKnightsTarget: {fileID: 0}
+  UITeamKnightsStartPos: {fileID: 0}
+  UITeamKnightsTextPoints: {fileID: 0}
+  UITeamVikings: {fileID: 0}
+  UITeamVikingsTarget: {fileID: 0}
+  UITeamVikingsStartPos: {fileID: 0}
+  UITeamVikingsTextPoints: {fileID: 0}
+  UITeamGamers: {fileID: 0}
+  UITeamGamersTarget: {fileID: 0}
+  UITeamGamersStartPos: {fileID: 0}
+  UITeamGamersTextPoints: {fileID: 0}
+--- !u!114 &570620397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a31e1588c0c4b43aae6705073281ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIStatueStatusA: {fileID: 0}
+  UIStatueStatusB: {fileID: 0}
+  TeamImageCapA: {fileID: 0}
+  TeamImageCapB: {fileID: 0}
+  Contested: {fileID: 0}
+  contestedA: 0
+  contestedB: 0
+--- !u!114 &570620398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40575db97de57a745ac11f66d2db4d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UTS: {fileID: 0}
+  UMS: {fileID: 0}
+  USS: {fileID: 0}
+  USTS: {fileID: 0}
+  kills: 
+  MostUsed: 
+  VikingsPoints: 0
+  VikingsMemberAImage: {fileID: 0}
+  VikingsMemberLeaderImage: {fileID: 0}
+  VikingsMemberBImage: {fileID: 0}
+  VikingsMemberAKills: 0
+  VikingsMemberADeaths: 0
+  VikingsMemberLeaderKills: 0
+  VikingsMemberLeaderDeaths: 0
+  VikingsMemberBKills: 0
+  VikingsMemberBDeaths: 0
+  CapturedStatues: 0
+  StatuePoints: 0
+  capturingA: 0
+  capturingB: 0
+  GamersKilled: 0
+  KnightsKilled: 0
+  RomansKilled: 0
+  CavemenKilled: 0
+  VikingsMemberAActiveWeapon: {fileID: 0}
+  VikingsMemberLeaderActiveWeapon: {fileID: 0}
+  VikingsMemberBActiveWeapon: {fileID: 0}
+  axe: 0
+  keyboard: 0
+  fish: 0
+  chicken: 0
+  sword: 0
+  shield: 0
+  club: 0
+  timer: 0
+--- !u!114 &570620399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ed5e9459e73614fbd440c43cb3bdea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UTS: {fileID: 0}
+  UMS: {fileID: 0}
+  USS: {fileID: 0}
+  USTS: {fileID: 0}
+  kills: 
+  MostUsed: 
+  RomansPoints: 0
+  RomansMemberAImage: {fileID: 0}
+  RomansMemberLeaderImage: {fileID: 0}
+  RomansMemberBImage: {fileID: 0}
+  RomansMemberAKills: 0
+  RomansMemberADeaths: 0
+  RomansMemberLeaderKills: 0
+  RomansMemberLeaderDeaths: 0
+  RomansMemberBKills: 0
+  RomansMemberBDeaths: 0
+  CapturedStatues: 0
+  StatuePoints: 0
+  capturingA: 0
+  capturingB: 0
+  GamersKilled: 0
+  KnightsKilled: 0
+  CavemenKilled: 0
+  VikingsKilled: 0
+  RomansMemberAActiveWeapon: {fileID: 0}
+  RomansMemberLeaderActiveWeapon: {fileID: 0}
+  RomansMemberBActiveWeapon: {fileID: 0}
+  axe: 0
+  keyboard: 0
+  fish: 0
+  chicken: 0
+  sword: 0
+  shield: 0
+  club: 0
+  timer: 0
+--- !u!114 &570620400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f646104aac07a3940b57f13d8658d310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UTS: {fileID: 0}
+  UMS: {fileID: 0}
+  USS: {fileID: 0}
+  USTS: {fileID: 0}
+  kills: 
+  MostUsed: 
+  KnightsPoints: 0
+  KnightsMemberAImage: {fileID: 0}
+  KnightsMemberLeaderImage: {fileID: 0}
+  KnightsMemberBImage: {fileID: 0}
+  KnightsMemberAKills: 0
+  KnightsMemberADeaths: 0
+  KnightsMemberLeaderKills: 0
+  KnightsMemberLeaderDeaths: 0
+  KnightsMemberBKills: 0
+  KnightsMemberBDeaths: 0
+  CapturedStatues: 0
+  StatuePoints: 0
+  capturingA: 0
+  capturingB: 0
+  GamersKilled: 0
+  CavemenKilled: 0
+  RomansKilled: 0
+  VikingsKilled: 0
+  KnightsMemberAActiveWeapon: {fileID: 0}
+  KnightsMemberLeaderActiveWeapon: {fileID: 0}
+  KnightsMemberBActiveWeapon: {fileID: 0}
+  axe: 0
+  keyboard: 0
+  fish: 0
+  chicken: 0
+  sword: 0
+  shield: 0
+  club: 0
+  timer: 0
+--- !u!114 &570620401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570620389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336920fbf79b7dc43b80e8d46d038517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UTS: {fileID: 0}
+  UMS: {fileID: 0}
+  USS: {fileID: 0}
+  USTS: {fileID: 0}
+  kills: 
+  MostUsed: 
+  GamersPoints: 0
+  GamersMemberAImage: {fileID: 0}
+  GamersMemberLeaderImage: {fileID: 0}
+  GamersMemberBImage: {fileID: 0}
+  GamersMemberAKills: 0
+  GamersMemberADeaths: 0
+  GamersMemberLeaderKills: 0
+  GamersMemberLeaderDeaths: 0
+  GamersMemberBKills: 0
+  GamersMemberBDeaths: 0
+  CapturedStatues: 0
+  StatuePoints: 0
+  capturingA: 0
+  capturingB: 0
+  CavemenKilled: 0
+  KnightsKilled: 0
+  RomansKilled: 0
+  VikingsKilled: 0
+  GamersMemberAActiveWeapon: {fileID: 0}
+  GamersMemberLeaderActiveWeapon: {fileID: 0}
+  GamersMemberBActiveWeapon: {fileID: 0}
+  axe: 0
+  keyboard: 0
+  fish: 0
+  chicken: 0
+  sword: 0
+  shield: 0
+  club: 0
+  timer: 0
 --- !u!1 &597476700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,12 +2596,48 @@ RectTransform:
   - {fileID: 888072803}
   - {fileID: 1874250505}
   - {fileID: 1808499429}
+  - {fileID: 837075944}
   m_Father: {fileID: 2004200984}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &755948445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755948446}
+  m_Layer: 0
+  m_Name: KnightsTeamStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &755948446
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755948445}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274305478}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -904, y: 3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &792132664
@@ -2069,6 +2678,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &792674649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 792674650}
+  - component: {fileID: 792674652}
+  - component: {fileID: 792674651}
+  m_Layer: 0
+  m_Name: DeadHold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &792674650
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792674649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 837075944}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 862, y: 209}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &792674651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792674649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 18
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Knight John
+--- !u!222 &792674652
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792674649}
+  m_CullTransparentMesh: 1
 --- !u!1 &811056001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2911,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817625038}
   m_CullTransparentMesh: 1
+--- !u!1 &837075943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 837075944}
+  m_Layer: 0
+  m_Name: Hold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &837075944
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837075943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1307198635}
+  - {fileID: 1937529810}
+  - {fileID: 792674650}
+  m_Father: {fileID: 714355489}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -922}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &882123506
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,6 +3143,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898959684}
   m_CullTransparentMesh: 1
+--- !u!1 &922522582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 922522583}
+  m_Layer: 0
+  m_Name: KnightsTeamTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &922522583
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922522582}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274305478}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -845, y: 3}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &940909318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,6 +3216,41 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 49}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &959364775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 959364776}
+  m_Layer: 0
+  m_Name: CavemanTeamStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &959364776
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959364775}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274305478}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -904, y: 383}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &962120440
@@ -2615,6 +3411,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992942053}
   m_CullTransparentMesh: 1
+--- !u!1 &1003507217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1003507218}
+  m_Layer: 0
+  m_Name: RomanTeamStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1003507218
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003507217}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274305478}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -904, y: 193}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1006902492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,7 +3593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 773, y: 246}
+  m_AnchoredPosition: {x: 773, y: 180}
   m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1033885111
@@ -2952,7 +3783,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: John
+  m_Text: Jim
 --- !u!222 &1090247404
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3112,7 +3943,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 773, y: 181}
+  m_AnchoredPosition: {x: 773, y: 242}
   m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1105416141
@@ -3428,6 +4259,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142187638}
   m_CullTransparentMesh: 1
+--- !u!1 &1145754814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1145754815}
+  m_Layer: 0
+  m_Name: CavemanTeamTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1145754815
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145754814}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274305478}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -845, y: 383}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1161317369
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,7 +4426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6e598350fe68f0a4db234538d49aa0e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 22acab43c94f8b649a144090ed7db226, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3766,6 +4632,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224064308}
   m_CullTransparentMesh: 1
+--- !u!1 &1238075319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1238075320}
+  m_Layer: 0
+  m_Name: VikingTeamTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1238075320
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238075319}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274305478}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -845, y: -187}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1238268939
 GameObject:
   m_ObjectHideFlags: 0
@@ -3875,7 +4776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 773, y: 310}
+  m_AnchoredPosition: {x: 773, y: 116}
   m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249959747
@@ -4102,6 +5003,16 @@ RectTransform:
   - {fileID: 1787942880}
   - {fileID: 1964774111}
   - {fileID: 1797603619}
+  - {fileID: 1145754815}
+  - {fileID: 525507303}
+  - {fileID: 922522583}
+  - {fileID: 1238075320}
+  - {fileID: 453543653}
+  - {fileID: 959364776}
+  - {fileID: 1003507218}
+  - {fileID: 755948446}
+  - {fileID: 437650719}
+  - {fileID: 2065422162}
   m_Father: {fileID: 2004200984}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4184,6 +5095,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307056392}
+  m_CullTransparentMesh: 1
+--- !u!1 &1307198634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1307198635}
+  - component: {fileID: 1307198637}
+  - component: {fileID: 1307198636}
+  m_Layer: 0
+  m_Name: KillerHold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1307198635
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307198634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 837075944}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 611, y: 209}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1307198636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307198634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7529412, g: 0.45882353, b: 0.45882353, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 18
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Roman John
+--- !u!222 &1307198637
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307198634}
   m_CullTransparentMesh: 1
 --- !u!1 &1332996023
 GameObject:
@@ -4373,7 +5363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 862, y: 153}
+  m_AnchoredPosition: {x: 862, y: 87}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389689654
@@ -4722,6 +5712,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2004200984}
+  - {fileID: 570620390}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4759,7 +5750,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 611, y: 153}
+  m_AnchoredPosition: {x: 611, y: 87}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1458784258
@@ -4935,7 +5926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5492,7 +6483,7 @@ GameObject:
   - component: {fileID: 1658030393}
   - component: {fileID: 1658030392}
   m_Layer: 0
-  m_Name: 'TeamMemberBWeaponImage '
+  m_Name: MemberBWeaponImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5936,13 +6927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441482e8936e35048a1dffac814e3ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Profile: {fileID: 0}
-  m_StaticLightingSkyUniqueID: 0
-  m_LastComputedHash: 0
-  m_NeedUpdateStaticLightingSky: 0
-  m_SkySettings: {fileID: 0}
-  m_SkySettingsFromProfile: {fileID: 0}
-  m_VolumeSkyList: []
 --- !u!4 &1760386318
 Transform:
   m_ObjectHideFlags: 1
@@ -6237,7 +7221,7 @@ GameObject:
   - component: {fileID: 1847561087}
   - component: {fileID: 1847561086}
   m_Layer: 0
-  m_Name: TeamMemberADeathsText)
+  m_Name: TeamMemberADeathsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6512,7 +7496,7 @@ GameObject:
   - component: {fileID: 1890546160}
   - component: {fileID: 1890546159}
   m_Layer: 0
-  m_Name: TeamMemberBDeathsText)
+  m_Name: TeamMemberBDeathsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6591,7 +7575,7 @@ GameObject:
   - component: {fileID: 1911504505}
   - component: {fileID: 1911504504}
   m_Layer: 0
-  m_Name: TeamMemberLeaderDeathsText)
+  m_Name: TeamMemberLeaderDeathsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6732,6 +7716,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915504687}
+  m_CullTransparentMesh: 1
+--- !u!1 &1937529809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1937529810}
+  - component: {fileID: 1937529812}
+  - component: {fileID: 1937529811}
+  m_Layer: 0
+  m_Name: WeaponHold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1937529810
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937529809}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 837075944}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 773, y: 302}
+  m_SizeDelta: {x: 400, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1937529811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937529809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 65f0f28c0c9bcfc4e9f4bfda2cddc842, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1937529812
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937529809}
   m_CullTransparentMesh: 1
 --- !u!1 &1956579609
 GameObject:
@@ -6880,7 +7939,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 611, y: 23}
+  m_AnchoredPosition: {x: 611, y: 209}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972461841
@@ -6975,7 +8034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7071,7 +8130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 862, y: 23}
+  m_AnchoredPosition: {x: 862, y: 209}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1995919824
@@ -7410,7 +8469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 773, y: 116}
+  m_AnchoredPosition: {x: 773, y: 302}
   m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016232087
@@ -7603,7 +8662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 611, y: 217}
+  m_AnchoredPosition: {x: 611, y: 23}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2035927083
@@ -7723,6 +8782,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057135471}
   m_CullTransparentMesh: 1
+--- !u!1 &2065422161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2065422162}
+  m_Layer: 0
+  m_Name: GamerTeamStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2065422162
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065422161}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274305478}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -904, y: -377}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2068969910
 GameObject:
   m_ObjectHideFlags: 0
