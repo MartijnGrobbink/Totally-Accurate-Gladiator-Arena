@@ -33,7 +33,6 @@ public class UICavemen : MonoBehaviour
     public int CapturedStatues;
     public int StatuePoints;
     public bool capturingA;
-    public bool capturingB;
     //kills of each team
     public int GamersKilled;
     public int KnightsKilled;
@@ -73,8 +72,12 @@ public class UICavemen : MonoBehaviour
 
     public float timer;
 
+    //public string desiredTag;
+
     void Start()
     {
+        //if (gameObject.CompareTag(stats.desiredTag) == true) 
+
         UTS = GameObject.FindObjectOfType<UITeamStats>();
         UMS = GameObject.FindObjectOfType<UIMemberStats>();
         USS = GameObject.FindObjectOfType<UIScores>();
@@ -147,16 +150,6 @@ public class UICavemen : MonoBehaviour
             var tempColor = USTS.TeamImageCapA.color;
             tempColor.a = 1f;
             USTS.TeamImageCapA.color = tempColor;
-        }
-
-        if (capturingB == true)
-        {
-            USTS.UIStatueStatusB.sprite = CavemenStatue;
-            USTS.TeamImageCapB.sprite = CavemenTeamStatue;
-
-            var tempColor = USTS.TeamImageCapB.color;
-            tempColor.a = 1f;
-            USTS.TeamImageCapB.color = tempColor;
         }
     }
 

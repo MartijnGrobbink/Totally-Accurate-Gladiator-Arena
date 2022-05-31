@@ -16,6 +16,7 @@ public class WeaponStats : MonoBehaviour
     public bool WaitEffect;
 
     public bool CanShieldAttack;
+    public int TheDamage;
     //Actions To Be Taken With Weapon
     public GameObject EnemyAttacked;
 
@@ -23,9 +24,6 @@ public class WeaponStats : MonoBehaviour
     public bool CanAttack;
     public bool Attacked;
     public bool HasSwung;
-
-    private float SwingCooldown;
-    private float SwingTime;
 
     //Images Of Each Weapon
     public Image WeaponInUse;
@@ -146,36 +144,11 @@ public class WeaponStats : MonoBehaviour
             CanShieldAttack = false;
             WeaponInUse = club;
         }
-
-        //Setting variables
-        SwingCooldown = SwingRate;
-        SwingTime = SwingSpeed;
-        CanAttack = true;
     }
 
     
     void Update()
     {
-        //When Character Attacks
-        if (/*Character attacks  (THE FOLLOWING IS FILLER SO IT SAVES)*/Attacked == true)
-        {
-            Attacked = true;
-        }
-        //When The Character Is In The Process Of Attacking
-        if (Attacked == true)
-        {
-            Check();
-        }
-        //When The Character Is Able To Attack
-        if (CanAttack == true)
-        {
-            ReadyAttack();
-        }
-        //When The Character Is In The Process Of Attacking 
-        if (HasSwung == true)
-        {
-            WaitForSwing();
-        }
         //When The Weapon Has Connected With An Enemy
         if (DealDamage == true)
         {
@@ -187,20 +160,20 @@ public class WeaponStats : MonoBehaviour
     {
         if (DealDamage == false && Attacked == true)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
+            var x = gameObject.transform.parent;
+            if (x.gameObject.tag != other.gameObject.tag)
             {
                 EnemyAttacked = other.gameObject;
 
                 DealDamage = true;
             }
+
         }
         
     }
     //If The Weapon Has Colldied The Enemy It Collides With Is Damaged
     private void DamageEnemy()
     {
-        Attacked = false;
-        SwingTime = SwingSpeed;
         // ((TO DO)) apply damage to enemy health script
         ApplyEffects();
 
@@ -227,33 +200,6 @@ public class WeaponStats : MonoBehaviour
         if (WaitEffect == true)
         {
             // ((TO DO)) Apply wait effect
-        }
-    }
-    //Once The Character Has Attacked They Will Need To Wait To Attack Again
-    private void WaitForSwing()
-    {
-        Attacked = false;
-        SwingCooldown -= Time.deltaTime;
-
-        if (SwingCooldown == 0)
-        {
-            CanAttack = true;
-        }
-    }
-    //Once The Character Swing Cooldown Has Expired The Character Can Attack Again
-    private void ReadyAttack()
-    {
-        HasSwung = false;
-        SwingCooldown = SwingRate;
-    }
-    //If The Character Attacks And Hits Nothing The Swing Cooldown Will Be Activated
-    private void Check()
-    {
-        SwingTime -= Time.deltaTime;
-
-        if (SwingTime == 0)
-        {
-            HasSwung = true;
         }
     }
 }

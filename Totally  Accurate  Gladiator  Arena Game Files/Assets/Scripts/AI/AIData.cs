@@ -10,6 +10,8 @@ public class AIData : MonoBehaviour
     public Transform firstCrossing;
     public NavMeshAgent agent;
 
+    public GameObject Sender;
+
     [HideInInspector] public Transform lastDestination;
     [HideInInspector] public Transform currentDestination;
     [HideInInspector] public Transform nextDestination;
