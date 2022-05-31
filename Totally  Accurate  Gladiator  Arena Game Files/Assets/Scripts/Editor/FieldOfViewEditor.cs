@@ -11,8 +11,6 @@ public class FieldOfViewEditor : Editor
         FieldOfView fov = (FieldOfView)target; //In edit mode get the selected target with "field of view" script
         //draw the range circle of the selected target
         Handles.color = Color.white;
-
-        //NOTE it does not work at the moment as it only draws the traingle up and not in the other three directions
         Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.radius);
         //get the view angles
         //there are two view angels one positive and one negative to create a triangle

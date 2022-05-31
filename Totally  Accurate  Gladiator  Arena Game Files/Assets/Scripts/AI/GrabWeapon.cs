@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GrabWeapon : MonoBehaviour
+public class GrabWeapon : WalkToPosition
 {
     [SerializeField] private float distanceTimer;
     [SerializeField] private Transform handPivot;
     private NavMeshAgent agent;
     private Coroutine checkDistance;
-
+    private GameObject targetWeapon;
     public GameObject weaponHeld;
 
     void Start()
@@ -19,24 +19,15 @@ public class GrabWeapon : MonoBehaviour
 
     public void WalkToItem(GameObject weapon)
     {
-        agent.SetDestination(weapon.transform.position);
-        checkDistance = StartCoroutine(AIItemDistance(weapon, distanceTimer));
+        base.Walk(agent, weapon.transform);
+        targetWeapon = weapon;
     }
 
-    private IEnumerator AIItemDistance(GameObject weapon, float timer)
+    protected override void InRangeOfPosition()
     {
-        while(true)
-        {
-            yield return new WaitForSeconds(timer);
-
-            float dist = (gameObject.transform.position - weapon.transform.position).magnitude;
-            if (dist < 1f)
-            {
-                PickUpItem(weapon);
-            }
-        }
+        base.InRangeOfPosition();
+        PickUpItem(targetWeapon);
     }
-
     private void PickUpItem(GameObject weapon)
     {
         StopCoroutine(checkDistance);
