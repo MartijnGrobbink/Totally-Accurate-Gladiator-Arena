@@ -11,6 +11,7 @@ public class AIData : MonoBehaviour
     public NavMeshAgent agent;
 
     public GameObject Sender;
+    public GameObject Statue;
 
     [HideInInspector] public Transform lastDestination;
     [HideInInspector] public Transform currentDestination;
@@ -19,6 +20,7 @@ public class AIData : MonoBehaviour
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
+        Statue = GameObject.FindGameObjectWithTag("Statue");
     }
 
     
