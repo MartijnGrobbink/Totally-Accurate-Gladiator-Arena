@@ -9,7 +9,9 @@ public class AIData : MonoBehaviour
     public Transform teamBase;
     public Transform firstCrossing;
     public NavMeshAgent agent;
+    public float attackRange;
 
+    [HideInInspector] public GameObject targetEnemy;
     [HideInInspector] public Transform lastDestination;
     [HideInInspector] public Transform currentDestination;
     [HideInInspector] public Transform nextDestination;
