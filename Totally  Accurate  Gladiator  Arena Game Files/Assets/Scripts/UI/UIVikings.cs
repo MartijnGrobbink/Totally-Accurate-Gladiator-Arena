@@ -33,7 +33,6 @@ public class UIVikings : MonoBehaviour
     public int CapturedStatues;
     public int StatuePoints;
     public bool capturingA;
-    public bool capturingB;
     //kills of each team
     public int GamersKilled;
     public int KnightsKilled;
@@ -147,16 +146,6 @@ public class UIVikings : MonoBehaviour
             var tempColor = USTS.TeamImageCapA.color;
             tempColor.a = 1f;
             USTS.TeamImageCapA.color = tempColor;
-        }
-
-        if (capturingB == true)
-        {
-            USTS.UIStatueStatusB.sprite = VikingsStatue;
-            USTS.TeamImageCapB.sprite = VikingsTeamStatue;
-
-            var tempColor = USTS.TeamImageCapB.color;
-            tempColor.a = 1f;
-            USTS.TeamImageCapB.color = tempColor;
         }
     }
 
