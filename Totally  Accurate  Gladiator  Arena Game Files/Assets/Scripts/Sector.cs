@@ -26,17 +26,19 @@ public class Sector : MonoBehaviour
     {
         triggered = !triggered;
   
-        tag = other.tag;  }
-
- 
+        tag = other.tag;  
+    }
 
     private void OnTriggerExit(Collider other) {
         tag = "";
     }
 
-    public string getColliderTag(){
+    public string getColliderTag()
+    {
         return tag;
-    }   // Points
+    }   
+    
+    // Points
     public void AddPoints(int changePoints)
     {
         points += changePoints;
@@ -48,7 +50,8 @@ public class Sector : MonoBehaviour
     }
 
     // Sector Camera
-    public Transform getSectorCamera(){
+    public Transform getSectorCamera()
+    {
         return this.sectorCamera;
     }
 }

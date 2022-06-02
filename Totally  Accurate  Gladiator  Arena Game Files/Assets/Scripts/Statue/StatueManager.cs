@@ -94,7 +94,7 @@ public class StatueManager : MonoBehaviour
         }
     }
 
-//-------------------------------------------For the camera
+//-------------------------------------------For the camera--------------------------------------------------------------------------
 
     public bool getBeingContested ()
     {
