@@ -36,6 +36,8 @@ public class WeaponStats : MonoBehaviour
     public Image shield;
     public Image club;
 
+    [SerializeField] private LayerMask targetMask;
+    public float radius;
 
     void Start()
     {
@@ -187,10 +189,16 @@ public class WeaponStats : MonoBehaviour
             // ((TO DO)) Apply dazed effect on enemy
         }
 
-        if (AOEEffect == true)
+        if (AOEEffect)
         {
-            // ((TO DO)) Apply AOE effect 
+            // Collider[] rangeChecks = Physics.OverlapSphere(EnemyAttacked.transform.position, radius, targetMask);
+            // for (int i = 0; i < rangeChecks.Length; i++)
+            // {
+            //     if ( /* !inRange.Contains(rangeChecks[i].gameObject) && */ rangeChecks[i].gameObject != gameObject && rangeChecks[i].tag != "Weapon")
+            //         rangeChecks[i].gameObject.HealthSystem.Damage();
+            // }
         }
+        
 
         if (DurabilityEffect == true)
         {
