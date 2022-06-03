@@ -40,6 +40,8 @@ public class UITeamStats : MonoBehaviour
     public Sprite UsedWeaponSlotB;
     public Sprite UsedWeaponSlotC;
 
+    private bool once;
+
     void Start()
     {
         UISectionB = GameObject.Find("SelectedTeamUI");
@@ -56,8 +58,6 @@ public class UITeamStats : MonoBehaviour
         UIUsedWeaponB = GameObject.Find("UsedWeapon2").GetComponent<Image>();
         UIUsedWeaponC = GameObject.Find("UsedWeapon3").GetComponent<Image>();
 
-        UISectionB.SetActive(false);
-
         var tempColor = UIUsedWeaponA.color;
         tempColor.a = 0f;
         UIUsedWeaponA.color = tempColor;
@@ -69,6 +69,12 @@ public class UITeamStats : MonoBehaviour
     
     void Update()
     {
+        if (once == false)
+        {
+            UISectionB.SetActive(false);
+            once = true;
+        }
+
         if (ActivateTeamSelected == false)
         {
             UISectionB.SetActive(false);
