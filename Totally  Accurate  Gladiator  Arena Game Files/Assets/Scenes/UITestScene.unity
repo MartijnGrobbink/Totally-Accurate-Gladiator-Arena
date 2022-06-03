@@ -4832,6 +4832,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UM: {fileID: 1057516847}
   UT: {fileID: 1057516850}
+  UF: {fileID: 0}
+  StatueStatus: 
 --- !u!114 &1057516842
 MonoBehaviour:
   m_ObjectHideFlags: 0
