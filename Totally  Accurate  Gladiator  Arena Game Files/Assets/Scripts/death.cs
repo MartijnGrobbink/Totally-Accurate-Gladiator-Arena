@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class death : MonoBehaviour
 {
-    public playerController playerController;
+    public GameObject character;
+    playerController playerController;
     JointDrive drive;
     ConfigurableJoint cjtemp;
     ConfigurableJoint cj;
 
     void Start()
     {
-        playerController = GameObject.FindObjectOfType<playerController>().GetComponent<playerController>();
+        playerController = character.GetComponent<playerController>();
         cj = GetComponent<ConfigurableJoint>();
     }
 
@@ -21,7 +22,7 @@ public class death : MonoBehaviour
         {
             cjtemp = cj;
             drive = cjtemp.angularXDrive;
-            drive.positionSpring = 3;
+            drive.positionSpring = 2;
             cjtemp.angularXDrive = drive;
             cjtemp.angularYZDrive = drive;
             cj = cjtemp;
