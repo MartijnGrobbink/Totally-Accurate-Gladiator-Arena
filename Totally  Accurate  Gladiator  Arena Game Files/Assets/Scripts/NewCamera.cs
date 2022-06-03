@@ -15,14 +15,15 @@ public class NewCamera : MonoBehaviour
 
     public Sector currentSector;
     
-    public GameObject cubo;
-
     private StatueManager statues;
+    private HealthSystem health;
+    
+    private int previousDamage = 0;
 
     public float t;
     public float speed;
 
-    //--------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------
     void Start()
     {
         sectorList.Add(sector1);
@@ -49,46 +50,91 @@ public class NewCamera : MonoBehaviour
         transform.position = Vector3.MoveTowards(a, Vector3.Lerp(a, b, t), speed * Time.deltaTime);
     }
 
-    //--------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------
    
    
     public void IncreasePoints()
     {
         if(sector1.triggered) {
             sector1.AddPoints(1);
+
+            // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
+            if(sector1.getColliderTag() == "Statue"){
+                while (statues.getBeingContested())
+                {
+                    sector1.AddPoints(2);
+                }
+            }
+            
+            // if an AI received damage while sector1 is triggered, add 1 point
+            else if(previousDamage < health.getDamaged()) {
+                sector1.AddPoints(1);
+                previousDamage = health.getDamaged();
+            }
         }
         
         if (sector2.triggered) {
             sector2.AddPoints(1);
+
+            // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
+            if(sector2.getColliderTag() == "Statue"){
+                while (statues.getBeingContested())
+                {
+                    sector2.AddPoints(2);
+                }
+            }
+            
+            // if an AI received damage while sector2 is triggered, add 1 point
+            else if(previousDamage < health.getDamaged()) {
+                sector2.AddPoints(1);
+                previousDamage = health.getDamaged();
+            }
         }
 
         if (sector3.triggered) {
             sector3.AddPoints(1);
-        }
 
+            // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
+            if(sector3.getColliderTag() == "Statue"){
+                while (statues.getBeingContested())
+                {
+                    sector3.AddPoints(2);
+                }
+            }
+            
+            // if an AI received damage while sector3 is triggered, add 1 point
+            else if(previousDamage < health.getDamaged()) {
+                sector3.AddPoints(1);
+                previousDamage = health.getDamaged();
+            }
+        }
+        
         if (sector4.triggered) {
             sector4.AddPoints(1);
+
+            // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
+            if(sector4.getColliderTag() == "Statue"){
+                while (statues.getBeingContested())
+                {
+                    sector4.AddPoints(2);
+                }
+            }
+            
+            // if an AI received damage while sector4 is triggered, add 1 point
+            else if(previousDamage < health.getDamaged()) {
+                sector4.AddPoints(1);
+                previousDamage = health.getDamaged();
+            }
         }
 
-        if (sector1.triggered & sector1.getColliderTag() == "Statue")
-        {
-            Debug.Log("Entrou no if");
-            // while (statues.getBeingContested())
-            // {
-            //     sector1.AddPoints(2);
-            // }
-        }
-        //else if (sector1.triggered & Health.getBeingDamaged())
-            //sector1.AddPoints(1);
     }
     
     public void DecreasePoints() {
-    //  called every 2 seconds to remove 1 point of each sector
+    //called every 2 seconds to remove 1 point of each sector
         for (int i = 0; i < 4; i++) {
             sectorList[i].AddPoints(-1);
         }
     }
-
    
     // --------------------------------------------------------------------------
     //check if there is a sector with higher points than the current one
