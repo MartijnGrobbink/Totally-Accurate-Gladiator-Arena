@@ -8,12 +8,12 @@ public class GrabWeapon : WalkToPosition
     [SerializeField] private float distanceTimer;
     [SerializeField] private Transform handPivot;
     private NavMeshAgent agent;
-    private Coroutine checkDistance;
     private GameObject targetWeapon;
-    public GameObject weaponHeld;
+    private AIData data;
 
     void Start()
     {
+        data = gameObject.GetComponent<AIData>();
         agent = gameObject.GetComponent<NavMeshAgent>();
     }
 
@@ -30,22 +30,25 @@ public class GrabWeapon : WalkToPosition
     }
     private void PickUpItem(GameObject weapon)
     {
-        StopCoroutine(checkDistance);
         weapon.transform.SetParent(handPivot, false);
         weapon.transform.SetPositionAndRotation(handPivot.position, handPivot.rotation);
+
         Rigidbody rigidBody = weapon.GetComponent<Rigidbody>();
         rigidBody.useGravity = false;
-        weaponHeld = weapon;
+
+        data.heldWeapon = weapon;
+        weapon.tag = "Untagged";
         Debug.Log("reached weapon grab distance");
     }
 
     public void DropItem()
     {
-        weaponHeld.transform.SetParent(null, true);
+        data.heldWeapon.tag = "Weapon";
+        data.heldWeapon.transform.SetParent(null, true);
 
-        Rigidbody rigidBody = weaponHeld.GetComponent<Rigidbody>();
+        Rigidbody rigidBody = data.heldWeapon.GetComponent<Rigidbody>();
         rigidBody.useGravity = true;
 
-        weaponHeld = null;
+        data.heldWeapon = null;
     }
 }

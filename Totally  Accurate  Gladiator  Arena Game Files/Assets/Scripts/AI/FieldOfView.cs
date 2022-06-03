@@ -17,13 +17,12 @@ public class FieldOfView : MonoBehaviour
 
     public List<GameObject> objectsInView;
 
-    public List<GameObject> Ally;
-    public List<GameObject> Enemies;
-    public List<GameObject> Weapons;
+    private AIData data;
+
     // Start is called before the first frame update
     private void Start()
     {
-        //targetRef = GameObject.FindGameObjectWithTag("Player");
+        data = gameObject.GetComponent<AIData>();
         StartCoroutine(FOVRoutine());
     }
     //core routing for each 0.2f
@@ -100,17 +99,17 @@ public class FieldOfView : MonoBehaviour
         for (int i = 0; i < rawData.Count; i++)
         {
 
-            if (rawData[i].tag == gameObject.tag && Ally.Contains(rawData[i]) != true)
+            if (rawData[i].tag == gameObject.tag && data.ally.Contains(rawData[i]) != true)
             {
-                Ally.Add(rawData[i]);
+                data.ally.Add(rawData[i]);
             }
-            else if (rawData[i].CompareTag("Weapon") && Weapons.Contains(rawData[i]) != true)
+            else if (rawData[i].CompareTag("Weapon") && data.weapons.Contains(rawData[i]) != true)
             {
-                Weapons.Add(rawData[i]);
+                data.weapons.Add(rawData[i]);
             }
-            else if (Enemies.Contains(rawData[i]) != true && Weapons.Contains(rawData[i]) != true && Ally.Contains(rawData[i]) != true)
+            else if (data.enemies.Contains(rawData[i]) != true && data.weapons.Contains(rawData[i]) != true && data.ally.Contains(rawData[i]) != true)
             {
-                Enemies.Add(rawData[i]);
+                data.enemies.Add(rawData[i]);
             }
         }
     }
@@ -119,33 +118,33 @@ public class FieldOfView : MonoBehaviour
     {
         if(rawData.Count != 0)
         {
-            for (int i = 0; i < Ally.Count; i++)
+            for (int i = 0; i < data.ally.Count; i++)
             {
-                if (rawData.Contains(Ally[i]) == false)
+                if (rawData.Contains(data.ally[i]) == false)
                 {
-                    Ally.Remove(Ally[i]);
+                    data.ally.Remove(data.ally[i]);
                 }
             }
-            for (int i = 0; i < Weapons.Count; i++)
+            for (int i = 0; i < data.weapons.Count; i++)
             {
-                if (rawData.Contains(Weapons[i]) == false)
+                if (rawData.Contains(data.weapons[i]) == false)
                 {
-                    Weapons.Remove(Weapons[i]);
+                    data.weapons.Remove(data.weapons[i]);
                 }
             }
-            for (int i = 0; i < Enemies.Count; i++)
+            for (int i = 0; i < data.enemies.Count; i++)
             {
-                if (rawData.Contains(Enemies[i]) == false)
+                if (rawData.Contains(data.enemies[i]) == false)
                 {
-                    Enemies.Remove(Enemies[i]);
+                    data.enemies.Remove(data.enemies[i]);
                 }
             }
         }
         else
         {
-            Ally.Clear();
-            Weapons.Clear();
-            Enemies.Clear();
+            data.ally.Clear();
+            data.weapons.Clear();
+            data.enemies.Clear();
         }
     }
 }

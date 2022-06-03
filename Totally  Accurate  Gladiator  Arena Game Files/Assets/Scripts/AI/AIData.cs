@@ -10,8 +10,18 @@ public class AIData : MonoBehaviour
     public Transform firstCrossing;
     public NavMeshAgent agent;
 
-    public GameObject Sender;
-    public GameObject Statue;
+    public GameObject signalSender;
+
+    public GameObject chosenWeapon;
+    public GameObject chosenEnemy;
+
+    public GameObject heldWeapon;
+
+    public List<GameObject> ally;
+    public List<GameObject> enemies;
+    public List<GameObject> weapons;
+
+    [HideInInspector] public GameObject statue;
 
     [HideInInspector] public Transform lastDestination;
     [HideInInspector] public Transform currentDestination;
@@ -20,7 +30,7 @@ public class AIData : MonoBehaviour
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        Statue = GameObject.FindGameObjectWithTag("Statue");
+        statue = GameObject.FindGameObjectWithTag("Statue");
     }
 
     
