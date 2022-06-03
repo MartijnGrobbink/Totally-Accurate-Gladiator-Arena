@@ -10,7 +10,7 @@ public class AIData : MonoBehaviour
     public Transform firstCrossing;
     public NavMeshAgent agent;
 
-    public GameObject signalSender;
+    public float attackRange;
 
     public GameObject chosenWeapon;
     public GameObject chosenEnemy;
@@ -22,6 +22,7 @@ public class AIData : MonoBehaviour
     public List<GameObject> weapons;
 
     [HideInInspector] public GameObject statue;
+    [HideInInspector] public GameObject signalSender;
 
     [HideInInspector] public Transform lastDestination;
     [HideInInspector] public Transform currentDestination;

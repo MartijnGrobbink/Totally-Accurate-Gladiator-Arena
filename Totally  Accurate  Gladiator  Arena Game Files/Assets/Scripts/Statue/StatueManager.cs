@@ -37,7 +37,7 @@ public class StatueManager : MonoBehaviour
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
         for (int i = 0; i < rangeChecks.Length; i++)
         {
-            if (inRange.Contains(rangeChecks[i].gameObject) != true && rangeChecks[i].gameObject != gameObject && rangeChecks[i].tag != "Weapon")
+            if (inRange.Contains(rangeChecks[i].gameObject) != true && rangeChecks[i].gameObject != gameObject && rangeChecks[i].CompareTag("Weapon") != true)
                 inRange.Add(rangeChecks[i].gameObject);
         }
         CheckIfStillInRange();

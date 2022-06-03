@@ -34,13 +34,26 @@ public class GroupUpSender : StateMachineBehaviour
                     characters[i].GetComponent<AIData>().signalSender = animator.gameObject;
                 }
             }
+            else
+            {
+                animator.SetBool("AttackStatue", true);
 
+                for (int i = 0; i < characters.Length; i++)
+                {
+                    AIData localData = characters[i].GetComponent<AIData>();
+                    if(localData.heldWeapon != null && characters[i] != animator.gameObject)
+                    {
+                        localData.GetComponent<Animator>().SetBool("AttackStatue", true);
+                    }
+                    localData.signalSender = null;
+                }
+            }
             timer -= Time.deltaTime;
         }
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animator.SetBool("AttackStatue", false);
     }
 }

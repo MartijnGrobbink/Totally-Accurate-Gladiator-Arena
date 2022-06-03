@@ -2,21 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Combat : StateMachineBehaviour
+public class GoToEnemy : StateMachineBehaviour
 {
+    [SerializeField] float attackDistance;
+    private AIData data;
+    private WalkToPosition WTP;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        AIData data = animator.gameObject.GetComponent<AIData>();
-        WalkToPosition movement = animator.gameObject.GetComponent<WalkToPosition>();
-
-        movement.Walk(data.agent, data.chosenEnemy.transform);
+        data = animator.gameObject.GetComponent<AIData>();
+        WTP = animator.gameObject.GetComponent<WalkToPosition>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        float dist = (data.agent.transform.position - data.chosenEnemy.transform.position).magnitude;
+        if (dist < attackDistance)
+            WTP.Walk(data.agent, data.chosenEnemy.transform);
+        else
+            animator.SetBool("Combat", true);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
