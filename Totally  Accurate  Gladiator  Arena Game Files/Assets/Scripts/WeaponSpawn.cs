@@ -39,6 +39,9 @@ public class WeaponSpawn : MonoBehaviour
 
     List<GameObject> weapons = new List<GameObject>();
 
+    public float radius;
+    [SerializeField] private LayerMask targetMask;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,9 +93,25 @@ public class WeaponSpawn : MonoBehaviour
             // {
                 // create an entirely new object in the same spot as position
                 weapons.Insert(i, Instantiate(defaultWeapons[random.Next(0, defaultWeapons.Count)], positions[i].transform.position, positions[i].transform.rotation));
+                
             // }
         }
     } 
+
+    /*
+    public void CheckWeaponInRange()
+    {
+        //check for the tag in range of certain position
+        //if it has no weapon tag, spawn a new weapon there
+
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+        for (int i = 0; i < rangeChecks.Length; i++)
+        {
+            if (inRange.Contains(rangeChecks[i].gameObject) != true && rangeChecks[i].gameObject != gameObject && rangeChecks[i].tag != "Weapon")
+                inRange.Add(rangeChecks[i].gameObject);
+        }
+    }
+    */
     
     // public void destroyWeapon() 
     // {

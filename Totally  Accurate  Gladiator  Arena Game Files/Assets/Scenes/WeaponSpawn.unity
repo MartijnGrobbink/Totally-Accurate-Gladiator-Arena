@@ -819,6 +819,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5395152636757265301, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152636870709208, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152636967330250, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637108184264, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637263810023, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637292317439, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5395152637363079925, guid: 6260f540d2396482397066712fcaaad7, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -866,6 +890,66 @@ PrefabInstance:
     - target: {fileID: 5395152637363079927, guid: 6260f540d2396482397066712fcaaad7, type: 3}
       propertyPath: m_Name
       value: WeaponSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637363079927, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637397848209, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637466332503, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637483877060, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637680551865, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637700967611, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637739622407, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152637891717872, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152638023913797, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152638305715582, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152638448525004, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152638586116440, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152638643658753, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152638718837257, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395152638768328049, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6260f540d2396482397066712fcaaad7, type: 3}
