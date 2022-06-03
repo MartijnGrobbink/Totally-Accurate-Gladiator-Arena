@@ -232,7 +232,7 @@ public class UICavemen : MonoBehaviour
         keyboardHold = keyboard;
         clubHold = club;
         fishHold = fish;
-
+        //redo UI script to make all same types, use horizontal layoout, no copy paste
         MostUsed.Add(axe);
         MostUsed.Add(keyboard);
         MostUsed.Add(fish);
