@@ -101,8 +101,10 @@ public class WeaponSpawn : MonoBehaviour
     /*
     public void CheckWeaponInRange()
     {
-        //check for the tag in range of certain position
-        //if it has no weapon tag, spawn a new weapon there
+        //check for the desired weapon tag
+        //if there is no sword or shield or club or chiken or keyboard or axe or fish
+        //spawn another weapon there
+        //GAMEOBJECT.GetComponent<ClassName>().VariableName = 4;
 
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
         for (int i = 0; i < rangeChecks.Length; i++)

@@ -887,6 +887,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5395152637363079926, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: axe
+      value: 
+      objectReference: {fileID: 4988818320944255021, guid: b6405291dc4acb9408457cd139a55fd9, type: 3}
+    - target: {fileID: 5395152637363079926, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: club
+      value: 
+      objectReference: {fileID: 7283972943108748922, guid: 897d719a22976294dbe5bf3b2d2cc344, type: 3}
+    - target: {fileID: 5395152637363079926, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: fish
+      value: 
+      objectReference: {fileID: 2165139398400368069, guid: e6faeb1324e318f47aec94d117d426ba, type: 3}
+    - target: {fileID: 5395152637363079926, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 269759686057156570, guid: e80b5f58b585db8448cee193427fea43, type: 3}
+    - target: {fileID: 5395152637363079926, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 3598190302142649560, guid: 04b29de4eec25634189f31fc1e047321, type: 3}
+    - target: {fileID: 5395152637363079926, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: chikkie
+      value: 
+      objectReference: {fileID: 8377987086225857640, guid: c811f3de1fc90ca4fa2ca6d6acbac359, type: 3}
+    - target: {fileID: 5395152637363079926, guid: 6260f540d2396482397066712fcaaad7, type: 3}
+      propertyPath: keyboard
+      value: 
+      objectReference: {fileID: 5981451844432452297, guid: ca47521d9c93519409298cbeac61f231, type: 3}
     - target: {fileID: 5395152637363079927, guid: 6260f540d2396482397066712fcaaad7, type: 3}
       propertyPath: m_Name
       value: WeaponSpawner
