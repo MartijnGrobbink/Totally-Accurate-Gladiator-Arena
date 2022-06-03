@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2165139398400368069
+--- !u!1 &5981451844432452297
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2192513598485803717}
-  - component: {fileID: 4210703356147749318}
+  - component: {fileID: 8614521027019007951}
+  - component: {fileID: 6808897666692147634}
   m_Layer: 0
-  m_Name: WeaponFish
+  m_Name: WeaponKeyboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2192513598485803717
+--- !u!4 &8614521027019007951
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2165139398400368069}
+  m_GameObject: {fileID: 5981451844432452297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4678373363966898773}
+  - {fileID: 7944785765839308213}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4210703356147749318
+--- !u!114 &6808897666692147634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2165139398400368069}
+  m_GameObject: {fileID: 5981451844432452297}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ffcbbf3860a35846acffaa0fb147a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DesiredTag: Fish
+  DesiredTag: Keyboard
   SwingSpeed: 0
   SwingRate: 0
   Damage: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   radius: 0
---- !u!1 &5451391179190249711
+--- !u!1 &7280733053391920911
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,45 +79,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4678373363966898773}
-  - component: {fileID: 8593765689203523056}
-  - component: {fileID: 5811832738125875514}
+  - component: {fileID: 7944785765839308213}
+  - component: {fileID: 6480212686425655824}
+  - component: {fileID: 9082247877449842394}
   m_Layer: 0
-  m_Name: WeaponFishMesh
+  m_Name: WeaponKeyboardMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4678373363966898773
+--- !u!4 &7944785765839308213
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5451391179190249711}
-  m_LocalRotation: {x: -0.7071068, y: -0.7071068, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.25900006, z: 0}
-  m_LocalScale: {x: 5.0124288, y: 2.7098587, z: 5.0124316}
+  m_GameObject: {fileID: 7280733053391920911}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0.16200003, z: 0}
+  m_LocalScale: {x: 21.502172, y: 7.4706697, z: 0.91394365}
   m_Children: []
-  m_Father: {fileID: 2192513598485803717}
+  m_Father: {fileID: 8614521027019007951}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 90}
---- !u!33 &8593765689203523056
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
+--- !u!33 &6480212686425655824
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5451391179190249711}
-  m_Mesh: {fileID: 2586148439552901436, guid: e9ae2481371af8d49b95dc03564469a7, type: 3}
---- !u!23 &5811832738125875514
+  m_GameObject: {fileID: 7280733053391920911}
+  m_Mesh: {fileID: -327218276259777663, guid: 43bd2f297d834cc4097a429072f5c028, type: 3}
+--- !u!23 &9082247877449842394
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5451391179190249711}
+  m_GameObject: {fileID: 7280733053391920911}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -130,10 +130,11 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7770318624900243041, guid: e9ae2481371af8d49b95dc03564469a7, type: 3}
-  - {fileID: 9003353085549565770, guid: e9ae2481371af8d49b95dc03564469a7, type: 3}
-  - {fileID: -6630642004342083387, guid: e9ae2481371af8d49b95dc03564469a7, type: 3}
-  - {fileID: -1580535799172915004, guid: e9ae2481371af8d49b95dc03564469a7, type: 3}
+  - {fileID: -1580535799172915004, guid: 43bd2f297d834cc4097a429072f5c028, type: 3}
+  - {fileID: -382652638819485698, guid: 43bd2f297d834cc4097a429072f5c028, type: 3}
+  - {fileID: 1151844921754575795, guid: 43bd2f297d834cc4097a429072f5c028, type: 3}
+  - {fileID: 7770318624900243041, guid: 43bd2f297d834cc4097a429072f5c028, type: 3}
+  - {fileID: -5354028657143720620, guid: 43bd2f297d834cc4097a429072f5c028, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

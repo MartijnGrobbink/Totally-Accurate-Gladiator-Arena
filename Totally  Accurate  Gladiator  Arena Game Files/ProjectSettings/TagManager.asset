@@ -11,6 +11,7 @@ TagManager:
   - Roman
   - Skull
   - Statue
+  - Caveman
   layers:
   - Default
   - TransparentFX
