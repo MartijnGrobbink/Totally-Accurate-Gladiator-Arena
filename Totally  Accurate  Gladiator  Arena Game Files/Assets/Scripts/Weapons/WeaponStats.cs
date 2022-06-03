@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class WeaponStats : MonoBehaviour
 {
     // Stats To Be Applied To Weapon
+    public string DesiredTag;
+
     public int SwingSpeed;
     public int SwingRate;
     public int Damage;
@@ -42,7 +44,7 @@ public class WeaponStats : MonoBehaviour
     void Start()
     {
         //Applying Stats and Effects On Spawn
-        if (gameObject.tag == "Axe")
+        if (DesiredTag == "Axe")
         {
             SwingSpeed = 5;
             SwingRate = 10;
@@ -57,7 +59,7 @@ public class WeaponStats : MonoBehaviour
             WeaponInUse = axe;
         }
 
-        if (gameObject.tag == "Keyboard")
+        if (DesiredTag == "Keyboard")
         {
             SwingSpeed = 10;
             SwingRate = 2;
@@ -72,7 +74,7 @@ public class WeaponStats : MonoBehaviour
             WeaponInUse = keyboard;
         }
 
-        if (gameObject.tag == "Fish")
+        if (DesiredTag == "Fish")
         {
             SwingSpeed = 12;
             SwingRate = 2;
@@ -87,7 +89,7 @@ public class WeaponStats : MonoBehaviour
             WeaponInUse = fish;
         }
 
-        if (gameObject.tag == "Chicken")
+        if (DesiredTag == "Chicken")
         {
             SwingSpeed = 15;
             SwingRate = 1;
@@ -102,7 +104,7 @@ public class WeaponStats : MonoBehaviour
             WeaponInUse = chicken;
         }
 
-        if (gameObject.tag == "Sword")
+        if (DesiredTag == "Sword")
         {
             SwingSpeed = 7;
             SwingRate = 4;
@@ -117,7 +119,7 @@ public class WeaponStats : MonoBehaviour
             WeaponInUse = sword;
         }
 
-        if (gameObject.tag == "Shield")
+        if (DesiredTag == "Shield")
         {
             SwingSpeed = 15;
             SwingRate = 10;
@@ -132,7 +134,7 @@ public class WeaponStats : MonoBehaviour
             WeaponInUse = shield;
         }
 
-        if (gameObject.tag == "Club")
+        if (DesiredTag == "Club")
         {
             SwingSpeed = 10;
             SwingRate = 2;
