@@ -7,19 +7,17 @@ public class GrabWeapon : WalkToPosition
 {
     [SerializeField] private float distanceTimer;
     [SerializeField] private Transform handPivot;
-    private NavMeshAgent agent;
     private GameObject targetWeapon;
     private AIData data;
 
     void Start()
     {
         data = gameObject.GetComponent<AIData>();
-        agent = gameObject.GetComponent<NavMeshAgent>();
     }
 
     public void WalkToItem(GameObject weapon)
     {
-        base.Walk(agent, weapon.transform);
+        base.Walk(data.agent, weapon.transform);
         targetWeapon = weapon;
     }
 
@@ -38,8 +36,15 @@ public class GrabWeapon : WalkToPosition
         weapon.transform.SetPositionAndRotation(handPivot.position, handPivot.rotation);
 
         data.heldWeapon = weapon;
+        data.chosenWeapon = null;
         weapon.layer = 0;
         Debug.Log("reached weapon grab distance");
+        Reset();
+    }
+
+    private void Reset()
+    {
+        
     }
 
     public void DropItem()

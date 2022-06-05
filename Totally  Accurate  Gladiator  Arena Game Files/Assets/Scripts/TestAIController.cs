@@ -16,19 +16,60 @@ public class TestAIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (data.weapons.Count > 0 && data.heldWeapon == null)
+        GettingWeaponState();
+    }
+    private void SwitchStates(string enterStateName)
+    {
+        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+        if (currentState.IsName(enterStateName) != true)
         {
-            data.chosenWeapon = data.weapons[0];
-            animator.SetInteger("State", 3);
+            Debug.Log(currentState);
+            animator.Play(enterStateName);
         }
         else
-            data.chosenWeapon = null;
+            return;
+    }
+    private void AttackState()
+    {
+        data.chosenEnemy = data.enemies[0];
+        SwitchStates("GoToEnemy");
+    }
+    private void RunAwayState()
+    {
+        SwitchStates("RunAway");
+    }
 
-        if (data.signalSender == null && data.heldWeapon != null && animator.GetInteger("State") == 3)
+    private void GettingWeaponState()
+    {
+        if (data.heldWeapon == null)
         {
-            animator.SetInteger("State", 4);
+            if (data.weapons.Count != 0)
+            {
+                data.chosenWeapon = data.weapons[0];
+                SwitchStates("GrabWeapon");
+            }
         }
-        else if (data.heldWeapon != null && animator.GetInteger("State") == 3)
-            animator.SetInteger("State", 5);
+        else if (data.chosenEnemy != null)
+        {
+            if (data.heldWeapon != null)
+                AttackState();
+            else
+                RunAwayState();
+        }
+        else
+            GroupUpState();
+    }
+
+    private void GroupUpState()
+    {
+        if (data.enemies.Count != 0)
+            AttackState();
+        else
+        {
+            if (data.signalSender == null)
+                SwitchStates("GroupUpSender");
+            else
+                SwitchStates("GroupUpReciever");
+        }
     }
 }

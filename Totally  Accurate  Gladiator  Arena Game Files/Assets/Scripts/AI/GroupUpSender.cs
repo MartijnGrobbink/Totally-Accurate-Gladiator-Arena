@@ -27,25 +27,28 @@ public class GroupUpSender : StateMachineBehaviour
         {
             WTP.StopWalking(data.agent);
 
-            if (timer >= 0)
+            if (timer > 0)
             {
                 for (int i = 0; i < characters.Length; i++)
                 {
-                    characters[i].GetComponent<AIData>().signalSender = animator.gameObject;
+                    if (characters[i] != animator.gameObject)
+                        characters[i].GetComponent<AIData>().signalSender = animator.gameObject;
                 }
             }
             else
             {
-                animator.SetBool("AttackStatue", true);
-
-                for (int i = 0; i < characters.Length; i++)
+                if (animator.GetBool("AttackStatue") != true)
                 {
-                    AIData localData = characters[i].GetComponent<AIData>();
-                    if(localData.heldWeapon != null && characters[i] != animator.gameObject)
+                    for (int i = 0; i < characters.Length; i++)
                     {
-                        localData.GetComponent<Animator>().SetBool("AttackStatue", true);
+                        AIData localData = characters[i].GetComponent<AIData>();
+                        if (localData.heldWeapon != null && characters[i] != animator.gameObject)
+                        {
+                            localData.GetComponent<Animator>().SetBool("AttackStatue", true);
+                        }
+                        localData.signalSender = null;
                     }
-                    localData.signalSender = null;
+                    animator.SetBool("AttackStatue", true);
                 }
             }
             timer -= Time.deltaTime;
@@ -54,6 +57,7 @@ public class GroupUpSender : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("AttackStatue", false);
+
+        //animator.SetBool("AttackStatue", false);
     }
 }
