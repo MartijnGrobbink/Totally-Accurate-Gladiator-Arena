@@ -13,6 +13,7 @@ public class WeaponSpawn : MonoBehaviour
     public GameObject club;
     public GameObject chikkie;
 
+    public GameObject position0;
     public GameObject position1;
     public GameObject position2;
     public GameObject position3;
@@ -32,7 +33,6 @@ public class WeaponSpawn : MonoBehaviour
     public GameObject position17;
     public GameObject position18;
     public GameObject position19;
-    public GameObject position20;
 
     List<GameObject> defaultWeapons = new List<GameObject>();
     List<GameObject> positions = new List<GameObject>();
@@ -42,10 +42,9 @@ public class WeaponSpawn : MonoBehaviour
     public float radius;
     [SerializeField] private LayerMask targetMask;
 
-    // Start is called before the first frame update
+    //----------------------------------------------------------------------------------------------------------------------
     void Start()
     {
-        defaultWeapons.Add(axe);
         defaultWeapons.Add(fish);
         defaultWeapons.Add(sword);
         defaultWeapons.Add(shield);
@@ -53,71 +52,61 @@ public class WeaponSpawn : MonoBehaviour
         defaultWeapons.Add(club);
         defaultWeapons.Add(chikkie);
 
-        positions.Add(position1);
-        positions.Add(position2);
-        positions.Add(position3);
-        positions.Add(position4);
-        positions.Add(position5);
-        positions.Add(position6);
-        positions.Add(position7);
-        positions.Add(position8);
-        positions.Add(position9);
-        positions.Add(position10);
-        positions.Add(position11);
-        positions.Add(position12);
-        positions.Add(position13);
-        positions.Add(position14);
-        positions.Add(position15);
-        positions.Add(position16);
-        positions.Add(position17);
-        positions.Add(position18);
-        positions.Add(position19);
-        positions.Add(position20);
+        positions.Insert(0, position0);
+        positions.Insert(1, position1);
+        positions.Insert(2, position2);
+        positions.Insert(3, position3);
+        positions.Insert(4, position4);
+        positions.Insert(5, position5);
+        positions.Insert(6, position6);
+        positions.Insert(7, position7);
+        positions.Insert(8, position8);
+        positions.Insert(9, position9);
+        positions.Insert(10, position10);
+        positions.Insert(11, position11);
+        positions.Insert(12, position12);
+        positions.Insert(13, position13);
+        positions.Insert(14, position14);
+        positions.Insert(15, position15);
+        positions.Insert(16, position16);
+        positions.Insert(17, position17);
+        positions.Insert(18, position18);
+        positions.Insert(19, position19);
 
         spawnWeapons();
+        InvokeRepeating(nameof(CheckWeaponInRange), 5f, 5f);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
     }
-
+    
+    //----------------------------------------------------------------------------------------------------------------------
+    
+    // for each of the 20 default positions, spawn a random weapon on that spot
     public void spawnWeapons()
     {
         var random = new System.Random();
         
         for(int i = 0; i < positions.Count; i++){
-            // check if there's already a weapon in that position 
-            // if(weapons[i] == null) 
-            // {
-                // create an entirely new object in the same spot as position
-                weapons.Insert(i, Instantiate(defaultWeapons[random.Next(0, defaultWeapons.Count)], positions[i].transform.position, positions[i].transform.rotation));
-                
-            // }
+            Instantiate(defaultWeapons[random.Next(0, defaultWeapons.Count)], positions[i].transform.position, positions[i].transform.rotation);
         }
     } 
 
-    /*
+    // for each of the 20 default positions, check for any collider in range of a 0.5f radius sphere 
+    // if there isn't any collider (gameobject) within that range, create a new random weapon on that specific empty position
     public void CheckWeaponInRange()
     {
-        //check for the desired weapon tag
-        //if there is no sword or shield or club or chiken or keyboard or axe or fish
-        //spawn another weapon there
-        //GAMEOBJECT.GetComponent<ClassName>().VariableName = 4;
+        var random = new System.Random();
 
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-        for (int i = 0; i < rangeChecks.Length; i++)
-        {
-            if (inRange.Contains(rangeChecks[i].gameObject) != true && rangeChecks[i].gameObject != gameObject && rangeChecks[i].tag != "Weapon")
-                inRange.Add(rangeChecks[i].gameObject);
+        for(int i = 0; i < positions.Count; i++){
+            Collider[] rangeChecks = Physics.OverlapSphere(positions[i].transform.position, 0.5f, Physics.AllLayers);
+            if(rangeChecks.Length == 0){
+                Instantiate(defaultWeapons[random.Next(0, defaultWeapons.Count)], positions[i].transform.position, positions[i].transform.rotation);
+            }
         }
     }
-    */
-    
-    // public void destroyWeapon() 
-    // {
-    //     Destroy(weapons[0].gameObject);
-    //     weapons[0] = null;
-    // }
+
 }
