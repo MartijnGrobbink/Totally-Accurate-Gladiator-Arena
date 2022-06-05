@@ -5,10 +5,11 @@ using UnityEngine.AI;
 
 public class AIData : MonoBehaviour
 {
-    public List<GameObject> Teams = new List<GameObject>();
     public Transform teamBase;
     public Transform firstCrossing;
     public NavMeshAgent agent;
+
+    public string MemberName;
 
     public GameObject Sender;
     public GameObject Statue;
