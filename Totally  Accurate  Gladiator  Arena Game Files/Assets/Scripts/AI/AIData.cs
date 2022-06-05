@@ -14,6 +14,21 @@ public class AIData : MonoBehaviour
     public GameObject Sender;
     public GameObject Statue;
 
+    public List<GameObject> enemies;
+    public List<GameObject> weapons;
+    public List<GameObject> ally;
+
+    public GameObject statue;
+
+    public GameObject heldWeapon;
+
+    public GameObject chosenWeapon;
+    public GameObject chosenEnemy;
+
+    public GameObject signalSender;
+
+    public float attackRange;
+
     [HideInInspector] public Transform lastDestination;
     [HideInInspector] public Transform currentDestination;
     [HideInInspector] public Transform nextDestination;

@@ -25,6 +25,8 @@ public class WalkToPosition : MonoBehaviour
     public void StopWalking(NavMeshAgent agent)
     {
         agent.ResetPath();
+        if(check != null)
+            StopCoroutine(check);
     }
 
     private IEnumerator CheckDistance(Transform position, NavMeshAgent agent, float timer)
