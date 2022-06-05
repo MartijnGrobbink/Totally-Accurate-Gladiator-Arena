@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8614521027019007951}
   - component: {fileID: 6808897666692147634}
+  - component: {fileID: 1278539687015715366}
   m_Layer: 0
   m_Name: WeaponKeyboard
   m_TagString: Untagged
@@ -71,6 +72,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   radius: 0
+--- !u!135 &1278539687015715366
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5981451844432452297}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7280733053391920911
 GameObject:
   m_ObjectHideFlags: 0
