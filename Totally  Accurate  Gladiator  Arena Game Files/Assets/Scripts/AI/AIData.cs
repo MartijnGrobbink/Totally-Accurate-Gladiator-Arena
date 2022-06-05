@@ -5,24 +5,14 @@ using UnityEngine.AI;
 
 public class AIData : MonoBehaviour
 {
-    public List<GameObject> Teams = new List<GameObject>();
     public Transform teamBase;
     public Transform firstCrossing;
     public NavMeshAgent agent;
 
-    public float attackRange;
+    public string MemberName;
 
-    public GameObject chosenWeapon;
-    public GameObject chosenEnemy;
-
-    public GameObject heldWeapon;
-
-    public List<GameObject> ally;
-    public List<GameObject> enemies;
-    public List<GameObject> weapons;
-
-    [HideInInspector] public GameObject statue;
-    [HideInInspector] public GameObject signalSender;
+    public GameObject Sender;
+    public GameObject Statue;
 
     [HideInInspector] public Transform lastDestination;
     [HideInInspector] public Transform currentDestination;
@@ -31,7 +21,7 @@ public class AIData : MonoBehaviour
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        statue = GameObject.FindGameObjectWithTag("Statue");
+        Statue = GameObject.FindGameObjectWithTag("Statue");
     }
 
     
