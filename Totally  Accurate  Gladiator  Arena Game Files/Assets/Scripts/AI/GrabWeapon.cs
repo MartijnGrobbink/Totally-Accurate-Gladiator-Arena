@@ -28,18 +28,22 @@ public class GrabWeapon : WalkToPosition
     }
     private void PickUpItem(GameObject weapon)
     {
-        Rigidbody rigidBody = weapon.GetComponent<Rigidbody>();
-        rigidBody.useGravity = false;
-        rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        weapon = data.chosenWeapon;
+        if(weapon != null)
+        {
+            Rigidbody rigidBody = weapon.GetComponent<Rigidbody>();
+            rigidBody.useGravity = false;
+            rigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
-        weapon.transform.SetParent(handPivot, false);
-        weapon.transform.SetPositionAndRotation(handPivot.position, handPivot.rotation);
+            weapon.transform.SetParent(handPivot, false);
+            weapon.transform.SetPositionAndRotation(handPivot.position, handPivot.rotation);
 
-        data.heldWeapon = weapon;
-        data.chosenWeapon = null;
-        weapon.layer = 0;
-        Debug.Log("reached weapon grab distance");
-        Reset();
+            data.heldWeapon = weapon;
+            data.chosenWeapon = null;
+            weapon.layer = 0;
+            Debug.Log("reached weapon grab distance");
+            Reset();
+        }
     }
 
     private void Reset()

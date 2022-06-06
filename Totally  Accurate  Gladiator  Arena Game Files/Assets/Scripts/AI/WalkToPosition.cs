@@ -7,46 +7,48 @@ public class WalkToPosition : MonoBehaviour
 {
     public GameObject character;
     playerController playerController;
-    private Coroutine check;
     public float currentDistance;
+    
+    private NavMeshAgent agent;
+    private Transform destination;
 
     void Start()
     {
         playerController = character.GetComponent<playerController>();
     }
 
-    public void Walk(NavMeshAgent agent, Transform walkToPosition)
+    public void Walk(NavMeshAgent localAgent, Transform walkToPosition)
     {
-        agent.SetDestination(walkToPosition.position);
-        check = StartCoroutine(CheckDistance(walkToPosition, agent, 1.0f));
+        agent = localAgent;
+        destination = walkToPosition;
+        agent.SetDestination(destination.position);
         playerController.move_forward();
     }
 
     public void StopWalking(NavMeshAgent agent)
     {
         agent.ResetPath();
-        if(check != null)
-            StopCoroutine(check);
+        Reset();
     }
 
-    private IEnumerator CheckDistance(Transform position, NavMeshAgent agent, float timer)
+    private void Update()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(timer);
-
-            float dist = (agent.transform.position - position.position).magnitude;
+            float dist = (agent.transform.position - destination.position).magnitude;
             currentDistance = dist;
             if (dist < 1f)
             {
                 InRangeOfPosition();
                 agent.ResetPath();
             }
-        }
+    }
+
+    private void Reset()
+    {
+        
     }
 
     protected virtual void InRangeOfPosition()
     {
-        StopCoroutine(check);
+        Reset();
     }
 }

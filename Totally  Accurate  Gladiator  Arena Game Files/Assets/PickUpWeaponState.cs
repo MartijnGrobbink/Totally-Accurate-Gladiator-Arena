@@ -21,18 +21,18 @@ public class PickUpWeaponState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        for (int i = 0; i < data.weapons.Count; i++)
+        if (data.weapons.Count == 0)
         {
-            if (data.weapons[i] == data.chosenWeapon)
-                return;
-            else if (i + 1 == data.weapons.Count)
             data.chosenWeapon = null;
+            if (data.heldWeapon == null)
+                animator.SetInteger("State", 1);
         }
-
-        if (data.chosenWeapon == null && data.heldWeapon == null)
-            animator.SetInteger("State", 1);
+        //for (int i = 0; i < data.weapons.Count; i++)
+        //{
+        //    if (data.weapons[i] == data.chosenWeapon)
+        //        return;
+        //}
     }
-
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
