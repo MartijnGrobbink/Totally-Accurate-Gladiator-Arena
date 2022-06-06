@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class WalkToPosition : MonoBehaviour
 {
     public GameObject character;
-    //playerController playerController;
+    playerController playerController;
     public float currentDistance;
     
     private NavMeshAgent agent;
@@ -14,7 +14,7 @@ public class WalkToPosition : MonoBehaviour
 
     void Start()
     {
-        //playerController = character.GetComponent<playerController>();
+        playerController = character.GetComponent<playerController>();
     }
 
     public void Walk(NavMeshAgent localAgent, Transform walkToPosition)
@@ -22,7 +22,7 @@ public class WalkToPosition : MonoBehaviour
         agent = localAgent;
         destination = walkToPosition;
         agent.SetDestination(destination.position);
-        //playerController.move_forward();
+        playerController.move_forward();
     }
 
     public void StopWalking(NavMeshAgent agent)

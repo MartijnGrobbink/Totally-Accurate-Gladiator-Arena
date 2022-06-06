@@ -12,13 +12,11 @@ public class AIData : MonoBehaviour
     public string MemberName;
 
     public GameObject Sender;
-    public GameObject Statue;
+    public GameObject statue;
 
     public List<GameObject> enemies;
     public List<GameObject> weapons;
     public List<GameObject> ally;
-
-    public GameObject statue;
 
     public GameObject heldWeapon;
 
@@ -36,7 +34,7 @@ public class AIData : MonoBehaviour
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        Statue = GameObject.FindGameObjectWithTag("Statue");
+        statue = GameObject.FindGameObjectWithTag("Statue");
     }
 
 
