@@ -2,37 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpWeaponState : StateMachineBehaviour
+public class RunAwayState : StateMachineBehaviour
 {
     private AIData data;
-    private GrabWeapon grab;
+    private WalkToPosition WTP;
+    private Transform crossingHolder;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         data = animator.gameObject.GetComponent<AIData>();
-        grab = animator.gameObject.GetComponent<GrabWeapon>();
+        WTP = animator.gameObject.GetComponent<WalkToPosition>();
 
-        if (data.chosenWeapon == null)
-            animator.SetInteger("State", 1);
-        else
-            grab.WalkToItem(data.chosenWeapon);
+        WTP.Walk(data.agent, data.lastDestination);
+
+        crossingHolder = data.firstCrossing.parent;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (data.weapons.Count == 0)
+        float dist = (data.agent.transform.position - data.lastDestination.position).magnitude;
+        if(dist <= 1.5f)
         {
-            data.chosenWeapon = null;
-            if (data.heldWeapon == null)
+            int rand = Random.Range(0, crossingHolder.childCount);
+            WTP.Walk(data.agent, crossingHolder.GetChild(rand));
+            float randDist = (data.agent.transform.position - crossingHolder.GetChild(rand).position).magnitude;
+            if(randDist <= 1.5f)
                 animator.SetInteger("State", 1);
         }
-        //for (int i = 0; i < data.weapons.Count; i++)
-        //{
-        //    if (data.weapons[i] == data.chosenWeapon)
-        //        return;
-        //}
     }
+
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

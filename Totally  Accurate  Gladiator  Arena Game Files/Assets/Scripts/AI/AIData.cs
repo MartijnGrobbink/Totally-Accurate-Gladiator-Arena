@@ -39,9 +39,15 @@ public class AIData : MonoBehaviour
         Statue = GameObject.FindGameObjectWithTag("Statue");
     }
 
-    
+
     void Update()
     {
-        
+        //for (int i = 0; i < gameObject.transform.childCount; i++)
+        //{
+        //    if (gameObject.transform.GetChild(i).CompareTag("Weapon") == true)
+        //        return;
+        //    else if (i == gameObject.transform.childCount - 1)
+        //        heldWeapon = null;
+        //}
     }
 }
