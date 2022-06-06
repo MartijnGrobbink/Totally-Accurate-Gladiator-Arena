@@ -12,13 +12,11 @@ public class AIData : MonoBehaviour
     public string MemberName;
 
     public GameObject Sender;
-    public GameObject Statue;
+    public GameObject statue;
 
     public List<GameObject> enemies;
     public List<GameObject> weapons;
     public List<GameObject> ally;
-
-    public GameObject statue;
 
     public GameObject heldWeapon;
 
@@ -36,12 +34,18 @@ public class AIData : MonoBehaviour
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        Statue = GameObject.FindGameObjectWithTag("Statue");
+        statue = GameObject.FindGameObjectWithTag("Statue");
     }
 
-    
+
     void Update()
     {
-        
+        //for (int i = 0; i < gameObject.transform.childCount; i++)
+        //{
+        //    if (gameObject.transform.GetChild(i).CompareTag("Weapon") == true)
+        //        return;
+        //    else if (i == gameObject.transform.childCount - 1)
+        //        heldWeapon = null;
+        //}
     }
 }

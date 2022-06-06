@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class GrabWeapon : WalkToPosition
 {
-    [SerializeField] private float distanceTimer;
     [SerializeField] private Transform handPivot;
     private GameObject targetWeapon;
     private AIData data;

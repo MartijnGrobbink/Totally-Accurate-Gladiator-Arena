@@ -29,9 +29,21 @@ public class TestAIController : MonoBehaviour
         else
             return;
     }
+
     private void AttackState()
     {
-        data.chosenEnemy = data.enemies[0];
+        if(data.chosenEnemy != null)
+        {
+            if(data.ally.Count != 0)
+                for (int i = 0; i < data.ally.Count; i++)
+                {
+                    AIData allyData = data.ally[i].GetComponent<AIData>();
+                    if (allyData.chosenEnemy != null)
+                        data.chosenEnemy = allyData.chosenEnemy;
+                }
+            else
+                data.chosenEnemy = data.enemies[0];
+        }
         SwitchStates("GoToEnemy");
     }
     private void RunAwayState()
