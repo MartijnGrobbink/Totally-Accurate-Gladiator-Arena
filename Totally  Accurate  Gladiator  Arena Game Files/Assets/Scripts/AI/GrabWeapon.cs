@@ -7,19 +7,17 @@ public class GrabWeapon : WalkToPosition
 {
     [SerializeField] private float distanceTimer;
     [SerializeField] private Transform handPivot;
-    private NavMeshAgent agent;
-    private Coroutine checkDistance;
     private GameObject targetWeapon;
-    public GameObject weaponHeld;
+    private AIData data;
 
     void Start()
     {
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        data = gameObject.GetComponent<AIData>();
     }
 
     public void WalkToItem(GameObject weapon)
     {
-        base.Walk(agent, weapon.transform);
+        base.Walk(data.agent, weapon.transform);
         targetWeapon = weapon;
     }
 
@@ -30,22 +28,38 @@ public class GrabWeapon : WalkToPosition
     }
     private void PickUpItem(GameObject weapon)
     {
-        StopCoroutine(checkDistance);
-        weapon.transform.SetParent(handPivot, false);
-        weapon.transform.SetPositionAndRotation(handPivot.position, handPivot.rotation);
-        Rigidbody rigidBody = weapon.GetComponent<Rigidbody>();
-        rigidBody.useGravity = false;
-        weaponHeld = weapon;
-        Debug.Log("reached weapon grab distance");
+        weapon = data.chosenWeapon;
+        if(weapon != null)
+        {
+            Rigidbody rigidBody = weapon.GetComponent<Rigidbody>();
+            rigidBody.useGravity = false;
+            rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
+            weapon.transform.SetParent(handPivot, false);
+            weapon.transform.SetPositionAndRotation(handPivot.position, handPivot.rotation);
+
+            data.heldWeapon = weapon;
+            data.chosenWeapon = null;
+            weapon.layer = 0;
+            Debug.Log("reached weapon grab distance");
+            Reset();
+        }
+    }
+
+    private void Reset()
+    {
+        
     }
 
     public void DropItem()
     {
-        weaponHeld.transform.SetParent(null, true);
+        data.heldWeapon.layer = 6;
+        data.heldWeapon.transform.SetParent(null, true);
 
-        Rigidbody rigidBody = weaponHeld.GetComponent<Rigidbody>();
+        Rigidbody rigidBody = data.heldWeapon.GetComponent<Rigidbody>();
         rigidBody.useGravity = true;
+        rigidBody.constraints = RigidbodyConstraints.None;
 
-        weaponHeld = null;
+        data.heldWeapon = null;
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -151,7 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &44989619
 GameObject:
@@ -181,7 +181,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &64182574
 GameObject:
@@ -198,6 +198,8 @@ GameObject:
   - component: {fileID: 64182575}
   - component: {fileID: 64182581}
   - component: {fileID: 64182582}
+  - component: {fileID: 64182580}
+  - component: {fileID: 64182583}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -257,7 +259,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8ea82c30a993ac348bb9db2f0f8425b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -299,8 +301,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &64182580
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64182574}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5200b93ddc96a74abbf0288ace55848, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!195 &64182581
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -336,6 +357,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentDistance: 0
+--- !u!114 &64182583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64182574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4c49eca9056d74384b0c8d91ee77a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDistance: 0
+  distanceTimer: 0
+  handPivot: {fileID: 0}
+  weaponHeld: {fileID: 0}
 --- !u!1 &180421708
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +468,7 @@ Transform:
   m_LocalScale: {x: 0.2331, y: 0.6398, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &180421713
 Rigidbody:
@@ -463,6 +500,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 0}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &185758850
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +564,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 87ab8d7555f154444ae824094b298ef1, type: 2}
+  - {fileID: 2100000, guid: 33385cd7491ad5c4a908dcc70b0100a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -555,6 +604,102 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &217422505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 217422509}
+  - component: {fileID: 217422508}
+  - component: {fileID: 217422507}
+  - component: {fileID: 217422506}
+  m_Layer: 6
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &217422506
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217422505}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &217422507
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217422505}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &217422508
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217422505}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &217422509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217422505}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -601,9 +746,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &228956993
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -679,7 +821,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &228956997
 MonoBehaviour:
@@ -695,6 +837,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 14741235}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &339403834
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,9 +891,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &339403836
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -815,7 +966,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &339403840
 MonoBehaviour:
@@ -831,6 +982,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 1736061389}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &384436714
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +1088,7 @@ Transform:
   m_LocalScale: {x: 0.2331, y: 0.6398, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &384436719
 MonoBehaviour:
@@ -941,6 +1104,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 0}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &389580350
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +1168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 87ab8d7555f154444ae824094b298ef1, type: 2}
+  - {fileID: 2100000, guid: 33385cd7491ad5c4a908dcc70b0100a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1035,7 +1210,7 @@ Transform:
   m_LocalScale: {x: 4, y: 2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &389580355
 MonoBehaviour:
@@ -1051,6 +1226,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 0}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &543971212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,7 +1455,7 @@ Transform:
   m_LocalScale: {x: 0.2331, y: 0.6398, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &719715404
 MonoBehaviour:
@@ -1284,6 +1471,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 0}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &740967462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,9 +1525,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &740967464
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1404,7 +1600,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &740967468
 MonoBehaviour:
@@ -1420,6 +1616,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 44989620}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &758872202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,6 +1642,7 @@ GameObject:
   - component: {fileID: 758872204}
   - component: {fileID: 758872203}
   - component: {fileID: 758872208}
+  - component: {fileID: 758872209}
   m_Layer: 6
   m_Name: Vikings
   m_TagString: Viking
@@ -1462,9 +1671,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &758872204
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1498,7 +1704,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 47c5cea9aeedbce489cdc725cf51adc5, type: 2}
+  - {fileID: 2100000, guid: 8ea82c30a993ac348bb9db2f0f8425b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1540,7 +1746,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &758872208
 MonoBehaviour:
@@ -1556,6 +1762,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 14741235}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
+--- !u!114 &758872209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758872202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4c49eca9056d74384b0c8d91ee77a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDistance: 0
+  distanceTimer: 0
+  handPivot: {fileID: 0}
+  weaponHeld: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,7 +1967,7 @@ Transform:
   m_LocalScale: {x: 0.2331, y: 0.6398, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1014569386
 MonoBehaviour:
@@ -1749,6 +1983,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 0}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &1106233933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,9 +2037,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &1106233935
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1869,7 +2112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1106233939
 MonoBehaviour:
@@ -1885,6 +2128,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 1736061389}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &1230670938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,9 +2182,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &1230670940
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1963,7 +2215,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d1778f4a15e91704b94c2046da339503, type: 2}
+  - {fileID: 2100000, guid: 95aff988a92e4c441a66a7ff193179f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2005,7 +2257,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1230670944
 MonoBehaviour:
@@ -2021,6 +2273,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 1736061389}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &1264440271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,7 +2379,7 @@ Transform:
   m_LocalScale: {x: 0.2331, y: 0.6398, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1264440276
 MonoBehaviour:
@@ -2131,6 +2395,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 0}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &1689825327
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,9 +2449,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &1689825329
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2251,7 +2524,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1689825333
 MonoBehaviour:
@@ -2267,6 +2540,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 44989620}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &1724217928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,9 +2594,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &1724217930
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2345,7 +2627,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d1778f4a15e91704b94c2046da339503, type: 2}
+  - {fileID: 2100000, guid: 95aff988a92e4c441a66a7ff193179f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2387,7 +2669,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1724217934
 MonoBehaviour:
@@ -2403,6 +2685,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 1736061389}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &1736061388
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,7 +2725,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1892458937
 GameObject:
@@ -2447,6 +2741,7 @@ GameObject:
   - component: {fileID: 1892458939}
   - component: {fileID: 1892458938}
   - component: {fileID: 1892458943}
+  - component: {fileID: 1892458944}
   m_Layer: 6
   m_Name: Medieval
   m_TagString: 'Medieval '
@@ -2475,9 +2770,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &1892458939
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2511,7 +2803,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f6363ccded1b514a867431a7dce0132, type: 2}
+  - {fileID: 2100000, guid: 8ea82c30a993ac348bb9db2f0f8425b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2553,7 +2845,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1892458943
 MonoBehaviour:
@@ -2569,6 +2861,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 44989620}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
+--- !u!114 &1892458944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892458937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4c49eca9056d74384b0c8d91ee77a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDistance: 0
+  distanceTimer: 0
+  handPivot: {fileID: 0}
+  weaponHeld: {fileID: 0}
 --- !u!1 &1908172231
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,9 +2931,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &1908172233
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2689,7 +3006,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1908172237
 MonoBehaviour:
@@ -2705,6 +3022,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 44989620}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &1923857748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,9 +3078,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &1923857750
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2785,7 +3111,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d1778f4a15e91704b94c2046da339503, type: 2}
+  - {fileID: 2100000, guid: 8ea82c30a993ac348bb9db2f0f8425b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2882,6 +3208,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 1736061389}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &1941988984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2924,9 +3262,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &1941988986
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3002,7 +3337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1941988990
 MonoBehaviour:
@@ -3018,6 +3353,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 14741235}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}
 --- !u!1 &2109658493
 GameObject:
   m_ObjectHideFlags: 0
@@ -3060,9 +3407,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!136 &2109658495
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3138,7 +3482,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2109658499
 MonoBehaviour:
@@ -3154,3 +3498,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teams: []
   teamBase: {fileID: 14741235}
+  firstCrossing: {fileID: 0}
+  agent: {fileID: 0}
+  signalSender: {fileID: 0}
+  statue: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  ally: []
+  enemies: []
+  weapons: []
+  lastDestination: {fileID: 0}
+  currentDestination: {fileID: 0}
+  nextDestination: {fileID: 0}

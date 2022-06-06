@@ -5,38 +5,50 @@ using UnityEngine.AI;
 
 public class WalkToPosition : MonoBehaviour
 {
-    private Coroutine check;
+    public GameObject character;
+    playerController playerController;
     public float currentDistance;
+    
+    private NavMeshAgent agent;
+    private Transform destination;
 
-    public void Walk(NavMeshAgent agent, Transform walkToPosition)
+    void Start()
     {
-        agent.SetDestination(walkToPosition.position);
-        check = StartCoroutine(CheckDistance(walkToPosition, agent, 1.0f));
+        playerController = character.GetComponent<playerController>();
+    }
+
+    public void Walk(NavMeshAgent localAgent, Transform walkToPosition)
+    {
+        agent = localAgent;
+        destination = walkToPosition;
+        agent.SetDestination(destination.position);
+        playerController.move_forward();
     }
 
     public void StopWalking(NavMeshAgent agent)
     {
         agent.ResetPath();
+        Reset();
     }
 
-    private IEnumerator CheckDistance(Transform position, NavMeshAgent agent, float timer)
+    private void Update()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(timer);
-
-            float dist = (agent.transform.position - position.position).magnitude;
+            float dist = (agent.transform.position - destination.position).magnitude;
             currentDistance = dist;
             if (dist < 1f)
             {
                 InRangeOfPosition();
                 agent.ResetPath();
             }
-        }
+    }
+
+    private void Reset()
+    {
+        
     }
 
     protected virtual void InRangeOfPosition()
     {
-        StopCoroutine(check);
+        Reset();
     }
 }

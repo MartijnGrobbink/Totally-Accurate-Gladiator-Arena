@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-    public GameObject character; 
+    public GameObject character;
     public Animator animator;
+    AudioSource audioData;
     public bool dead;
     public bool hit;
     public bool hitting;
@@ -33,15 +34,15 @@ public class playerController : MonoBehaviour
 
     void Start()
     {
+        audioData = character.GetComponent<AudioSource>();
         hips = character.GetComponent<Rigidbody>();
         hipjoint = character.GetComponent<ConfigurableJoint>();
     }
     
-    private void move_forward()
+    public void move_forward()
     {
         animator.SetBool("Is_Walk", true);
         moving = true;
-        hips.AddForce(hips.transform.forward * speed);
     }
 
     void move_backward()
@@ -102,8 +103,11 @@ public class playerController : MonoBehaviour
         {
             StartCoroutine(attack());
         }
+        if (moving == true && !audioData.isPlaying)
+            audioData.Play(0);
         if (moving == false)
         {
+            audioData.Stop();
             animator.SetBool("Is_Walk", false);
         }
     }
