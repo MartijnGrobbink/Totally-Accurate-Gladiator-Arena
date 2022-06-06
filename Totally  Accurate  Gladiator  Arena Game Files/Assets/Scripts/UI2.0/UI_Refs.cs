@@ -7,13 +7,15 @@ public class UI_Refs : MonoBehaviour
 {
     //Team/Member UI Section
     public GameObject UISectionB;
+    public GameObject UISectionBTargets;
 
     public Dictionary<string, int> TeamActive = new Dictionary<string, int>();
 
     //Kill Feed UI
-    public Text UIKiller;
-    public Image UIWeapon;
-    public Text UIDead;
+    public GameObject KillLogPrefab;
+    public GameObject KillLogLayout;
+
+    public Dictionary<string, GameObject> KillLogs = new Dictionary<string, GameObject>();
 
     //Team UI
     public Text UITeamNameText;
@@ -34,22 +36,29 @@ public class UI_Refs : MonoBehaviour
     public Dictionary<string, GameObject> TeamMembers = new Dictionary<string, GameObject>();
 
     //ScoreUI
-    public GameObject UITeam;
-    public GameObject UITeamTarget;
-    public GameObject UITeamStartPos;
+    public GameObject ScorePrefab;
+    public GameObject ScoreLayout;
 
-    public Text UITeamTextPoints;
+    public Dictionary<string, GameObject> Scores = new Dictionary<string, GameObject>();
 
     //StatueUI
-    public Image UIStatueStatus;
-    public Image UITeamImageCap;
+    public GameObject StatuePrefab;
+    public GameObject StatueLayout;
+
+    public Dictionary<string, GameObject> Statues = new Dictionary<string, GameObject>();
 
     void Start()
     {
+        TeamActive.Add("NoTeam", 0);
         TeamActive.Add("Cavemen", 0);
         TeamActive.Add("Gamers", 0);
         TeamActive.Add("Knights", 0);
         TeamActive.Add("Vikings", 0);
         TeamActive.Add("Romans", 0);
+
+        var target = UISectionBTargets.transform.Find("TeamUITarget");
+        var start = UISectionBTargets.transform.Find("TeamUIStartPos");
+
+        UISectionB.transform.position = Vector3.Lerp(start.transform.position, target.transform.position, 1);
     }
 }
