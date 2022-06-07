@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 6226321889265183626}
   m_Layer: 6
   m_Name: spine
-  m_TagString: Untagged
+  m_TagString: 'Medieval '
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

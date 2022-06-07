@@ -3918,7 +3918,7 @@ GameObject:
   - component: {fileID: 8696747355101106488}
   m_Layer: 6
   m_Name: spine
-  m_TagString: Untagged
+  m_TagString: Roman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

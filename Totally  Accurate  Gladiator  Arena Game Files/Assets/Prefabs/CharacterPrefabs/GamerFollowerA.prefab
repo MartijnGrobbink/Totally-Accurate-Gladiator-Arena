@@ -10651,7 +10651,7 @@ GameObject:
   - component: {fileID: 5798095996643554983}
   m_Layer: 6
   m_Name: spine
-  m_TagString: Untagged
+  m_TagString: Gamer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
