@@ -5,17 +5,20 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     public GameObject character;
+    public GameObject Rotation;
     public Animator animator;
+    public ParticleSystem particles;
     AudioSource audioData;
     public bool dead;
     public bool hit;
     public bool hitting;
     bool hitted;
-    bool moving;
+    public bool stun = false;
+    public bool moving;
     public float speed;
-    public float strafeSpeed;
     public float rotationSpeed;
     ConfigurableJoint hipjoint;
+    float old_rotation;
 
     Rigidbody hips;
     public bool isGrounded;
@@ -35,10 +38,11 @@ public class playerController : MonoBehaviour
     void Start()
     {
         audioData = character.GetComponent<AudioSource>();
+        old_rotation = Rotation.transform.rotation.eulerAngles.y;
         hips = character.GetComponent<Rigidbody>();
         hipjoint = character.GetComponent<ConfigurableJoint>();
     }
-    
+
     public void move_forward()
     {
         animator.SetBool("Is_Walk", true);
@@ -50,20 +54,6 @@ public class playerController : MonoBehaviour
         animator.SetBool("Is_Walk", true);
         moving = true;
         hips.AddForce(-hips.transform.forward * speed);
-    }
-
-    void move_left()
-    {
-        animator.SetBool("Is_Walk", true);
-        moving = true;
-        hips.AddForce(-hips.transform.right * strafeSpeed);
-    }
-
-    void move_right()
-    {
-        animator.SetBool("Is_Walk", true);
-        moving = true;
-        hips.AddForce(hips.transform.right * strafeSpeed);
     }
 
     void rotate_right()
@@ -82,26 +72,17 @@ public class playerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moving = false;
-        if (Input.GetKey(KeyCode.W))
-        {
-            move_forward();
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            move_backward();
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            move_left();
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            move_right();
-        }
+        character.transform.position = Rotation.transform.position;
+        hipjoint.targetRotation = Quaternion.Euler(Rotation.transform.rotation.eulerAngles.x, -Rotation.transform.rotation.eulerAngles.y-90, Rotation.transform.rotation.eulerAngles.z);
         if (hitting == true)
         {
             StartCoroutine(attack());
+        }
+        if (stun == true)
+            particles.Play();
+        else {
+            print("test");
+            particles.Stop();
         }
         if (moving == true && !audioData.isPlaying)
             audioData.Play(0);

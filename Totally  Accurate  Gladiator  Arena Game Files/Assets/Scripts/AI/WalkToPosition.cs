@@ -6,29 +6,33 @@ using UnityEngine.AI;
 public class WalkToPosition : MonoBehaviour
 {
     public GameObject character;
-    playerController playerController;
+    playerController pc;
     public float currentDistance;
     
     private NavMeshAgent agent;
     private Transform destination;
-
-    void Start()
-    {
-        playerController = character.GetComponent<playerController>();
-    }
 
     public void Walk(NavMeshAgent localAgent, Transform walkToPosition)
     {
         agent = localAgent;
         destination = walkToPosition;
         agent.SetDestination(destination.position);
-        playerController.move_forward();
+        character = agent.gameObject;
+        character = character.transform.Find("metarig").gameObject;
+        character = character.transform.Find("spine").gameObject;
+        pc = character.GetComponent<playerController>();
+        pc.move_forward();
     }
 
     public void StopWalking(NavMeshAgent agent)
     {
         agent.ResetPath();
         Reset();
+        character = agent.gameObject;
+        character = character.transform.Find("metarig").gameObject;
+        character = character.transform.Find("spine").gameObject;
+        pc = character.GetComponent<playerController>();
+        pc.moving = false;
     }
 
     private void Update()

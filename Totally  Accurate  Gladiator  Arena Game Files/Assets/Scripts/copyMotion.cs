@@ -15,6 +15,6 @@ public class copyMotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cj.targetRotation = targetLimb.rotation;
+        cj.targetRotation = Quaternion.Euler(targetLimb.transform.rotation.eulerAngles.x, cj.targetRotation.y, targetLimb.transform.rotation.eulerAngles.z);
     }
 }
