@@ -16,10 +16,8 @@ public class NewCamera : MonoBehaviour
     public Sector currentSector;
     
     private StatueManager statues;
-    private HealthSystem health;
+    private HealthSystem healthSystem;
     
-    private int previousDamage = 0;
-
     public float t;
     public float speed;
 
@@ -65,12 +63,8 @@ public class NewCamera : MonoBehaviour
                     sector1.AddPoints(2);
                 }
             }
-            
+
             // if an AI received damage while sector1 is triggered, add 1 point
-            else if(previousDamage < health.getDamaged()) {
-                sector1.AddPoints(1);
-                previousDamage = health.getDamaged();
-            }
         }
         
         if (sector2.triggered) {
@@ -82,12 +76,6 @@ public class NewCamera : MonoBehaviour
                 {
                     sector2.AddPoints(2);
                 }
-            }
-            
-            // if an AI received damage while sector2 is triggered, add 1 point
-            else if(previousDamage < health.getDamaged()) {
-                sector2.AddPoints(1);
-                previousDamage = health.getDamaged();
             }
         }
 
@@ -101,12 +89,6 @@ public class NewCamera : MonoBehaviour
                     sector3.AddPoints(2);
                 }
             }
-            
-            // if an AI received damage while sector3 is triggered, add 1 point
-            else if(previousDamage < health.getDamaged()) {
-                sector3.AddPoints(1);
-                previousDamage = health.getDamaged();
-            }
         }
         
         if (sector4.triggered) {
@@ -118,12 +100,6 @@ public class NewCamera : MonoBehaviour
                 {
                     sector4.AddPoints(2);
                 }
-            }
-            
-            // if an AI received damage while sector4 is triggered, add 1 point
-            else if(previousDamage < health.getDamaged()) {
-                sector4.AddPoints(1);
-                previousDamage = health.getDamaged();
             }
         }
 
