@@ -7,6 +7,7 @@ public class WeaponStats : MonoBehaviour
 {
     // Stats To Be Applied To Weapon
     public string DesiredTag;
+    public GameObject Wielder;
 
     public int SwingSpeed;
     public int SwingRate;
@@ -190,7 +191,7 @@ public class WeaponStats : MonoBehaviour
         {
             // ((TO DO)) Apply dazed effect on enemy
             //VFX
-            //WaitEffect
+            Wielder.GetComponent<Animator>().SetBool("Effects", true);
         }
 
         if (AOEEffect)
@@ -206,15 +207,12 @@ public class WeaponStats : MonoBehaviour
 
         if (DurabilityEffect == true)
         {
-            // ((TO DO)) Apply durability effect
-            //add durability script to weapon
-            //call durability function here
+            gameObject.GetComponent<Durability>().HitSomething();
         }
 
         if (WaitEffect == true)
         {
-            // ((TO DO)) Apply wait effect
-            //where to add wait effect on AI
+            Wielder.GetComponent<Animator>().SetBool("Effects", true);
         }
     }
 }

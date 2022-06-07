@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5870883887736901161}
   - component: {fileID: 6617495033950292095}
   - component: {fileID: 3130804942903459119}
+  - component: {fileID: 2201744738444549955}
   m_Layer: 6
   m_Name: WeaponShield
   m_TagString: Weapon
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DesiredTag: Shield
+  Wielder: {fileID: 0}
   SwingSpeed: 0
   SwingRate: 0
   Damage: 0
@@ -102,6 +104,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2201744738444549955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3598190302142649560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00813cdd132f54944b0bb3b40b22d118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDurability: 30
+  curDurability: 0
 --- !u!1 &7811931212877981231
 GameObject:
   m_ObjectHideFlags: 0
