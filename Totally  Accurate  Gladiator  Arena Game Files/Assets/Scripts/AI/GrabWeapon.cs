@@ -38,6 +38,7 @@ public class GrabWeapon : WalkToPosition
             weapon.transform.SetPositionAndRotation(handPivot.position, handPivot.rotation);
 
             data.heldWeapon = weapon;
+            data.heldWeapon.GetComponent<WeaponStats>().Wielder = gameObject;
             data.chosenWeapon = null;
             weapon.layer = 0;
             Debug.Log("reached weapon grab distance");
@@ -58,6 +59,8 @@ public class GrabWeapon : WalkToPosition
         Rigidbody rigidBody = data.heldWeapon.GetComponent<Rigidbody>();
         rigidBody.useGravity = true;
         rigidBody.constraints = RigidbodyConstraints.None;
+
+        data.heldWeapon.GetComponent<WeaponStats>().Wielder = null;
 
         data.heldWeapon = null;
     }

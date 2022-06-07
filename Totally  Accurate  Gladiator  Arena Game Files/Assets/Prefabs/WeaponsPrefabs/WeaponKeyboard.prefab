@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6808897666692147634}
   - component: {fileID: 1278539687015715366}
   - component: {fileID: 5348098668110030572}
+  - component: {fileID: 4936727036861500897}
   m_Layer: 6
   m_Name: WeaponKeyboard
   m_TagString: Weapon
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DesiredTag: Keyboard
+  Wielder: {fileID: 0}
   SwingSpeed: 0
   SwingRate: 0
   Damage: 0
@@ -102,6 +104,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4936727036861500897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5981451844432452297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00813cdd132f54944b0bb3b40b22d118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDurability: 30
+  curDurability: 0
 --- !u!1 &7280733053391920911
 GameObject:
   m_ObjectHideFlags: 0
