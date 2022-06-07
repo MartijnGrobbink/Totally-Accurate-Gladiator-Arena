@@ -45,14 +45,18 @@ public class FieldOfView : MonoBehaviour
     {
         //look if target is with in circle range
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-        for (int i = 0; i < rangeChecks.Length; i++)
-        {
-            CheckInView(rangeChecks[i]);
-        }
+            for (int i = 0; i < rangeChecks.Length; i++)
+            {
+                Transform item = rangeChecks[i].transform.parent;
+            if (item != null)
+                if (objectsInView.Contains(item.gameObject) != true)
+                    CheckInView(item.gameObject);
+            }
+
         if (objectsInView.Count != 0)
             CheckIfStillInRange();
     }
-    private void CheckInView(Collider interactable)
+    private void CheckInView(GameObject interactable)
     {
         //set the target to the taget in the circle
         Transform target = interactable.transform;
@@ -69,17 +73,17 @@ public class FieldOfView : MonoBehaviour
             //look if there is no obstuction
             if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
             {
-                if (objectsInView.Contains(interactable.gameObject) != true && interactable.gameObject != gameObject)
-                    objectsInView.Add(interactable.gameObject);
+                if (objectsInView.Contains(interactable) != true && interactable != gameObject)
+                    objectsInView.Add(interactable);
             }
             else
             {
-                objectsInView.Remove(interactable.gameObject);
+                objectsInView.Remove(interactable);
             }
         }
         else
         {
-            objectsInView.Remove(interactable.gameObject);
+            objectsInView.Remove(interactable);
         }
     }
     private void CheckIfStillInRange()
@@ -116,7 +120,7 @@ public class FieldOfView : MonoBehaviour
 
     private void CheckIfStillSeen(List<GameObject> rawData)
     {
-        if(rawData.Count != 0)
+        if (rawData.Count != 0)
         {
             for (int i = 0; i < data.ally.Count; i++)
             {
