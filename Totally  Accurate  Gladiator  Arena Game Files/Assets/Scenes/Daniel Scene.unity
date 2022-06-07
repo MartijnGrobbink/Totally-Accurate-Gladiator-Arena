@@ -983,6 +983,24 @@ Transform:
   m_Father: {fileID: 470992008}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &450326626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4137306166000205956, guid: c16bd68ac5cfa1742baed5156ceb98cf, type: 3}
+  m_PrefabInstance: {fileID: 981291032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &450326629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450326626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c248534037d9454dab5025e555e71a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraToFollow: {fileID: 1900632440}
 --- !u!1 &463012848
 GameObject:
   m_ObjectHideFlags: 0
@@ -2757,6 +2775,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1115657237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2417923407716938355, guid: 1d6d063c1058ce846b87199ccf4fd771, type: 3}
+  m_PrefabInstance: {fileID: 765737396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1115657240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115657237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c248534037d9454dab5025e555e71a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraToFollow: {fileID: 1900632440}
 --- !u!1 &1217035521
 GameObject:
   m_ObjectHideFlags: 0
@@ -4518,6 +4554,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90032f3d62f634ccbbf2afece89549a9, type: 3}
+--- !u!1 &1749886305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3398345534198076543, guid: 821f438704c7cb84b8f4c7c54d807e5f, type: 3}
+  m_PrefabInstance: {fileID: 1359993251}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1749886308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749886305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c248534037d9454dab5025e555e71a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraToFollow: {fileID: 1900632440}
 --- !u!1 &1763628695
 GameObject:
   m_ObjectHideFlags: 0
@@ -4987,6 +5041,24 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &1915493121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3398345534198076543, guid: 821f438704c7cb84b8f4c7c54d807e5f, type: 3}
+  m_PrefabInstance: {fileID: 2112514942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1915493124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915493121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c248534037d9454dab5025e555e71a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraToFollow: {fileID: 1900632440}
 --- !u!1 &1920002737
 GameObject:
   m_ObjectHideFlags: 0
