@@ -91,10 +91,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 301628477383248965}
-  - component: {fileID: 4844254877349183582}
   - component: {fileID: 6191485237239805538}
   - component: {fileID: -5265910682143614838}
   - component: {fileID: 4954951260158634554}
+  - component: {fileID: 3043494922096664605}
   m_Layer: 6
   m_Name: WeaponClub
   m_TagString: Weapon
@@ -117,46 +117,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4844254877349183582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7283972943108748922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ffcbbf3860a35846acffaa0fb147a96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DesiredTag: Club
-  Wielder: {fileID: 0}
-  SwingSpeed: 0
-  SwingRate: 0
-  Damage: 0
-  DazedEffect: 0
-  AOEEffect: 0
-  DurabilityEffect: 0
-  WaitEffect: 0
-  CanShieldAttack: 0
-  TheDamage: 0
-  EnemyAttacked: {fileID: 0}
-  DealDamage: 0
-  CanAttack: 0
-  Attacked: 0
-  HasSwung: 0
-  WeaponInUse: {fileID: 0}
-  axe: {fileID: 0}
-  keyboard: {fileID: 0}
-  fish: {fileID: 0}
-  chicken: {fileID: 0}
-  sword: {fileID: 0}
-  shield: {fileID: 0}
-  club: {fileID: 0}
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  radius: 0
 --- !u!135 &6191485237239805538
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -200,3 +160,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDurability: 30
   curDurability: 0
+--- !u!114 &3043494922096664605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283972943108748922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffcbbf3860a35846acffaa0fb147a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DesiredTag: Club
+  Wielder: {fileID: 0}
+  SwingSpeed: 0
+  SwingRate: 0
+  Damage: 0
+  DazedEffect: 0
+  AOEEffect: 0
+  DurabilityEffect: 0
+  WaitEffect: 0
+  CanShieldAttack: 0
+  TheDamage: 0
+  EnemyAttacked: {fileID: 0}
+  DealDamage: 0
+  CanAttack: 0
+  Attacked: 0
+  HasSwung: 0
+  SwingSound: {fileID: 0}
+  HitSound: {fileID: 0}
+  SwordSound: {fileID: 8300000, guid: e90c3f193f6e66b46b1f1dae98b36627, type: 3}
+  ShieldSound: {fileID: 8300000, guid: 0eb1fac6ac9f7d74ba585bd8dffb7509, type: 3}
+  FishSound: {fileID: 8300000, guid: 4d866ff5a2ca0aa42938890a60aded31, type: 3}
+  KeyboardSound: {fileID: 8300000, guid: 0eb1fac6ac9f7d74ba585bd8dffb7509, type: 3}
+  AxeSound: {fileID: 8300000, guid: e90c3f193f6e66b46b1f1dae98b36627, type: 3}
+  ClubSound: {fileID: 8300000, guid: 4d866ff5a2ca0aa42938890a60aded31, type: 3}
+  ChickenSound: {fileID: 8300000, guid: 71d4c72eb55d8504684511004c094203, type: 3}
+  WooshSound: {fileID: 8300000, guid: 0bc12152b6da8e9418d05e7cc0447a66, type: 3}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  radius: 0
