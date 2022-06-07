@@ -32,7 +32,7 @@ public class NewCamera : MonoBehaviour
         sectorList.Add(sector4);
 
         //Start the function at xf seconds and repeat it every yf seconds (sector update)
-        InvokeRepeating(nameof(ChangeSector), 3f, 3f);
+        InvokeRepeating(nameof(ChangeSector), 10f, 10f);
 
         //every 2 seconds remove 1 point in each sector
         InvokeRepeating(nameof(DecreasePoints), 2f, 2f);
