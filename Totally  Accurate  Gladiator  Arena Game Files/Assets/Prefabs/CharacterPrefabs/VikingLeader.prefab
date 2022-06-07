@@ -1328,6 +1328,7 @@ GameObject:
   - component: {fileID: 897624817894313068}
   - component: {fileID: 897624817894313067}
   - component: {fileID: 897624817894313066}
+  - component: {fileID: 1540528349739341215}
   m_Layer: 6
   m_Name: VikingLeader
   m_TagString: Viking
@@ -1466,6 +1467,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
+--- !u!114 &1540528349739341215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897624817894313064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7915d83c9f4721d448c14fbafc7e89af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthMax: 100
+  DieSound: {fileID: 0}
+  death: []
+  DeathSound1: {fileID: 8300000, guid: a114c2286f371c341bd5a13e5ae781c3, type: 3}
+  DeathSound2: {fileID: 8300000, guid: 6fe5d6660286c084b9be1b9a1ac19ddb, type: 3}
+  DeathSound3: {fileID: 8300000, guid: b2b2150e4b6131e4589898714e5a355b, type: 3}
+  DeathSound4: {fileID: 8300000, guid: 8369571194aaac449b0db5ff57dd91a9, type: 3}
 --- !u!1 &897624817995262445
 GameObject:
   m_ObjectHideFlags: 0

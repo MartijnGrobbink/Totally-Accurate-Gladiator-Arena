@@ -30,16 +30,17 @@ public class WeaponStats : MonoBehaviour
     public bool Attacked;
     public bool HasSwung;
 
-    //Images Of Each Weapon
-    public Image WeaponInUse;
+    //Audio
+    public AudioSource HitSound;
 
-    public Image axe;
-    public Image keyboard;
-    public Image fish;
-    public Image chicken;
-    public Image sword;
-    public Image shield;
-    public Image club;
+    //AudioClips
+    public AudioClip SwordSound;
+    public AudioClip ShieldSound;
+    public AudioClip FishSound;
+    public AudioClip KeyboardSound;
+    public AudioClip AxeSound;
+    public AudioClip ClubSound;
+    public AudioClip ChickenSound;
 
     [SerializeField] private LayerMask targetMask;
     public float radius;
@@ -59,7 +60,8 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = true;
 
             CanShieldAttack = false;
-            WeaponInUse = axe;
+
+            HitSound.clip = AxeSound;
         }
 
         if (DesiredTag == "Keyboard")
@@ -74,7 +76,8 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = true;
 
             CanShieldAttack = false;
-            WeaponInUse = keyboard;
+
+            HitSound.clip = KeyboardSound;
         }
 
         if (DesiredTag == "Fish")
@@ -89,7 +92,8 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = false;
 
             CanShieldAttack = false;
-            WeaponInUse = fish;
+
+            HitSound.clip = FishSound;
         }
 
         if (DesiredTag == "Chicken")
@@ -104,7 +108,8 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = false;
 
             CanShieldAttack = false;
-            WeaponInUse = chicken;
+
+            HitSound.clip = ChickenSound;
         }
 
         if (DesiredTag == "Sword")
@@ -119,7 +124,8 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = false;
 
             CanShieldAttack = false;
-            WeaponInUse = sword;
+
+            HitSound.clip = SwordSound;
         }
 
         if (DesiredTag == "Shield")
@@ -134,7 +140,8 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = true;
 
             CanShieldAttack = true;
-            WeaponInUse = shield;
+
+            HitSound.clip = ShieldSound;
         }
 
         if (DesiredTag == "Club")
@@ -149,7 +156,8 @@ public class WeaponStats : MonoBehaviour
             WaitEffect = false;
 
             CanShieldAttack = false;
-            WeaponInUse = club;
+
+            HitSound.clip = ClubSound;
         }
     }
 
@@ -159,6 +167,7 @@ public class WeaponStats : MonoBehaviour
         //When The Weapon Has Connected With An Enemy
         if (DealDamage == true)
         {
+            HitSound.Play();
             DamageEnemy();
         }
     }

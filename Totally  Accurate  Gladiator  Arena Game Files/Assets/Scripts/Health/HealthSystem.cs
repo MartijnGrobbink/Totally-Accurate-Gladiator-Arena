@@ -1,7 +1,7 @@
 using System;
 using Unity;
 using UnityEngine;
-
+using System.Collections.Generic;
 public class HealthSystem : MonoBehaviour
 {
     public event EventHandler OnHealthChanged;
@@ -10,6 +10,30 @@ public class HealthSystem : MonoBehaviour
     public int healthMax;
 
     private int damaged = 0;
+    private float timer = 3f;
+
+    //Audio
+    public AudioSource DieSound;
+
+    //AudioClips
+    public List<AudioClip> death;
+    public AudioClip DeathSound1;
+    public AudioClip DeathSound2;
+    public AudioClip DeathSound3;
+    public AudioClip DeathSound4;
+
+    void Start()
+    {
+        death.Add(DeathSound1);
+        death.Add(DeathSound2);
+        death.Add(DeathSound3);
+        death.Add(DeathSound4);
+    }
+
+    void Update()
+    {
+        KillSelf();
+    }
 
     public HealthSystem(int healthMax)
     {
@@ -49,5 +73,23 @@ public class HealthSystem : MonoBehaviour
         health += healAmount;
         if (health > healthMax) health = healthMax;
         if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
+    }
+
+    private void KillSelf()
+    {
+        if (health <= 0)
+        {
+            if (timer <= 0)
+            {
+                Destroy(gameObject);
+            }
+
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                int x = UnityEngine.Random.Range(0, death.Count);
+                DieSound.clip = death[x];
+            }
+        }
     }
 }

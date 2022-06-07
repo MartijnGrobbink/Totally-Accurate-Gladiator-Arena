@@ -204,7 +204,7 @@ public class UIKillFeed : MonoBehaviour
     {
         //Get Current Weapon
         var x = gameObject.GetComponent<WeaponStats>();
-        var c = x.WeaponInUse;
+        //var c = x.WeaponInUse;
         //Send This To KilledEvent As Image weapon
     }
 
