@@ -22,7 +22,7 @@ TagManager:
   - Interactables
   - Obstructions
   - noselfcollision
-  - 
+  - Only ground collision
   - 
   - 
   - 
