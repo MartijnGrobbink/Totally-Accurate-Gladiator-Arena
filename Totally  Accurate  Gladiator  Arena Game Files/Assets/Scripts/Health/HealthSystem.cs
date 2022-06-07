@@ -4,8 +4,8 @@ public class HealthSystem : MonoBehaviour
 {
     public event EventHandler OnHealthChanged;
 
-    private int health;
-    private int healthMax;
+    public int health;
+    public int healthMax;
 
     public HealthSystem(int healthMax)
     {
