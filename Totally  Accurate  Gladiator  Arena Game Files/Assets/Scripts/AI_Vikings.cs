@@ -26,9 +26,15 @@ public class AI_Vikings : MonoBehaviour
 
     void Update()
     {
-        CheckTimer();
-        GettingWeaponState();
-        SetWeaponStats();
+        //Added
+        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+        if (currentState.IsName("Effects") != true)
+        {
+            CheckTimer();
+            GettingWeaponState();
+            SetWeaponStats();
+        }
+        
     }
     private void SwitchStates(string enterStateName)
     {
@@ -43,7 +49,7 @@ public class AI_Vikings : MonoBehaviour
         {
             return;
         }
-           
+
     }
     private void AttackState()
     {
