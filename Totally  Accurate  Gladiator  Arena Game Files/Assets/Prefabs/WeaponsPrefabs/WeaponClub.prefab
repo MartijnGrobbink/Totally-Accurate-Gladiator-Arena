@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4844254877349183582}
   - component: {fileID: 6191485237239805538}
   - component: {fileID: -5265910682143614838}
+  - component: {fileID: 4954951260158634554}
   m_Layer: 6
   m_Name: WeaponClub
   m_TagString: Weapon
@@ -129,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DesiredTag: Club
+  Wielder: {fileID: 0}
   SwingSpeed: 0
   SwingRate: 0
   Damage: 0
@@ -184,3 +186,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4954951260158634554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283972943108748922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00813cdd132f54944b0bb3b40b22d118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDurability: 30
+  curDurability: 0
