@@ -81,7 +81,6 @@ public class playerController : MonoBehaviour
         if (stun == true)
             particles.Play();
         else {
-            print("test");
             particles.Stop();
         }
         if (moving == true && !audioData.isPlaying)

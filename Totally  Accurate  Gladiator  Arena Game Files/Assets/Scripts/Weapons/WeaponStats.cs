@@ -22,6 +22,7 @@ public class WeaponStats : MonoBehaviour
     public int TheDamage;
     //Actions To Be Taken With Weapon
     public GameObject EnemyAttacked;
+    GameObject RealEnemyAttacked;
 
     public bool DealDamage;
     public bool CanAttack;
@@ -189,7 +190,7 @@ public class WeaponStats : MonoBehaviour
     {
         if (DazedEffect == true)
         {
-            // ((TO DO)) Apply dazed effect on enemy
+            RealEnemyAttacked = EnemyAttacked.transform.parent.gameObject.transform.parent.gameObject;
             //VFX
             Wielder.GetComponent<Animator>().SetBool("Effects", true);
         }
