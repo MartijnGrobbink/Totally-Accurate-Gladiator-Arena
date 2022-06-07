@@ -178,7 +178,7 @@ public class WeaponStats : MonoBehaviour
     //If The Weapon Has Colldied The Enemy It Collides With Is Damaged
     private void DamageEnemy()
     {
-        // ((TO DO)) apply damage to enemy health script
+        EnemyAttacked.GetComponent<HealthSystem>().Damage(Damage);
         ApplyEffects();
 
         DealDamage = false;
@@ -189,27 +189,32 @@ public class WeaponStats : MonoBehaviour
         if (DazedEffect == true)
         {
             // ((TO DO)) Apply dazed effect on enemy
+            //VFX
+            //WaitEffect
         }
 
         if (AOEEffect)
         {
-            // Collider[] rangeChecks = Physics.OverlapSphere(EnemyAttacked.transform.position, radius, targetMask);
-            // for (int i = 0; i < rangeChecks.Length; i++)
-            // {
-            //     if ( /* !inRange.Contains(rangeChecks[i].gameObject) && */ rangeChecks[i].gameObject != gameObject && rangeChecks[i].tag != "Weapon")
-            //         rangeChecks[i].gameObject.HealthSystem.Damage();
-            // }
+            Collider[] rangeChecks = Physics.OverlapSphere(EnemyAttacked.transform.position, radius, targetMask);
+            for (int i = 0; i < rangeChecks.Length; i++)
+            {
+                if (rangeChecks[i].gameObject != gameObject && rangeChecks[i].tag != "Weapon")
+                    rangeChecks[i].gameObject.GetComponent<HealthSystem>().Damage(5);
+            }
         }
         
 
         if (DurabilityEffect == true)
         {
             // ((TO DO)) Apply durability effect
+            //add durability script to weapon
+            //call durability function here
         }
 
         if (WaitEffect == true)
         {
             // ((TO DO)) Apply wait effect
+            //where to add wait effect on AI
         }
     }
 }

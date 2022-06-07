@@ -238,7 +238,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.12120527, y: 0.8410092, z: -0.0010060668}
+  m_ConnectedAnchor: {x: 0.12120563, y: 0.84300923, z: -0.0010060892}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -767,7 +767,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00106, y: -0.00014539789, z: 0.00037637597}
+  m_ConnectedAnchor: {x: 0.00106, y: -0.00014539511, z: 0.00037637574}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -1095,7 +1095,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000017434941, y: 0.0020154067, z: 0.0000065173954}
+  m_ConnectedAnchor: {x: -0.0000017419807, y: 0.0020154044, z: 0.0000065177446}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -1308,7 +1308,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3847860855359058320}
-  m_LocalRotation: {x: -0, y: -0.6893681, z: -0, w: 0.72441125}
+  m_LocalRotation: {x: 0, y: -0.6893667, z: 0, w: 0.72441256}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1342,6 +1342,15 @@ MonoBehaviour:
   MemberName: KnightsMemberA
   Sender: {fileID: 0}
   Statue: {fileID: 0}
+  enemies: []
+  weapons: []
+  ally: []
+  statue: {fileID: 0}
+  heldWeapon: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  signalSender: {fileID: 0}
+  attackRange: 0
   lastDestination: {fileID: 0}
   currentDestination: {fileID: 0}
   nextDestination: {fileID: 0}
@@ -1412,10 +1421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4c49eca9056d74384b0c8d91ee77a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   currentDistance: 0
   distanceTimer: 0
   handPivot: {fileID: 3847860856820994655}
-  weaponHeld: {fileID: 0}
 --- !u!114 &3847860855359058322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1437,9 +1446,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!1 &3847860855388505423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,7 +1947,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000008695635, y: 0.003871246, z: 0.0000004325938}
+  m_ConnectedAnchor: {x: 0.000008695701, y: 0.0038712427, z: 0.0000004325938}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -2127,7 +2133,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000004867965, y: 0.0017756263, z: -0.00020453217}
+  m_ConnectedAnchor: {x: -0.000004869711, y: 0.0017756257, z: -0.00020453276}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -2653,7 +2659,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000041109815, y: 0.004101376, z: 0.0000028637803}
+  m_ConnectedAnchor: {x: 0.000004110967, y: 0.004101375, z: 0.0000028637803}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -2933,7 +2939,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -3.846687e-12, y: 0.003454289, z: 0.000097159296}
+  m_ConnectedAnchor: {x: -3.8467216e-12, y: 0.0034542908, z: 0.00009715906}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -3205,7 +3211,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000008695555, y: 0.003871246, z: 0.00000043259368}
+  m_ConnectedAnchor: {x: -0.000008695599, y: 0.0038712437, z: 0.00000043259368}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -3605,7 +3611,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0018499999, y: 0.0008795417, z: 0.000030006922}
+  m_ConnectedAnchor: {x: -0.0018499999, y: 0.00087954354, z: 0.000030006922}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -4796,7 +4802,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00106, y: -0.00014539789, z: 0.00037637644}
+  m_ConnectedAnchor: {x: -0.00106, y: -0.00014539511, z: 0.0003763762}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -5056,7 +5062,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000047523063, y: 0.0019352973, z: -0.0000034323893}
+  m_ConnectedAnchor: {x: -0.0000047500944, y: 0.0019352955, z: -0.0000034327386}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -5274,7 +5280,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00167, y: 0.0010463162, z: 0.00017383549}
+  m_ConnectedAnchor: {x: 0.0016700001, y: 0.0010463181, z: 0.00017383549}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -5506,7 +5512,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00007871899, y: 0.001954101, z: -0.00005290541}
+  m_ConnectedAnchor: {x: 0.000078718236, y: 0.0019541006, z: -0.00005290541}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -5693,7 +5699,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -2.121089e-11, y: 0.0010823933, z: -0.000004241243}
+  m_ConnectedAnchor: {x: -2.1211147e-11, y: 0.0010823968, z: -0.0000042422907}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -5879,7 +5885,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 2.1827873e-11, y: 0.0020406076, z: -0.0000036023557}
+  m_ConnectedAnchor: {x: -5.0931703e-11, y: 0.0020406095, z: -0.0000036023557}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -6356,7 +6362,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000041111125, y: 0.004101376, z: 0.0000028628492}
+  m_ConnectedAnchor: {x: -0.0000041110397, y: 0.004101375, z: 0.0000028633149}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -6520,7 +6526,7 @@ GameObject:
   - component: {fileID: 2196372225147890473}
   - component: {fileID: 2748987329415254}
   m_Layer: 0
-  m_Name: pfHealthBar (6)
+  m_Name: pfHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

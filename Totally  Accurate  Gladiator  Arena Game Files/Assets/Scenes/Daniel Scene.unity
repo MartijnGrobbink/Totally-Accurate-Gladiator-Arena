@@ -5511,6 +5511,7 @@ MonoBehaviour:
   enemies: []
   weapons: []
   ally: []
+
   heldWeapon: {fileID: 0}
   chosenWeapon: {fileID: 0}
   chosenEnemy: {fileID: 0}

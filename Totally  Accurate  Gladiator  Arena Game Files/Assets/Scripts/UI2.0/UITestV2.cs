@@ -66,13 +66,13 @@ public class UITestV2 : MonoBehaviour
 
         if (HOLDER == true)
         {
-            UI_EventsManager.current.TeamActive("Romans");
+            UI_EventsManager.current.TeamActive("Contested");
             HOLDER = false;
         }
 
         if (active == true)
         {
-            UI_EventsManager.current.TeamActive("Cavemen");
+            UI_EventsManager.current.TeamActive("NoTeam");
             active = false;
         }
 

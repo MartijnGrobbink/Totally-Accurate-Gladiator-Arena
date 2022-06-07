@@ -353,7 +353,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798559099082480940}
-  m_LocalRotation: {x: -0, y: -0.6893681, z: -0, w: 0.72441125}
+  m_LocalRotation: {x: 0, y: -0.6893667, z: 0, w: 0.72441256}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -388,6 +388,15 @@ MonoBehaviour:
   MemberName: RomansLeader
   Sender: {fileID: 0}
   Statue: {fileID: 0}
+  enemies: []
+  weapons: []
+  ally: []
+  statue: {fileID: 0}
+  heldWeapon: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
+  signalSender: {fileID: 0}
+  attackRange: 0
   lastDestination: {fileID: 0}
   currentDestination: {fileID: 0}
   nextDestination: {fileID: 0}
@@ -458,10 +467,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4c49eca9056d74384b0c8d91ee77a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   currentDistance: 0
   distanceTimer: 0
   handPivot: {fileID: 798559099342160610}
-  weaponHeld: {fileID: 0}
 --- !u!114 &798559099082480942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,9 +492,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   objectsInView: []
-  Ally: []
-  Enemies: []
-  Weapons: []
 --- !u!1 &798559099082694963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1117,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.12120563, y: 0.8440093, z: -0.0010060892}
+  m_ConnectedAnchor: {x: 0.12120563, y: 0.84600925, z: -0.0010060892}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -6507,7 +6513,7 @@ GameObject:
   - component: {fileID: 394850756014791273}
   - component: {fileID: 1947835963895200022}
   m_Layer: 0
-  m_Name: pfHealthBar (11)
+  m_Name: 'pfHealthBar '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

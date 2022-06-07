@@ -8,6 +8,7 @@ public class StatueManager : MonoBehaviour
     public float radius;
     public Transform destination;
     public NavMeshAgent agent;
+    public Animator animator;
 
     private WalkToPosition movement;
 
@@ -135,5 +136,29 @@ public class StatueManager : MonoBehaviour
     public void AtBase()
     {
         Debug.Log("At Base");
+    }
+
+ //-------------------------------------------------------------------Animation----------------------------------------------------------
+    public void MoveAnimate()
+    {
+        animator.SetBool("Move", true);
+    }
+
+    public void DontMoveAnimate()
+    {
+        animator.SetBool("Move", false);
+    }
+
+    public void CheckAnim()
+    {
+        if (agent.hasPath == true)
+        {
+            MoveAnimate();
+        }
+
+        if (agent.hasPath == false)
+        {
+            DontMoveAnimate();
+        }
     }
 }
