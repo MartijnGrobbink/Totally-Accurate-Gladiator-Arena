@@ -1646,19 +1646,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5275fb56bbb13ac4e9d192c9e5a32614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Teams: []
   teamBase: {fileID: 0}
   firstCrossing: {fileID: 2042267660}
   agent: {fileID: 869903522}
-  attackRange: 0
-  chosenWeapon: {fileID: 0}
-  chosenEnemy: {fileID: 0}
-  heldWeapon: {fileID: 0}
-  ally: []
+  MemberName: 
+  Sender: {fileID: 0}
+  Statue: {fileID: 0}
   enemies: []
   weapons: []
+  ally: []
   statue: {fileID: 0}
+  heldWeapon: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
   signalSender: {fileID: 0}
+  attackRange: 0
   lastDestination: {fileID: 0}
   currentDestination: {fileID: 0}
   nextDestination: {fileID: 0}
@@ -1674,6 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb41ae7fc1995647ba33abf437c87f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   currentDistance: 0
 --- !u!136 &869903525
 CapsuleCollider:
@@ -2330,19 +2333,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5275fb56bbb13ac4e9d192c9e5a32614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Teams: []
   teamBase: {fileID: 0}
   firstCrossing: {fileID: 1970051055}
   agent: {fileID: 1221387496}
-  attackRange: 0
-  chosenWeapon: {fileID: 0}
-  chosenEnemy: {fileID: 0}
-  heldWeapon: {fileID: 0}
-  ally: []
+  MemberName: 
+  Sender: {fileID: 0}
+  Statue: {fileID: 0}
   enemies: []
   weapons: []
+  ally: []
   statue: {fileID: 0}
+  heldWeapon: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
   signalSender: {fileID: 0}
+  attackRange: 0
   lastDestination: {fileID: 0}
   currentDestination: {fileID: 0}
   nextDestination: {fileID: 0}
@@ -2358,6 +2363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb41ae7fc1995647ba33abf437c87f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   currentDistance: 0
 --- !u!136 &1221387499
 CapsuleCollider:
@@ -3251,19 +3257,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5275fb56bbb13ac4e9d192c9e5a32614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Teams: []
   teamBase: {fileID: 2042267660}
   firstCrossing: {fileID: 2042267660}
   agent: {fileID: 1708886219}
-  attackRange: 0
-  chosenWeapon: {fileID: 0}
-  chosenEnemy: {fileID: 0}
-  heldWeapon: {fileID: 0}
-  ally: []
+  MemberName: 
+  Sender: {fileID: 0}
+  Statue: {fileID: 0}
   enemies: []
   weapons: []
+  ally: []
   statue: {fileID: 1847573063}
+  heldWeapon: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
   signalSender: {fileID: 0}
+  attackRange: 0
   lastDestination: {fileID: 0}
   currentDestination: {fileID: 0}
   nextDestination: {fileID: 0}
@@ -3301,6 +3309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4c49eca9056d74384b0c8d91ee77a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   currentDistance: 0
   distanceTimer: 0
   handPivot: {fileID: 603513534}
@@ -3774,6 +3783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb41ae7fc1995647ba33abf437c87f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   currentDistance: 0
 --- !u!1 &1872266847
 GameObject:
@@ -4218,19 +4228,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5275fb56bbb13ac4e9d192c9e5a32614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Teams: []
   teamBase: {fileID: 2042267660}
   firstCrossing: {fileID: 2042267660}
   agent: {fileID: 2033792381}
-  attackRange: 0
-  chosenWeapon: {fileID: 0}
-  chosenEnemy: {fileID: 0}
-  heldWeapon: {fileID: 0}
-  ally: []
+  MemberName: 
+  Sender: {fileID: 0}
+  Statue: {fileID: 0}
   enemies: []
   weapons: []
+  ally: []
   statue: {fileID: 1847573063}
+  heldWeapon: {fileID: 0}
+  chosenWeapon: {fileID: 0}
+  chosenEnemy: {fileID: 0}
   signalSender: {fileID: 0}
+  attackRange: 0
   lastDestination: {fileID: 0}
   currentDestination: {fileID: 0}
   nextDestination: {fileID: 0}
@@ -4268,6 +4280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4c49eca9056d74384b0c8d91ee77a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   currentDistance: 0
   distanceTimer: 0
   handPivot: {fileID: 415786182}

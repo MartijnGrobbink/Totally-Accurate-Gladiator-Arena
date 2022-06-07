@@ -56,6 +56,7 @@ public class UI_Refs : MonoBehaviour
         TeamActive.Add("Vikings", 0);
         TeamActive.Add("Romans", 0);
 
+
         var target = UISectionBTargets.transform.Find("TeamUITarget");
         var start = UISectionBTargets.transform.Find("TeamUIStartPos");
 

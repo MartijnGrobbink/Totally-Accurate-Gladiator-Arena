@@ -36,7 +36,7 @@ public class UI_Active : MonoBehaviour
 
     private void SetNoTeam(string team)
     {
-        if (team == "NoTeam")
+        if (team == "NoTeam" || team != "Contested")
         {
             var target = UR.UISectionBTargets.transform.Find("TeamUITarget");
             var start = UR.UISectionBTargets.transform.Find("TeamUIStartPos");
@@ -44,7 +44,7 @@ public class UI_Active : MonoBehaviour
             UR.UISectionB.transform.position = Vector3.Lerp(start.transform.position, target.transform.position, 1);
         }
 
-        if (team != "NoTeam")
+        if (team != "NoTeam" && team != "Contested")
         {
             var target = UR.UISectionBTargets.transform.Find("TeamUITarget");
             var start = UR.UISectionBTargets.transform.Find("TeamUIStartPos");
@@ -55,7 +55,7 @@ public class UI_Active : MonoBehaviour
 
     private void ClearPreviousTeam(string team)
     {
-        if (team != "NoTeam")
+        if (team != "NoTeam" && team != "Contested")
         {
             var d = UR.TeamMembers["MemberA"];
             var memberA = d.transform.Find("TeamMemberKillsText");
@@ -96,7 +96,7 @@ public class UI_Active : MonoBehaviour
 
     private void SetMembersImages(string team)
     {
-        if (team != "NoTeam")
+        if (team != "NoTeam" && team != "Contested")
         {
             var d = UR.TeamMembers["MemberA"];
             var memberA = d.transform.Find("TeamMemberImage");
@@ -268,7 +268,7 @@ public class UI_Active : MonoBehaviour
 
     private void OtherTeamsOff(string team)
     {
-        if (team == "NoTeam")
+        if (team == "NoTeam" || team == "Contested")
         {
             var a = UR.Scores["Vikings"];
             var thetargets = a.transform.Find("Targets");
@@ -306,7 +306,7 @@ public class UI_Active : MonoBehaviour
             tomovee.transform.position = Vector3.Lerp(targete.transform.position, startpose.transform.position, 1);
         }
 
-        if (team != "NoTeam")
+        if (team != "NoTeam" && team != "Contested")
         {
             if (team == "Cavemen")
             {
@@ -470,7 +470,7 @@ public class UI_Active : MonoBehaviour
     private void SetKillsOfOtherTeams(string team)
     {
         Dictionary<string, int> active = new Dictionary<string, int>();
-        if (team != "NoTeam")
+        if (team != "NoTeam" && team != "Contested")
         {
             
             foreach (KeyValuePair<string, int> item in UR.TeamActive)

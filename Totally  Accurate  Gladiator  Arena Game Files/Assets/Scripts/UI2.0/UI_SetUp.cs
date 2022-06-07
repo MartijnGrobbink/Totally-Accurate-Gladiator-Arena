@@ -7,6 +7,7 @@ public class UI_SetUp : MonoBehaviour
 {
     public UI_Refs UR;
     public UI_Score US;
+    public UI_Statue UST;
 
     void Start()
     {
@@ -143,5 +144,7 @@ public class UI_SetUp : MonoBehaviour
         tempColor = statueaa.GetComponent<Image>().color;
         tempColor.a = 0f;
         statueaa.GetComponent<Image>().color = tempColor;
+
+        UST.SetStatueLogo();
     }
 }
