@@ -7387,7 +7387,7 @@ GameObject:
   - component: {fileID: 8636343838734606741}
   m_Layer: 6
   m_Name: spine
-  m_TagString: Untagged
+  m_TagString: Caveman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

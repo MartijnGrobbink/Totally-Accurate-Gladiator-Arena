@@ -7913,7 +7913,7 @@ GameObject:
   - component: {fileID: 9200763411395417318}
   m_Layer: 6
   m_Name: spine
-  m_TagString: Untagged
+  m_TagString: Caveman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7960,7 +7960,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 3.3481836, y: 0.8350104, z: 4.004189}
+  m_ConnectedAnchor: {x: 3.3481836, y: 0.83500946, z: 4.004189}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2

@@ -22,6 +22,8 @@ public class WeaponStats : MonoBehaviour
     public int TheDamage;
     //Actions To Be Taken With Weapon
     public GameObject EnemyAttacked;
+    GameObject RealEnemyAttacked;
+    playerController pc;
 
     public bool DealDamage;
     public bool CanAttack;
@@ -198,7 +200,10 @@ public class WeaponStats : MonoBehaviour
     {
         if (DazedEffect == true)
         {
-            // ((TO DO)) Apply dazed effect on enemy
+            RealEnemyAttacked = EnemyAttacked.transform.parent.gameObject;
+            RealEnemyAttacked = RealEnemyAttacked.transform.Find("spine").gameObject;
+            pc = RealEnemyAttacked.GetComponent<playerController>();
+            pc.stun = true;
             //VFX
             Wielder.GetComponent<Animator>().SetBool("Effects", true);
         }

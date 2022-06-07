@@ -35,6 +35,13 @@ public class playerController : MonoBehaviour
         }
     }
 
+    IEnumerator stunned()
+    {
+        particles.Play();
+        yield return new WaitForSeconds(2f);
+        particles.Stop();
+    }
+
     void Start()
     {
         audioData = character.GetComponent<AudioSource>();
@@ -78,11 +85,9 @@ public class playerController : MonoBehaviour
         {
             StartCoroutine(attack());
         }
-        if (stun == true)
-            particles.Play();
-        else {
-            print("test");
-            particles.Stop();
+        if (stun == true) {
+            stun = false;
+            StartCoroutine(stunned());
         }
         if (moving == true && !audioData.isPlaying)
             audioData.Play(0);

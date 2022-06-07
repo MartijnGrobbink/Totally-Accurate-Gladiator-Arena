@@ -1421,7 +1421,7 @@ Animator:
   m_GameObject: {fileID: 897624817894313064}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5200b93ddc96a74abbf0288ace55848, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4102,7 +4102,7 @@ GameObject:
   - component: {fileID: 3018330144949517770}
   m_Layer: 6
   m_Name: spine
-  m_TagString: Untagged
+  m_TagString: Viking
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
