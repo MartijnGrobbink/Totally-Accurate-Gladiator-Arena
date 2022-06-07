@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7865291603666637593}
   - component: {fileID: 8310814614649827430}
+  - component: {fileID: 1602954943528447271}
   m_Layer: 0
   m_Name: pfHealthBar
   m_TagString: Untagged
@@ -45,6 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a2e188ae9983d46bead8234ee98283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1602954943528447271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5347637417311025332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c248534037d9454dab5025e555e71a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraToFollow: {fileID: 0}
 --- !u!1001 &2855979892367251719
 PrefabInstance:
   m_ObjectHideFlags: 0
