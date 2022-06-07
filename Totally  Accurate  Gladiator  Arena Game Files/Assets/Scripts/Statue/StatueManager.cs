@@ -18,9 +18,13 @@ public class StatueManager : MonoBehaviour
 
     private static bool BeingContested = false;
 
+    private AudioSource source;
+    private bool mPlaying = false;
+
     private void Start()
     {
         movement = gameObject.GetComponent<WalkToPosition>();
+        source = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -142,11 +146,21 @@ public class StatueManager : MonoBehaviour
     public void MoveAnimate()
     {
         animator.SetBool("Move", true);
+        if (mPlaying == false)
+        {
+            source.Play();
+            mPlaying = true;
+        }
     }
 
     public void DontMoveAnimate()
     {
         animator.SetBool("Move", false);
+        if (mPlaying == true)
+        {
+            source.Stop();
+            mPlaying = false;
+        }
     }
 
     public void CheckAnim()
