@@ -37,6 +37,7 @@ public class GrabWeapon : WalkToPosition
             weapon.transform.SetParent(handPivot, false);
             weapon.transform.SetPositionAndRotation(handPivot.position, handPivot.rotation);
 
+            weapon.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             data.heldWeapon = weapon;
             data.heldWeapon.GetComponent<WeaponStats>().Wielder = gameObject;
             data.chosenWeapon = null;

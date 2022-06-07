@@ -25,7 +25,7 @@ public class FieldOfView : MonoBehaviour
         data = gameObject.GetComponent<AIData>();
         StartCoroutine(FOVRoutine());
     }
-    
+
     //For every 0.2s check for changes
     private IEnumerator FOVRoutine()
     {
@@ -46,16 +46,25 @@ public class FieldOfView : MonoBehaviour
     private void RangeCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-            for (int i = 0; i < rangeChecks.Length; i++)
-            {
-                ;
-            if (rangeChecks[i].transform.parent == null)
-                if (objectsInView.Contains(rangeChecks[i].gameObject) != true)
-                    CheckInView(rangeChecks[i].gameObject);
-            }
+        for (int i = 0; i < rangeChecks.Length; i++)
+        {
+            CheckForParents(rangeChecks[i].gameObject);
+        }
 
         if (objectsInView.Count != 0)
             CheckIfStillInRange();
+    }
+
+    private void CheckForParents(GameObject rangeCheck)
+    {
+        if (rangeCheck.transform.parent == null)
+        {
+            if (objectsInView.Contains(rangeCheck.gameObject) != true)
+                CheckInView(rangeCheck.gameObject);
+        }
+        else
+            CheckForParents(rangeCheck.transform.parent.gameObject);
+
     }
 
     //Check if the objects are in the triangle
@@ -83,7 +92,7 @@ public class FieldOfView : MonoBehaviour
             objectsInView.Remove(interactable);
         }
     }
-    
+
     //Check if the objects are still in the circle
     private void CheckIfStillInRange()
     {
@@ -95,6 +104,19 @@ public class FieldOfView : MonoBehaviour
                 objectsInView.Remove(objectsInView[i].gameObject);
             }
         }
+        //CheckInLayer();
+    }
+
+    private void CheckInLayer()
+    {
+        //for (int i = 0; i < objectsInView.Count; i++)
+        //{
+        //    if ((targetMask & (1 << objectsInView[i].layer)) != 0)
+        //    {
+        //        Debug.Log(objectsInView[i].layer);
+        //        objectsInView.RemoveAt(i);
+        //    }
+        //}
     }
 
     //Transfer the raw data to the three lists
