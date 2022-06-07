@@ -25,7 +25,8 @@ public class FieldOfView : MonoBehaviour
         data = gameObject.GetComponent<AIData>();
         StartCoroutine(FOVRoutine());
     }
-    //core routing for each 0.2f
+    
+    //For every 0.2s check for changes
     private IEnumerator FOVRoutine()
     {
         float delay = 0.2f;
@@ -41,36 +42,32 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
+    //Check if the items are in the fiew range
     private void RangeCheck()
     {
-        //look if target is with in circle range
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
             for (int i = 0; i < rangeChecks.Length; i++)
             {
-                Transform item = rangeChecks[i].transform.parent;
-            if (item != null)
-                if (objectsInView.Contains(item.gameObject) != true)
-                    CheckInView(item.gameObject);
+                ;
+            if (rangeChecks[i].transform.parent == null)
+                if (objectsInView.Contains(rangeChecks[i].gameObject) != true)
+                    CheckInView(rangeChecks[i].gameObject);
             }
 
         if (objectsInView.Count != 0)
             CheckIfStillInRange();
     }
+
+    //Check if the objects are in the triangle
     private void CheckInView(GameObject interactable)
     {
-        //set the target to the taget in the circle
         Transform target = interactable.transform;
-        //look difference in location from out target
         Vector3 directionToTarget = (target.position - transform.position).normalized;
-        //look if the interactable is within the triangle 
-        //angle is defided by 2 because half of the triange is positive and the other half is negative
 
-        //NOTE don't forget filter tags so you don't trigger the ai with you own team members
         if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
         {
-            //get the distance of the target
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
-            //look if there is no obstuction
+
             if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
             {
                 if (objectsInView.Contains(interactable) != true && interactable != gameObject)
@@ -86,6 +83,8 @@ public class FieldOfView : MonoBehaviour
             objectsInView.Remove(interactable);
         }
     }
+    
+    //Check if the objects are still in the circle
     private void CheckIfStillInRange()
     {
         for (int i = 0; i < objectsInView.Count; i++)
@@ -98,6 +97,7 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
+    //Transfer the raw data to the three lists
     private void FOVFilter(List<GameObject> rawData)
     {
         for (int i = 0; i < rawData.Count; i++)
@@ -118,6 +118,7 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
+    //Check if the items in the three lists are still in the rawData
     private void CheckIfStillSeen(List<GameObject> rawData)
     {
         if (rawData.Count != 0)
