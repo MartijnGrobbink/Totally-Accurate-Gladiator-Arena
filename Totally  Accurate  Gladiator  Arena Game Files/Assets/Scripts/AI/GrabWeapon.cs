@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class GrabWeapon : WalkToPosition
 {
-    [SerializeField] private float distanceTimer;
     [SerializeField] private Transform handPivot;
     private GameObject targetWeapon;
     private AIData data;
@@ -34,7 +33,7 @@ public class GrabWeapon : WalkToPosition
             Rigidbody rigidBody = weapon.GetComponent<Rigidbody>();
             rigidBody.useGravity = false;
             rigidBody.constraints = RigidbodyConstraints.FreezeAll;
-
+            
             weapon.transform.SetParent(handPivot, false);
             weapon.transform.SetPositionAndRotation(handPivot.position, handPivot.rotation);
 

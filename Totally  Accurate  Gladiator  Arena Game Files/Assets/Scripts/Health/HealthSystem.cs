@@ -1,10 +1,13 @@
 using System;
+using Unity;
+using UnityEngine;
 
-public class HealthSystem {
+public class HealthSystem : MonoBehaviour
+{
     public event EventHandler OnHealthChanged;
 
-    private int health;
-    private int healthMax;
+    public int health;
+    public int healthMax;
 
     private int damaged = 0;
 
