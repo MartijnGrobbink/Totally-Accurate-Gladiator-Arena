@@ -1,6 +1,7 @@
 using System;
 
-public class HealthSystem {
+public class HealthSystem : MonoBehaviour
+{
     public event EventHandler OnHealthChanged;
 
     private int health;
