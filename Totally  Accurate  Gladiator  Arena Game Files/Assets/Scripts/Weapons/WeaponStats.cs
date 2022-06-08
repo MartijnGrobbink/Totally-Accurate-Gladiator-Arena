@@ -167,7 +167,11 @@ public class WeaponStats : MonoBehaviour
         //When The Weapon Has Connected With An Enemy
         if (DealDamage == true)
         {
-            HitSound.Play();
+            if (HitSound != null)
+            {
+                HitSound.Play();
+            }
+            
             DamageEnemy();
         }
     }
