@@ -190,6 +190,10 @@ public class WeaponStats : MonoBehaviour
     //If The Weapon Has Colldied The Enemy It Collides With Is Damaged
     private void DamageEnemy()
     {
+        if (EnemyAttacked.GetComponent<HealthSystem>().health - Damage <= 0)
+        {
+            Teams_EventManager.current.HasKilled(Wielder.GetComponent<AIData>().MemberName, Wielder.GetComponent<AIData>().TeamName, DesiredTag, EnemyAttacked.GetComponent<AIData>().MemberName, EnemyAttacked.GetComponent<AIData>().TeamName);
+        }
         EnemyAttacked.GetComponent<HealthSystem>().Damage(Damage);
         ApplyEffects();
 

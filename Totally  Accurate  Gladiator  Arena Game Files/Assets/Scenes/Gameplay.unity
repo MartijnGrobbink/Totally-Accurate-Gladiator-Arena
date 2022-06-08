@@ -1412,10 +1412,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StatueA
       objectReference: {fileID: 0}
-    - target: {fileID: 2256008275838430682, guid: 28da87eb12161474796695a3465a9c39, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28da87eb12161474796695a3465a9c39, type: 3}
 --- !u!4 &972267523 stripped
@@ -2246,10 +2242,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5108389666789703590, guid: 05b041147904a408d958d00b3b580c4f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5342901417055543549, guid: 05b041147904a408d958d00b3b580c4f, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
