@@ -10,6 +10,7 @@ public class HealthSystem : MonoBehaviour
     public int healthMax;
 
     private float timer = 3f;
+    private float timerHealth = 2f;
 
     //Audio
     public AudioSource DieSound;
@@ -32,6 +33,7 @@ public class HealthSystem : MonoBehaviour
     void Update()
     {
         KillSelf();
+        CheckToHeal();
     }
 
     public HealthSystem(int healthMax)
@@ -56,6 +58,23 @@ public class HealthSystem : MonoBehaviour
         health -= damageAmount;
         if (health < 0) health = 0;
         if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
+    }
+
+    public void CheckToHeal()
+    {
+        if (health < 90 && health > 0)
+        {
+            if (timerHealth > 0)
+            {
+                timerHealth -= Time.deltaTime;
+            }
+
+            if (timerHealth <= 0)
+            {
+                Heal(10);
+                timerHealth = 2f;
+            }
+        }
     }
 
     public void Heal(int healAmount)

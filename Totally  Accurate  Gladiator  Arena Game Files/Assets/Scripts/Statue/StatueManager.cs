@@ -100,7 +100,7 @@ public class StatueManager : MonoBehaviour
 
     private void NotContested()
     {
-        UI_EventsManager.current.TeamActive("NoTeam");
+        Teams_EventManager.current.StatueStatus("NoTeam");
         AIData contestantData = inRange[0].GetComponent<AIData>();
         if (contestantData != null)
         {
@@ -123,7 +123,7 @@ public class StatueManager : MonoBehaviour
 
     public void setBeingContested(bool newValue)
     {
-        UI_EventsManager.current.TeamActive("Contested");
+        Teams_EventManager.current.StatueStatus("Contested");
         BeingContested = newValue;
     }
 
@@ -131,7 +131,7 @@ public class StatueManager : MonoBehaviour
     private void MoveToBase()
     {
         AIData contestantData = inRange[0].GetComponent<AIData>();
-        UI_EventsManager.current.TeamActive(inRange[0].GetComponent<AIData>().TeamName);
+        Teams_EventManager.current.StatueStatus(inRange[0].GetComponent<AIData>().TeamName);
         destination = contestantData.teamBase;
         movement.Walk(agent, destination);
     }
