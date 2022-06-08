@@ -204,7 +204,6 @@ public class WeaponStats : MonoBehaviour
             RealEnemyAttacked = RealEnemyAttacked.transform.Find("spine").gameObject;
             pc = RealEnemyAttacked.GetComponent<playerController>();
             pc.stun = true;
-            //VFX
             Wielder.GetComponent<Animator>().SetBool("Effects", true);
         }
 
