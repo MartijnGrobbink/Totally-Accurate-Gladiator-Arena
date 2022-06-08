@@ -42,33 +42,54 @@ public class GamerAI : MonoBehaviour
                 // check for the closest weapon to the gamer
                 if(data.heldWeapon == null & data.weapons.Count != 0){
                     GameObject closestWeapon = data.weapons[0];
-                    // Debug.Log(id + " closest weapon: " + closestWeapon + " " + closestWeapon.transform.position);
+
+                    // distance between points
+                    // TODO change to find the closest weapon through the available paths and not euclidean distance
                     foreach(GameObject weapon in data.weapons){
-                        // Debug.Log(id + "curr-gamer: " + Vector3.Distance(weapon.transform.position, transform.position) +  "\n closest-gamer: " + Vector3.Distance(closestWeapon.transform.position, transform.position));
                         if(Vector3.Distance(weapon.transform.position, transform.position) < Vector3.Distance(closestWeapon.transform.position, transform.position) )
                             closestWeapon = weapon;
                     }
                     data.chosenWeapon = closestWeapon;
-                    Debug.Log(closestWeapon);
                     state = State.GrabWeapon;
                 }
                 break;
+
             case State.GrabWeapon:
-                // Debug.Log("Grab Weapon");
-                animator.Play(State.GrabWeapon.ToString());
+                animator.Play(state.ToString());
                 if(data.heldWeapon != null){
-                    state = State.GoToEnemy;
+                    state = State.GroupUpSender;
                 }
                 break;
+
             case State.GoToEnemy:
-                // Debug.Log("go to enemy");
+                animator.Play(state.ToString());
+                // TODO if health < threshold: runaway
+
+                // run away if the player has no weapon
+                if(data.heldWeapon == null) {
+                    state = State.RunAway;
+                }
                 break;
+
             case State.RunAway:
+                animator.Play(state.ToString());
                 break;
+
             case State.GroupUpReciever:
+                // the player will not join the others in case of receiving a GroupUp IF he does not yet have a weapon
+                // therefore he will go back a the SearchWeapon state 
+                if(data.heldWeapon == null){
+                    state = State.SearchWeapon;
+                    break;
+                } 
+
+                animator.Play(state.ToString());
                 break;
+
             case State.GroupUpSender:
+                animator.Play(state.ToString());
                 break;
+
             default:
                 break;
         }
