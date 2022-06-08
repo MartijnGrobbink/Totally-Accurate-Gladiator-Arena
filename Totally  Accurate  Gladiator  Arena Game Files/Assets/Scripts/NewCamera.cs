@@ -30,10 +30,12 @@ public class NewCamera : MonoBehaviour
         sectorList.Add(sector4);
 
         //Start the function at xf seconds and repeat it every yf seconds (sector update)
-        InvokeRepeating(nameof(ChangeSector), 10f, 10f);
+        InvokeRepeating(nameof(ChangeSector), 10f, 5f);
 
         //every 2 seconds remove 1 point in each sector
         InvokeRepeating(nameof(DecreasePoints), 2f, 2f);
+
+        Cam_EventManager.current.onDamagedOnSector += sectorDamaged;
     }
 
     void Update()
@@ -50,6 +52,17 @@ public class NewCamera : MonoBehaviour
 
     //-------------------------------------------------------------------------------------------------------------
    
+    private void sectorDamaged(string whichSector)
+    {
+        if(whichSector == "sector1")
+            sector1.AddPoints(1);
+        if(whichSector == "sector2")
+            sector2.AddPoints(1);
+        if(whichSector == "sector3")
+            sector3.AddPoints(1);
+        if(whichSector == "sector4")
+            sector4.AddPoints(1);
+    }
    
     public void IncreasePoints()
     {
@@ -65,6 +78,11 @@ public class NewCamera : MonoBehaviour
             }
 
             // if an AI received damage while sector1 is triggered, add 1 point
+
+            if(sector1.getColliderTag() != "Statue" )
+                sector1.AddPoints(1);
+
+            
         }
         
         if (sector2.triggered) {
