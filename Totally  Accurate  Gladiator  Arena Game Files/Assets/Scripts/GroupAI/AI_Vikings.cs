@@ -90,7 +90,7 @@ public class AI_Vikings : MonoBehaviour
         }
         else if (data.chosenEnemy != null)
         {
-            if (data.heldWeapon != null)
+            if (data.heldWeapon != null && data.enemies != null && data.enemies.Count > 0)
             {
                 AttackState();
             }
