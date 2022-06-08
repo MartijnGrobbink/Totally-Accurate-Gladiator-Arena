@@ -625,6 +625,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966500900}
     m_Modifications:
+    - target: {fileID: 301625962, guid: 1d8becfd1b4ba434a903ae10b3c3f19f, type: 3}
+      propertyPath: cameraToFollow
+      value: 
+      objectReference: {fileID: 1470905477}
     - target: {fileID: 6620274949933497410, guid: 1d8becfd1b4ba434a903ae10b3c3f19f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -673,10 +677,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: VikingsFollowerA
       objectReference: {fileID: 0}
-    - target: {fileID: 6620274949933497411, guid: 1d8becfd1b4ba434a903ae10b3c3f19f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6620274949933497416, guid: 1d8becfd1b4ba434a903ae10b3c3f19f, type: 3}
       propertyPath: teamBase
       value: 
@@ -687,24 +687,6 @@ PrefabInstance:
       objectReference: {fileID: 4491915150738617759}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d8becfd1b4ba434a903ae10b3c3f19f, type: 3}
---- !u!1 &301625961 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2049123988026153046, guid: 1d8becfd1b4ba434a903ae10b3c3f19f, type: 3}
-  m_PrefabInstance: {fileID: 301625960}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &301625962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301625961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c248534037d9454dab5025e555e71a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraToFollow: {fileID: 1470905477}
 --- !u!4 &319829004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2407698277878317745, guid: 19c755ed496b3a54db37ea4b5e97a56d, type: 3}
@@ -1172,6 +1154,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966500900}
     m_Modifications:
+    - target: {fileID: 921108272, guid: 127748380b765c04eae1310611ffcfe3, type: 3}
+      propertyPath: cameraToFollow
+      value: 
+      objectReference: {fileID: 1470905477}
     - target: {fileID: 5288272130552876374, guid: 127748380b765c04eae1310611ffcfe3, type: 3}
       propertyPath: teamBase
       value: 
@@ -1228,30 +1214,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: VikingsFollowerB
       objectReference: {fileID: 0}
-    - target: {fileID: 5288272130552876381, guid: 127748380b765c04eae1310611ffcfe3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 127748380b765c04eae1310611ffcfe3, type: 3}
---- !u!1 &921108271 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1068396476080056648, guid: 127748380b765c04eae1310611ffcfe3, type: 3}
-  m_PrefabInstance: {fileID: 921108270}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &921108272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 921108271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c248534037d9454dab5025e555e71a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraToFollow: {fileID: 1470905477}
 --- !u!1 &966500899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,13 +1497,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966500900}
     m_Modifications:
+    - target: {fileID: 1587161957, guid: 8eeb6befac28e5547b87792765543e36, type: 3}
+      propertyPath: cameraToFollow
+      value: 
+      objectReference: {fileID: 1470905477}
     - target: {fileID: 897624817894313064, guid: 8eeb6befac28e5547b87792765543e36, type: 3}
       propertyPath: m_Name
       value: VikingLeader
-      objectReference: {fileID: 0}
-    - target: {fileID: 897624817894313064, guid: 8eeb6befac28e5547b87792765543e36, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 897624817894313065, guid: 8eeb6befac28e5547b87792765543e36, type: 3}
       propertyPath: m_RootOrder
@@ -1595,24 +1559,6 @@ PrefabInstance:
       objectReference: {fileID: 4491915150738617759}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eeb6befac28e5547b87792765543e36, type: 3}
---- !u!1 &1587161956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 437113906932179224, guid: 8eeb6befac28e5547b87792765543e36, type: 3}
-  m_PrefabInstance: {fileID: 1587161955}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1587161957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1587161956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c248534037d9454dab5025e555e71a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraToFollow: {fileID: 1470905477}
 --- !u!4 &1628015143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5204527518945046518, guid: 111ddd62a8843514295a870dbdbf22b0, type: 3}
