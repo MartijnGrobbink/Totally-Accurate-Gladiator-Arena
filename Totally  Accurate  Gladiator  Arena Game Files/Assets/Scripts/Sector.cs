@@ -9,6 +9,7 @@ public class Sector : MonoBehaviour
     public Transform sectorCamera; 
     public bool triggered = false;
     private string tag;
+
     // Starts called before the first frame update
     void Start()
     {
@@ -25,7 +26,6 @@ public class Sector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         triggered = !triggered;
-  
         tag = other.tag;  
     }
 
