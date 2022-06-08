@@ -15,8 +15,7 @@ public class Cutoutobject : MonoBehaviour
     private void Awake()
     {
         mainCamera = GetComponent<Camera>();
-    }
-
+    } 
     private void Update()
     {
         Vector2 cutoutPos = mainCamera.WorldToViewportPoint(targetObject.position);
@@ -33,7 +32,7 @@ public class Cutoutobject : MonoBehaviour
             {
                 materials[m].SetVector("_CutoutPos", cutoutPos);
                 materials[m].SetFloat("_CutoutSize", 0.1f);
-                materials[m].SetFloat("_FalloutSize", 0.05f);
+                materials[m].SetFloat("_FalloffSize", 0.05f);
 
             }
         }
