@@ -19,7 +19,7 @@ public class Caveman_AI : MonoBehaviour
 
     void Offense()
     {
-        for(int cou = 0; cou < data.enemies.Count; cou++)
+/*        for(int cou = 0; cou < data.enemies.Count; cou++)
         {
             var enemy_data = data.enemies[cou].GetComponent<AIData>();
             if (enemy_data.heldWeapon == null) {
@@ -40,11 +40,12 @@ public class Caveman_AI : MonoBehaviour
                     fleeing = true;
                 }
             }
-        }
+        }*/
         EZKill = false;
 /*        if (data.signalSender == null)
             animator.Play("GroupUpSender");*/
         if (fleeing == false){
+            data.chosenEnemy = data.enemies[0];
             animator.Play("GoToEnemy");
         }
         else {
