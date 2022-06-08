@@ -42,12 +42,19 @@ public class NewCamera : MonoBehaviour
     {
         IncreasePoints();
 
+        
+        
         // Lerp from the current position of the camera to the sector which has the highest number of points
-        Vector3 a = transform.position;
-        Vector3 b = currentSector.getSectorCamera().transform.position;
+        if(currentSector && currentSector.getSectorCamera())
+        {
+            Vector3 a = transform.position;
+            Vector3 b = currentSector.getSectorCamera().transform.position;   
+            // * Time.deltaTime keeps the speed steady across all computers 
+            transform.position = Vector3.MoveTowards(a, Vector3.Lerp(a, b, t), speed * Time.deltaTime);
+        }
+        
 
-        // * Time.deltaTime keeps the speed steady across all computers 
-        transform.position = Vector3.MoveTowards(a, Vector3.Lerp(a, b, t), speed * Time.deltaTime);
+       
     }
 
     //-------------------------------------------------------------------------------------------------------------

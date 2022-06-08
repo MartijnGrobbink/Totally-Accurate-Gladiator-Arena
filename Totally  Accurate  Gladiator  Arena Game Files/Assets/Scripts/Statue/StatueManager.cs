@@ -55,7 +55,7 @@ public class StatueManager : MonoBehaviour
     {
         if (rangeCheck.transform.parent == null)
         {
-            if (inRange.Contains(rangeCheck.gameObject) != true)
+            if (inRange.Contains(rangeCheck.gameObject) != true && rangeCheck.gameObject.CompareTag("Weapon") != true)
                 inRange.Add(rangeCheck.gameObject);
         }
         else
@@ -101,17 +101,17 @@ public class StatueManager : MonoBehaviour
     private void NotContested()
     {
         Teams_EventManager.current.StatueStatus("NoTeam");
-        AIData contestantData = inRange[0].GetComponent<AIData>();
-        if (contestantData != null)
-        {
-            MoveToBase();
-            setBeingContested(false);
+            AIData contestantData = inRange[0].GetComponent<AIData>();
+            if (contestantData != null)
+            {
+                MoveToBase();
+                setBeingContested(false);
 
-        }
-        else
-        {
-            Debug.LogError("No AIdata found");
-        }
+            }
+            else
+            {
+                Debug.LogError("No AIdata found" + inRange[0].name);
+            }
     }
 
 //-------------------------------------------For the camera--------------------------------------------------------------------------
@@ -141,7 +141,8 @@ public class StatueManager : MonoBehaviour
         if (inRange.Count != 0)
         {
             AIData contestantData = inRange[0].GetComponent<AIData>();
-            if (destination != contestantData.teamBase)
+
+            if (contestantData && destination != contestantData.teamBase)
             {
                 destination = contestantData.teamBase;
                 movement.Walk(agent, destination);

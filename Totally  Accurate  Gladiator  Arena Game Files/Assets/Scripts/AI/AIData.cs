@@ -15,9 +15,9 @@ public class AIData : MonoBehaviour
     public GameObject Sender;
     public GameObject statue;
 
-    public List<GameObject> enemies;
-    public List<GameObject> weapons;
-    public List<GameObject> ally;
+    public List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> weapons = new List<GameObject>();
+    public List<GameObject> ally = new List<GameObject>();
 
     public GameObject heldWeapon;
 
@@ -35,12 +35,14 @@ public class AIData : MonoBehaviour
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        statue = GameObject.FindGameObjectWithTag("Statue");
+
     }
 
 
     void Update()
     {
+        if(statue == null)
+            statue = GameObject.FindGameObjectWithTag("Statue");
         //for (int i = 0; i < gameObject.transform.childCount; i++)
         //{
         //    if (gameObject.transform.GetChild(i).CompareTag("Weapon") == true)
