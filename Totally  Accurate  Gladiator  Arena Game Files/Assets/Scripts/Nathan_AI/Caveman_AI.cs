@@ -43,13 +43,13 @@ public class Caveman_AI : MonoBehaviour
         }
         EZKill = false;
 /*        if (data.signalSender == null)
-            animator.Play("GroupUpSender");
-        else {*/
+            animator.Play("GroupUpSender");*/
+        if (fleeing == false){
             animator.Play("GoToEnemy");
-//        }
-/*        else { fleeing == true
+        }
+        else {
             animator.Play("RunAway");
-        }*/
+        }
         fleeing = false;
     }
     
@@ -105,7 +105,6 @@ public class Caveman_AI : MonoBehaviour
                 var my_power = data.heldWeapon.GetComponent<WeaponStats>();
                 if (other_power.Damage + other_power.SwingSpeed > my_power.Damage + my_power.SwingSpeed)
                 {
-                    print("test");
 //                    data.heldWeapon = null;
                     data.chosenWeapon = data.weapons[cou];
                 }
