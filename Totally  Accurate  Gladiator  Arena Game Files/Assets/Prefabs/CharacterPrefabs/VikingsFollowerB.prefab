@@ -6138,8 +6138,8 @@ MonoBehaviour:
   teamBase: {fileID: 0}
   firstCrossing: {fileID: 0}
   agent: {fileID: 5288272130552876375}
-  TeamName: 
-  MemberName: VikingsMemberA
+  TeamName: Vikings
+  MemberName: MemberA
   Sender: {fileID: 0}
   statue: {fileID: 0}
   enemies: []
