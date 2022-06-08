@@ -9,7 +9,6 @@ public class HealthSystem : MonoBehaviour
     public int health;
     public int healthMax;
 
-    private int damaged = 0;
     private float timer = 3f;
     private float timerHealth = 2f;
 
@@ -52,12 +51,6 @@ public class HealthSystem : MonoBehaviour
         return (float)health / healthMax;
     }
 
-    //-----------------------For the Camera-----------------------------------
-    public int getDamaged()
-    {
-        return damaged;
-    }
-
     //------------------------------------------------------------------------
 
     public void Damage(int damageAmount)
@@ -65,9 +58,6 @@ public class HealthSystem : MonoBehaviour
         health -= damageAmount;
         if (health < 0) health = 0;
         if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
-
-        // to track the number of times an AI received damage on a certain sector 
-        damaged++;
     }
 
     public void CheckToHeal()

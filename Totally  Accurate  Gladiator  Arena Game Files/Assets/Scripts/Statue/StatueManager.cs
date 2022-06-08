@@ -37,15 +37,29 @@ public class StatueManager : MonoBehaviour
         CheckIfDestinationValid();
     }
     //-------------------------------------------------------------Range Detection-------------------------------------------------------
+
+    //Check if the items are in the view range
     private void CheckInRange()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
         for (int i = 0; i < rangeChecks.Length; i++)
         {
-            if (inRange.Contains(rangeChecks[i].gameObject) != true && rangeChecks[i].gameObject != gameObject && rangeChecks[i].CompareTag("Weapon") != true)
-                inRange.Add(rangeChecks[i].gameObject);
+            CheckForParents(rangeChecks[i].gameObject);
         }
-        CheckIfStillInRange();
+
+        if (inRange.Count != 0)
+            CheckIfStillInRange();
+    }
+
+    private void CheckForParents(GameObject rangeCheck)
+    {
+        if (rangeCheck.transform.parent == null)
+        {
+            if (inRange.Contains(rangeCheck.gameObject) != true)
+                inRange.Add(rangeCheck.gameObject);
+        }
+        else
+            CheckForParents(rangeCheck.transform.parent.gameObject);
     }
 
     private void CheckIfStillInRange()

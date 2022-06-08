@@ -16,10 +16,8 @@ public class NewCamera : MonoBehaviour
     public Sector currentSector;
     
     private StatueManager statues;
-    private HealthSystem health;
+    private HealthSystem healthSystem;
     
-    private int previousDamage = 0;
-
     public float t;
     public float speed;
 
@@ -32,10 +30,12 @@ public class NewCamera : MonoBehaviour
         sectorList.Add(sector4);
 
         //Start the function at xf seconds and repeat it every yf seconds (sector update)
-        InvokeRepeating(nameof(ChangeSector), 10f, 10f);
+        InvokeRepeating(nameof(ChangeSector), 10f, 5f);
 
         //every 2 seconds remove 1 point in each sector
         InvokeRepeating(nameof(DecreasePoints), 2f, 2f);
+
+        Cam_EventManager.current.onDamagedOnSector += sectorDamaged;
     }
 
     void Update()
@@ -52,6 +52,17 @@ public class NewCamera : MonoBehaviour
 
     //-------------------------------------------------------------------------------------------------------------
    
+    private void sectorDamaged(string whichSector)
+    {
+        if(whichSector == "sector1")
+            sector1.AddPoints(1);
+        if(whichSector == "sector2")
+            sector2.AddPoints(1);
+        if(whichSector == "sector3")
+            sector3.AddPoints(1);
+        if(whichSector == "sector4")
+            sector4.AddPoints(1);
+    }
    
     public void IncreasePoints()
     {
@@ -65,12 +76,13 @@ public class NewCamera : MonoBehaviour
                     sector1.AddPoints(2);
                 }
             }
-            
+
             // if an AI received damage while sector1 is triggered, add 1 point
-            else if(previousDamage < health.getDamaged()) {
+
+            if(sector1.getColliderTag() != "Statue" )
                 sector1.AddPoints(1);
-                previousDamage = health.getDamaged();
-            }
+
+            
         }
         
         if (sector2.triggered) {
@@ -82,12 +94,6 @@ public class NewCamera : MonoBehaviour
                 {
                     sector2.AddPoints(2);
                 }
-            }
-            
-            // if an AI received damage while sector2 is triggered, add 1 point
-            else if(previousDamage < health.getDamaged()) {
-                sector2.AddPoints(1);
-                previousDamage = health.getDamaged();
             }
         }
 
@@ -101,12 +107,6 @@ public class NewCamera : MonoBehaviour
                     sector3.AddPoints(2);
                 }
             }
-            
-            // if an AI received damage while sector3 is triggered, add 1 point
-            else if(previousDamage < health.getDamaged()) {
-                sector3.AddPoints(1);
-                previousDamage = health.getDamaged();
-            }
         }
         
         if (sector4.triggered) {
@@ -118,12 +118,6 @@ public class NewCamera : MonoBehaviour
                 {
                     sector4.AddPoints(2);
                 }
-            }
-            
-            // if an AI received damage while sector4 is triggered, add 1 point
-            else if(previousDamage < health.getDamaged()) {
-                sector4.AddPoints(1);
-                previousDamage = health.getDamaged();
             }
         }
 
