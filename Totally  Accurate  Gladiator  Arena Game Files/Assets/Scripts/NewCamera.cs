@@ -35,7 +35,7 @@ public class NewCamera : MonoBehaviour
         //every 2 seconds remove 1 point in each sector
         InvokeRepeating(nameof(DecreasePoints), 2f, 2f);
 
-        Cam_EventManager.current.onDamagedOnSector += sectorDamaged;
+        //Cam_EventManager.current.onDamagedOnSector += sectorDamaged;
     }
 
     void Update()

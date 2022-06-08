@@ -38,8 +38,8 @@ public class WalkToPosition : MonoBehaviour
     {
         agent.ResetPath();
         Reset();
-        if (character != null)
-            pc.moving = false;
+        if (pc != null)
+            pc.moving = false;  
     }
 
     private void Update()

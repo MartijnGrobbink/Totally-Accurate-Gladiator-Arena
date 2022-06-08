@@ -9,13 +9,13 @@ public class GroupUpSender : StateMachineBehaviour
     [SerializeField] float timer;
     [SerializeField] float statueGroupDistance;
     public GameObject[] characters;
+    private GameObject thisAI;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         WTP = animator.gameObject.GetComponent<WalkToPosition>();
         data = animator.gameObject.GetComponent<AIData>();
         characters = GameObject.FindGameObjectsWithTag(animator.gameObject.tag);
-
         WTP.Walk(data.agent, data.statue.transform);
     }
 
@@ -31,8 +31,8 @@ public class GroupUpSender : StateMachineBehaviour
             {
                 for (int i = 0; i < characters.Length; i++)
                 {
-                    if (characters[i] != animator.gameObject)
-                        characters[i].GetComponent<AIData>().signalSender = animator.gameObject;
+                    thisAI = animator.gameObject;
+                    CheckForParents(characters[i]);
                 }
             }
             else
@@ -41,12 +41,20 @@ public class GroupUpSender : StateMachineBehaviour
                 {
                     for (int i = 0; i < characters.Length; i++)
                     {
-                        AIData localData = characters[i].GetComponent<AIData>();
-                        if (localData.heldWeapon != null && characters[i] != animator.gameObject)
+                        AIData localData;
+                        if (characters[i].transform.parent != null)
+                            localData = characters[i].GetComponent<AIData>();
+                        else
+                            localData = characters[i].GetComponent<AIData>();
+
+                        if(localData != null)
                         {
-                            localData.GetComponent<Animator>().SetBool("AttackStatue", true);
+                            if (localData.heldWeapon != null && characters[i] != animator.gameObject)
+                            {
+                                localData.GetComponent<Animator>().SetBool("AttackStatue", true);
+                            }
+                            localData.signalSender = null;
                         }
-                        localData.signalSender = null;
                     }
                     animator.SetBool("AttackStatue", true);
                 }
@@ -55,9 +63,20 @@ public class GroupUpSender : StateMachineBehaviour
         }
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+
+    private void CheckForParents(GameObject rangeCheck)
+    {
+        if (rangeCheck.transform.parent == null)
+            rangeCheck.GetComponent<AIData>().signalSender = thisAI;
+        else
+            rangeCheck.GetComponentInParent<AIData>().signalSender = thisAI;
+    }
+
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
         //animator.SetBool("AttackStatue", false);
     }
 }
+
+

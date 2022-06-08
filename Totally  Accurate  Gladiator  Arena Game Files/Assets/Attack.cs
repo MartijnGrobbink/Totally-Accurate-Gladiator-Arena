@@ -14,9 +14,13 @@ public class Attack : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float dist = (data.agent.transform.position - data.chosenEnemy.transform.position).magnitude;
-        if (dist > data.attackRange)
-            animator.SetBool("Combat", false);
+        if (data.chosenEnemy != null)
+        {
+            float dist = (data.agent.transform.position - data.chosenEnemy.transform.position).magnitude;
+            if (dist > data.attackRange)
+                animator.SetBool("Combat", false);
+        }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
