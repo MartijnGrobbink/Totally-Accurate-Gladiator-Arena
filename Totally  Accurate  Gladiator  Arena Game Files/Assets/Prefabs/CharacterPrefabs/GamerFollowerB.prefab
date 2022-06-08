@@ -127,8 +127,8 @@ MonoBehaviour:
   teamBase: {fileID: 0}
   firstCrossing: {fileID: 0}
   agent: {fileID: 6343424626626921150}
-  TeamName: 
-  MemberName: GamersMemberA
+  TeamName: Gamers
+  MemberName: MemberA
   Sender: {fileID: 0}
   statue: {fileID: 0}
   enemies: []
