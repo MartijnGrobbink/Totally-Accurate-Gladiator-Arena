@@ -4072,6 +4072,7 @@ GameObject:
   - component: {fileID: 3309159218938071770}
   - component: {fileID: 3309159218938071765}
   - component: {fileID: 5247341792443408947}
+  - component: {fileID: 7676550373977340212}
   m_Layer: 6
   m_Name: CavemanLeader
   m_TagString: Caveman
@@ -4116,6 +4117,7 @@ MonoBehaviour:
   teamBase: {fileID: 0}
   firstCrossing: {fileID: 0}
   agent: {fileID: 3309159218938071769}
+  TeamName: 
   MemberName: CavemenLeader
   Sender: {fileID: 0}
   statue: {fileID: 0}
@@ -4227,6 +4229,19 @@ MonoBehaviour:
   DeathSound2: {fileID: 8300000, guid: 6fe5d6660286c084b9be1b9a1ac19ddb, type: 3}
   DeathSound3: {fileID: 8300000, guid: b2b2150e4b6131e4589898714e5a355b, type: 3}
   DeathSound4: {fileID: 8300000, guid: 8369571194aaac449b0db5ff57dd91a9, type: 3}
+--- !u!114 &7676550373977340212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309159218938071767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c05c092226a44e44b6fa518fa2e58b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supported: 0
 --- !u!1 &3309159218978183337
 GameObject:
   m_ObjectHideFlags: 0
