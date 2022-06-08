@@ -59,7 +59,7 @@ public class UI_End : MonoBehaviour
             timer -= Time.deltaTime;
         }
 
-        if (loaded == false)
+        if (loaded == true)
         {
             Section1.SetActive(false);
             Section2.SetActive(false);
