@@ -46,8 +46,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.14
+  m_Center: {x: 0, y: 0.24, z: 0}
 --- !u!54 &5348098668110030572
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -106,7 +106,6 @@ MonoBehaviour:
   CanAttack: 0
   Attacked: 0
   HasSwung: 0
-  SwingSound: {fileID: 0}
   HitSound: {fileID: 0}
   SwordSound: {fileID: 8300000, guid: e90c3f193f6e66b46b1f1dae98b36627, type: 3}
   ShieldSound: {fileID: 8300000, guid: 0eb1fac6ac9f7d74ba585bd8dffb7509, type: 3}
@@ -115,7 +114,6 @@ MonoBehaviour:
   AxeSound: {fileID: 8300000, guid: e90c3f193f6e66b46b1f1dae98b36627, type: 3}
   ClubSound: {fileID: 8300000, guid: 4d866ff5a2ca0aa42938890a60aded31, type: 3}
   ChickenSound: {fileID: 8300000, guid: 71d4c72eb55d8504684511004c094203, type: 3}
-  WooshSound: {fileID: 8300000, guid: 0bc12152b6da8e9418d05e7cc0447a66, type: 3}
   targetMask:
     serializedVersion: 2
     m_Bits: 0
