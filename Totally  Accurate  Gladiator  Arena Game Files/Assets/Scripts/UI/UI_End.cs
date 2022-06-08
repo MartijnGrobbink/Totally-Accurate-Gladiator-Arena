@@ -7,11 +7,6 @@ using UnityEngine.SceneManagement;
 public class UI_End : MonoBehaviour
 {
     public GameObject UI_Finish;
-    public GameObject Section1;
-    public GameObject Section2;
-    public GameObject Section3;
-    public GameObject Section4;
-    public GameObject Section5;
     public Text Points;
     public Text Winner;
 
@@ -28,10 +23,6 @@ public class UI_End : MonoBehaviour
     public GameObject viks;
     public GameObject kigs;
     public GameObject gams;
-
-
-    private float timer = 60f;
-    private bool loaded;
     void Start()
     {
         UI_Finish.SetActive(false);
@@ -41,38 +32,31 @@ public class UI_End : MonoBehaviour
         viks.SetActive(false);
         kigs.SetActive(false);
         gams.SetActive(false);
+
+        Cavemen = (Teams_Data.ScoreInfo["Cavemen"][1] + 5) + Teams_Data.ScoreInfo["Cavemen"][0];
+        Romans = (Teams_Data.ScoreInfo["Romans"][1] + 5) + Teams_Data.ScoreInfo["Romans"][0];
+        Gamers = (Teams_Data.ScoreInfo["Gamers"][1] + 5) + Teams_Data.ScoreInfo["Gamers"][0];
+        Knights = (Teams_Data.ScoreInfo["Knights"][1] + 5) + Teams_Data.ScoreInfo["Knights"][0];
+        Vikings = (Teams_Data.ScoreInfo["Vikings"][1] + 5) + Teams_Data.ScoreInfo["Vikings"][0];
+
+        
     }
 
     
     void Update()
     {
-        DontDestroyOnLoad(this.gameObject);
-
-        if (timer <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            loaded = true;
-        }
-
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
-
-        if (loaded == true)
-        {
-            Section1.SetActive(false);
-            Section2.SetActive(false);
-            Section3.SetActive(false);
-            Section4.SetActive(false);
-            Section5.SetActive(false);
-            UI_Finish.SetActive(true);
-            SetWinner();
-        }
+        UI_Finish.SetActive(true);
+        SetWinner();
     }
 
     private void SetWinner()
     {
+        teams.Add(Cavemen);
+        teams.Add(Romans);
+        teams.Add(Gamers);
+        teams.Add(Knights);
+        teams.Add(Vikings);
+
         teams.Sort();
         if (Cavemen == teams[0])
         {

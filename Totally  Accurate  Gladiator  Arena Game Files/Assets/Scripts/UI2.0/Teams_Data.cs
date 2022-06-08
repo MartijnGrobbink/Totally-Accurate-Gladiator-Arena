@@ -9,7 +9,6 @@ public class Teams_Data : MonoBehaviour
     public UI_KillFeed UF;
     public UI_Score US;
     public UI_Statue UST;
-    public UI_End UE;
 
     public Dictionary<string, Dictionary<string, int>> WeaponUses = new Dictionary<string, Dictionary<string, int>>();
    
@@ -17,13 +16,15 @@ public class Teams_Data : MonoBehaviour
 
     public Dictionary<string, Dictionary<string, List<int>>> CharacterInfo = new Dictionary<string, Dictionary<string, List<int>>>();
 
-    public Dictionary<string, List<int>> ScoreInfo = new Dictionary<string, List<int>>();
+    public static Dictionary<string, List<int>> ScoreInfo = new Dictionary<string, List<int>>();
 
     public string StatueStatus;
     // NoTeam for contested
 
     void Start()
     {
+        //Clearing Dics
+        ScoreInfo.Clear();
         //Subscribing To Events
         Teams_EventManager.current.onHasKilled += MemberHasKilled;
         Teams_EventManager.current.onWeaponUsed += TeamsWeaponUse;
@@ -35,17 +36,6 @@ public class Teams_Data : MonoBehaviour
         Romans();
         Knights();
         Vikings();
-    }
-
-    void Update()
-    {
-        DontDestroyOnLoad(this.gameObject);
-
-        UE.Cavemen = (ScoreInfo["Cavemen"][1] + 5) + ScoreInfo["Cavemen"][0];
-        UE.Romans = (ScoreInfo["Romans"][1] + 5) + ScoreInfo["Romans"][0];
-        UE.Gamers = (ScoreInfo["Gamers"][1] + 5) + ScoreInfo["Gamers"][0];
-        UE.Knights = (ScoreInfo["Knights"][1] + 5) + ScoreInfo["Knights"][0];
-        UE.Vikings = (ScoreInfo["Vikings"][1] + 5) + ScoreInfo["Vikings"][0];
     }
 
     private void TeamsStatueStatus(string team)

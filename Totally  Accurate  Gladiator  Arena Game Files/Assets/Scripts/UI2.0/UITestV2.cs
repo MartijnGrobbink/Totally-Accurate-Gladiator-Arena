@@ -153,7 +153,7 @@ public class UITestV2 : MonoBehaviour
         kknights = TD.OtherTeamsKilled["Knights"]["Cavemen"];
         kvikings = TD.OtherTeamsKilled["Knights"]["Vikings"];
 
-        kills = TD.ScoreInfo["Cavemen"][0];
-        captures = TD.ScoreInfo["Cavemen"][1];
+        //kills = TD.ScoreInfo["Cavemen"][0];
+        //captures = TD.ScoreInfo["Cavemen"][1];
     }
 }
