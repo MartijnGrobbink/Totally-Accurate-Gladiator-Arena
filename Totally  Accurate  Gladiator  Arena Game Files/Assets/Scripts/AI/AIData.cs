@@ -35,12 +35,14 @@ public class AIData : MonoBehaviour
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        statue = GameObject.FindGameObjectWithTag("Statue");
+
     }
 
 
     void Update()
     {
+        if(statue == null)
+            statue = GameObject.FindGameObjectWithTag("Statue");
         //for (int i = 0; i < gameObject.transform.childCount; i++)
         //{
         //    if (gameObject.transform.GetChild(i).CompareTag("Weapon") == true)

@@ -16,9 +16,13 @@ public class WalkToPosition : MonoBehaviour
     {
         agent = localAgent;
         PhysicsCharacterSetUp();
-
         destination = walkToPosition;
-        agent.SetDestination(destination.position);
+
+        if (destination != null)
+        {
+            agent.SetDestination(destination.position);
+        }
+
     }
 
     private void PhysicsCharacterSetUp()
@@ -26,7 +30,7 @@ public class WalkToPosition : MonoBehaviour
         character = agent.gameObject;
 
         pc = character.GetComponentInChildren<playerController>();
-        if(pc != null)
+        if (pc != null)
             pc.move_forward();
     }
 

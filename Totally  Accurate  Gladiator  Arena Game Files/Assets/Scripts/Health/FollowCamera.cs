@@ -9,7 +9,7 @@ public class FollowCamera : MonoBehaviour
 
     void Start()
     {
-
+        cameraToFollow = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame
