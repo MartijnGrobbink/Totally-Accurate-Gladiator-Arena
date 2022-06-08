@@ -42,7 +42,7 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
-    //Check if the items are in the fiew range
+    //Check if the items are in the view range
     private void RangeCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);

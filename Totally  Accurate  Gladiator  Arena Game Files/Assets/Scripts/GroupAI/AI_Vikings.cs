@@ -19,8 +19,7 @@ public class AI_Vikings : MonoBehaviour
         data = gameObject.GetComponent<AIData>();
         animator = gameObject.GetComponent<Animator>();
         healthsystem = gameObject.GetComponent<HealthSystem>();
-
-        //healthsystem.HealthSystem(75);
+        healthsystem.healthMax = 75;
 
     }
 
@@ -75,12 +74,15 @@ public class AI_Vikings : MonoBehaviour
                 if (masterWeapon == true)
                 {
                     masterChecked = 0;
+                    Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
                     SwitchStates("GrabWeapon");
+                    
                 }
 
                 if (masterChecked >= 2)
                 {
                     data.chosenWeapon = data.weapons[0];
+                    Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
                     SwitchStates("GrabWeapon");
                 }
                 
