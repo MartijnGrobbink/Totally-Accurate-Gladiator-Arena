@@ -11,6 +11,7 @@ public class HealthSystem : MonoBehaviour
 
     private int damaged = 0;
     private float timer = 3f;
+    private float timerHealth = 2f;
 
     //Audio
     public AudioSource DieSound;
@@ -33,6 +34,7 @@ public class HealthSystem : MonoBehaviour
     void Update()
     {
         KillSelf();
+        CheckToHeal();
     }
 
     public HealthSystem(int healthMax)
@@ -66,6 +68,23 @@ public class HealthSystem : MonoBehaviour
 
         // to track the number of times an AI received damage on a certain sector 
         damaged++;
+    }
+
+    public void CheckToHeal()
+    {
+        if (health < 90 && health > 0)
+        {
+            if (timerHealth > 0)
+            {
+                timerHealth -= Time.deltaTime;
+            }
+
+            if (timerHealth <= 0)
+            {
+                Heal(10);
+                timerHealth = 2f;
+            }
+        }
     }
 
     public void Heal(int healAmount)
