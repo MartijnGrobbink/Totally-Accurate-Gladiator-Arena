@@ -15,9 +15,9 @@ public class AIData : MonoBehaviour
     public GameObject Sender;
     public GameObject statue;
 
-    public List<GameObject> enemies;
-    public List<GameObject> weapons;
-    public List<GameObject> ally;
+    public List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> weapons = new List<GameObject>();
+    public List<GameObject> ally = new List<GameObject>();
 
     public GameObject heldWeapon;
 

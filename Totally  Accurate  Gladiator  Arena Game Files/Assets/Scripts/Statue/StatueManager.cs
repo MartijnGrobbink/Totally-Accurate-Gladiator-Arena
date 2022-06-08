@@ -141,7 +141,8 @@ public class StatueManager : MonoBehaviour
         if (inRange.Count != 0)
         {
             AIData contestantData = inRange[0].GetComponent<AIData>();
-            if (destination != contestantData.teamBase)
+
+            if (contestantData && destination != contestantData.teamBase)
             {
                 destination = contestantData.teamBase;
                 movement.Walk(agent, destination);
