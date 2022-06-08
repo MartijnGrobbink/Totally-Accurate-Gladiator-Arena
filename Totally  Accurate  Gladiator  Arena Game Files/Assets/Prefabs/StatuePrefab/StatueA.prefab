@@ -485,7 +485,7 @@ MonoBehaviour:
   radius: 5
   destination: {fileID: 0}
   agent: {fileID: 2256008275838430684}
-  animator: {fileID: 0}
+  animator: {fileID: 5416560743591159229}
   targetMask:
     serializedVersion: 2
     m_Bits: 64

@@ -9,6 +9,7 @@ public class AIData : MonoBehaviour
     public Transform firstCrossing;
     public NavMeshAgent agent;
 
+    public string TeamName;
     public string MemberName;
 
     public GameObject Sender;
