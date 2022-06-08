@@ -62,14 +62,26 @@ public class Caveman_AI : MonoBehaviour
             supported = false;
     }
 
+    IEnumerator support_cooldown()
+    {
+        yield return new WaitForSeconds(5f);
+        supported = false;
+    }
     // Update is called once per frame
     void Update()
     {
-        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+        var weap = gameObject.GetComponentInChildren<WeaponStats>();
+        if (weap == null)
+            data.heldWeapon = null;
+        if (data.ally.Count > 0 && supported == false) {
+            supported = true;
+            StartCoroutine(support_cooldown());
+        }
+/*        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
         if (currentState.IsName("SearchWeapon") != true)
         { 
             print("test");
-        }
+        }*/
         if (data.enemies.Count == 0)
             data.chosenEnemy = null;
         if (data.heldWeapon == true && data.statue != null)
@@ -93,9 +105,9 @@ public class Caveman_AI : MonoBehaviour
                 var my_power = data.heldWeapon.GetComponent<WeaponStats>();
                 if (other_power.Damage + other_power.SwingSpeed > my_power.Damage + my_power.SwingSpeed)
                 {
-                    data.heldWeapon = null;
-                    animator.Play("SearchWeapon");
-                    data.chosenWeapon = data.enemies[cou];
+                    print("test");
+//                    data.heldWeapon = null;
+                    data.chosenWeapon = data.weapons[cou];
                 }
             }
         }
