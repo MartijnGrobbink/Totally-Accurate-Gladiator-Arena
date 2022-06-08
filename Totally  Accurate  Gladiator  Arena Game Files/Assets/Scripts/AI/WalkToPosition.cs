@@ -8,36 +8,39 @@ public class WalkToPosition : MonoBehaviour
     public GameObject character;
     playerController pc;
     public float currentDistance;
-    
+
     private NavMeshAgent agent;
     private Transform destination;
 
     public void Walk(NavMeshAgent localAgent, Transform walkToPosition)
     {
         agent = localAgent;
+        PhysicsCharacterSetUp();
+
         destination = walkToPosition;
         agent.SetDestination(destination.position);
+    }
+
+    private void PhysicsCharacterSetUp()
+    {
         character = agent.gameObject;
-        character = character.transform.Find("metarig").gameObject;
-        character = character.transform.Find("spine").gameObject;
-        pc = character.GetComponent<playerController>();
-        pc.move_forward();
+
+        pc = character.GetComponentInChildren<playerController>();
+        if(pc != null)
+            pc.move_forward();
     }
 
     public void StopWalking(NavMeshAgent agent)
     {
         agent.ResetPath();
         Reset();
-        character = agent.gameObject;
-        character = character.transform.Find("metarig").gameObject;
-        character = character.transform.Find("spine").gameObject;
-        pc = character.GetComponent<playerController>();
-        pc.moving = false;
+        if (character != null)
+            pc.moving = false;
     }
 
     private void Update()
     {
-        if(destination != null)
+        if (destination != null)
         {
             float dist = (agent.transform.position - destination.position).magnitude;
             currentDistance = dist;
@@ -51,7 +54,7 @@ public class WalkToPosition : MonoBehaviour
 
     private void Reset()
     {
-        
+
     }
 
     protected virtual void InRangeOfPosition()
