@@ -59,6 +59,10 @@ public class GamerAI : MonoBehaviour
 
                 // when the gamer finally grabs a weapon
                 if(data.heldWeapon != null) {
+                    // america exprain this, shouldnt it be data.heldWeapon instead of chosen? 
+
+                    //Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
+                    
                     // if no other teammate sent a groupUp, send one yourself
                     if (data.signalSender == null) 
                         state = State.GroupUpSender;
@@ -72,10 +76,10 @@ public class GamerAI : MonoBehaviour
                 
                 break;
 
+            // TODO if health < threshold: runaway
             case State.GoToEnemy:
                 var healthThreshold = 30.0f; 
 
-                // TODO if health < threshold: runaway
 
                 // run away if the player has no weapon
                 if(data.heldWeapon == null) {
@@ -86,6 +90,7 @@ public class GamerAI : MonoBehaviour
                 animator.Play(state.ToString());
                 break;
 
+            // TODO might need some more if cases
             case State.RunAway:
                 // while running again, if the gamer no longer has any enimies in his FOV
                 if(data.enemies.Count == 0) {
@@ -105,6 +110,7 @@ public class GamerAI : MonoBehaviour
                 animator.Play(state.ToString());
                 break;
 
+            // TODO do they leave these states ????????????? 
             case State.GroupUpReciever:
                 // the player will not join the others in case of receiving a GroupUp IF he does not yet have a weapon
                 // therefore he will go back a the SearchWeapon state 
