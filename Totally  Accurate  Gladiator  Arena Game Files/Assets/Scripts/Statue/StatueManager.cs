@@ -27,7 +27,6 @@ public class StatueManager : MonoBehaviour
         movement = gameObject.GetComponent<WalkToPosition>();
         //Missing audio source
         source = gameObject.GetComponent<AudioSource>();
-        Debug.Log(source);
     }
 
     private void Update()
@@ -213,13 +212,11 @@ public class StatueManager : MonoBehaviour
         if (destination != null)
         {
             MoveAnimate();
-            Debug.Log("anim");
         }
 
         if (destination == null)
         {
             DontMoveAnimate();
-            Debug.Log("anim1");
         }
     }
 }

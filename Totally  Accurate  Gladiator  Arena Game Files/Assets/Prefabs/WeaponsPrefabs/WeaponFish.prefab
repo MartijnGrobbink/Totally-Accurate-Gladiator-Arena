@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 4678373363966898773}
   - component: {fileID: 8593765689203523056}
   - component: {fileID: 5811832738125875514}
+  - component: {fileID: 6125941585582961605}
   m_Layer: 6
   m_Name: WeaponFishMesh
   m_TagString: Untagged
@@ -299,3 +300,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6125941585582961605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451391179190249711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01174384, y: 0.026582677, z: 0.00969615}
+  m_Center: {x: -0.032874264, y: -0.0039444556, z: 0.0011496407}
