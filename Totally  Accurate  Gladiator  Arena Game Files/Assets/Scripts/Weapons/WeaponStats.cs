@@ -178,15 +178,24 @@ public class WeaponStats : MonoBehaviour
     //Check For If The Weapon Colldier Colldies With A Character (yes can TK)
     private void OnTriggerEnter(Collider other)
     {
-        if (DealDamage == false && Attacked == true)
+        if (DealDamage == false)
         {
             var x = gameObject.transform.parent;
-            if (x.gameObject.tag != other.gameObject.tag)
+            if (x != null)
             {
-                EnemyAttacked = other.gameObject;
+                if (x.gameObject.tag != other.gameObject.tag)
+                {
+                    if (other.gameObject.GetComponent<AIData>())
+                    {
+                        Debug.Log("Happens");
+                        EnemyAttacked = other.gameObject;
 
-                DealDamage = true;
+                        DealDamage = true;
+                    }
+
+                }
             }
+            
 
         }
         
