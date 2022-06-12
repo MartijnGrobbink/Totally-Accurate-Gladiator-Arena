@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Sector : MonoBehaviour
 {
@@ -8,8 +10,8 @@ public class Sector : MonoBehaviour
     private int points = 0;
     public Transform sectorCamera; 
     public bool triggered = false;
-    private string tag;
-    public string desiredTag;
+    private string tag = "";
+    private string[] possibleTags = new string[]{"Gamer", "Viking", "Medieval", "Roman", "Caveman", "Statue"};
 
     // Starts called before the first frame update
     void Start()
@@ -23,18 +25,32 @@ public class Sector : MonoBehaviour
         
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        
-        Cam_EventManager.current.DamagedOnSector(desiredTag);
-
-    }    
-
     // When object enters the sector, it's triggered
     private void OnTriggerEnter(Collider other)
-    {
-        triggered = !triggered;
-        tag = other.tag;  
+    {   
+
+        GameObject currCollider = other.gameObject; 
+
+        // if the collider is a statue, update the tag
+        if(currCollider.tag == "Statue") {
+            tag = currCollider.tag;  
+        }
+
+        // the sectors are being triggered by the collider of each player's spine
+        // to get the tag of the player, we have to get the parent of the parent
+        try {
+            currCollider = other.transform.parent.gameObject.transform.parent.gameObject;
+        } 
+        catch (NullReferenceException e)
+        {
+            // this means that the collider in question is not one of the players, as fetching
+            // the parent twice doesn't retrieve the main player GameObject
+            // we will ignore these cases
+        }
+
+        if (possibleTags.Any(currCollider.tag.Contains)) {
+            triggered = !triggered;
+        }
     }
 
     private void OnTriggerExit(Collider other) {

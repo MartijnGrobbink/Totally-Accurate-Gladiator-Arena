@@ -212,11 +212,13 @@ public class StatueManager : MonoBehaviour
         if (destination != null)
         {
             MoveAnimate();
+
         }
 
         if (destination == null)
         {
             DontMoveAnimate();
+
         }
     }
 }
