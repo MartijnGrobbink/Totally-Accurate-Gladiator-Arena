@@ -201,17 +201,21 @@ public class WeaponStats : MonoBehaviour
             var x = gameObject.transform.parent;
             if (x != null)
             {
-                if (Wielder.tag != t.tag)
+                if (t != null)
                 {
-                    if (t.GetComponent<AIData>())
+                    if (Wielder.tag != t.tag)
                     {
-                        Debug.Log("Happens");
-                        EnemyAttacked = t.gameObject;
+                        if (t.GetComponent<AIData>())
+                        {
+                            Debug.Log("Happens");
+                            EnemyAttacked = t.gameObject;
 
-                        DealDamage = true;
+                            DealDamage = true;
+                        }
+
                     }
-
                 }
+                
             }
             
 

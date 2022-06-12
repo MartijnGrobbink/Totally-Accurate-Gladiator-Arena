@@ -7,7 +7,7 @@ public class UI_ActiveTeam : MonoBehaviour
     public List<string> active;
     private float timer = 10f;
 
-    private int passed = -1;
+    public int passed = -1;
     
     void Start()
     {
