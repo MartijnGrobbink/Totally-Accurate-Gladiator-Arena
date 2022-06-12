@@ -25,6 +25,7 @@ public class GrabWeapon : WalkToPosition
         base.InRangeOfPosition();
         PickUpItem(targetWeapon);
     }
+
     private void PickUpItem(GameObject weapon)
     {
         weapon = data.chosenWeapon;
@@ -42,7 +43,6 @@ public class GrabWeapon : WalkToPosition
             data.heldWeapon.GetComponent<WeaponStats>().Wielder = gameObject;
             data.chosenWeapon = null;
             weapon.layer = 0;
-            Debug.Log("reached weapon grab distance");
             Reset();
         }
     }

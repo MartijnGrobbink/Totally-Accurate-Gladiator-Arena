@@ -86,10 +86,8 @@ public class NewCamera : MonoBehaviour
 
             // if an AI received damage while sector1 is triggered, add 1 point
 
-            if(sector1.getColliderTag() != "Statue" )
-                sector1.AddPoints(1);
-
-            
+            //if(sector1.getColliderTag() != "Statue" )
+            //    sector1.AddPoints(1);
         }
         
         if (sector2.triggered) {
