@@ -66,13 +66,13 @@ public class UITestV2 : MonoBehaviour
 
         if (HOLDER == true)
         {
-            UI_EventsManager.current.TeamActive("Contested");
+            UI_EventsManager.current.TeamActive("Cavemen");
             HOLDER = false;
         }
 
         if (active == true)
         {
-            UI_EventsManager.current.TeamActive("NoTeam");
+            UI_EventsManager.current.TeamActive("Knights");
             active = false;
         }
 
@@ -152,8 +152,5 @@ public class UITestV2 : MonoBehaviour
         kromans = TD.OtherTeamsKilled["Knights"]["Romans"];
         kknights = TD.OtherTeamsKilled["Knights"]["Cavemen"];
         kvikings = TD.OtherTeamsKilled["Knights"]["Vikings"];
-
-        //kills = TD.ScoreInfo["Cavemen"][0];
-        //captures = TD.ScoreInfo["Cavemen"][1];
     }
 }
