@@ -59,6 +59,7 @@ public class NewCamera : MonoBehaviour
 
     //-------------------------------------------------------------------------------------------------------------
    
+   /*
     private void sectorDamaged(string whichSector)
     {
         if(whichSector == "sector1")
@@ -70,6 +71,7 @@ public class NewCamera : MonoBehaviour
         if(whichSector == "sector4")
             sector4.AddPoints(1);
     }
+    */
    
     public void IncreasePoints()
     {

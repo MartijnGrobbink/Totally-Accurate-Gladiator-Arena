@@ -9,7 +9,7 @@ public class Sector : MonoBehaviour
     public Transform sectorCamera; 
     public bool triggered = false;
     private string tag;
-    public string desiredTag;
+    //public string desiredTag;
 
     // Starts called before the first frame update
     void Start()
@@ -23,12 +23,14 @@ public class Sector : MonoBehaviour
         
     }
 
+    /*
     private void OnTriggerStay(Collider other)
     {
         
         Cam_EventManager.current.DamagedOnSector(desiredTag);
 
-    }    
+    }   
+    */ 
 
     // When object enters the sector, it's triggered
     private void OnTriggerEnter(Collider other)
