@@ -35,7 +35,7 @@ public class NewCamera : MonoBehaviour
         //every 2 seconds remove 1 point in each sector
         InvokeRepeating(nameof(DecreasePoints), 2f, 2f);
 
-        Cam_EventManager.current.onDamagedOnSector += sectorDamaged;
+        //Cam_EventManager.current.onDamagedOnSector += sectorDamaged;
     }
 
     void Update()
@@ -86,10 +86,8 @@ public class NewCamera : MonoBehaviour
 
             // if an AI received damage while sector1 is triggered, add 1 point
 
-            if(sector1.getColliderTag() != "Statue" )
-                sector1.AddPoints(1);
-
-            
+            //if(sector1.getColliderTag() != "Statue" )
+            //    sector1.AddPoints(1);
         }
         
         if (sector2.triggered) {

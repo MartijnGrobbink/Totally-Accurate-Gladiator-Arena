@@ -101,22 +101,23 @@ public class StatueManager : MonoBehaviour
     private void NotContested()
     {
         Teams_EventManager.current.StatueStatus("NoTeam");
-            AIData contestantData = inRange[0].GetComponent<AIData>();
-            if (contestantData != null)
-            {
-                MoveToBase();
-                setBeingContested(false);
+        AIData contestantData;
 
-            }
-            else
-            {
-                Debug.LogError("No AIdata found" + inRange[0].name);
-            }
+        if (inRange[0].transform.parent == null)
+            contestantData = inRange[0].GetComponent<AIData>();
+        else
+            contestantData = inRange[0].GetComponent<AIData>();
+
+        if (contestantData != null)
+        {
+            MoveToBase();
+            setBeingContested(false);
+        }
     }
 
-//-------------------------------------------For the camera--------------------------------------------------------------------------
+    //-------------------------------------------For the camera--------------------------------------------------------------------------
 
-    public bool getBeingContested ()
+    public bool getBeingContested()
     {
         return BeingContested;
     }
@@ -127,7 +128,7 @@ public class StatueManager : MonoBehaviour
         BeingContested = newValue;
     }
 
-//--------------------------------------------------------------------Movement-------------------------------------------------------
+    //--------------------------------------------------------------------Movement-------------------------------------------------------
     private void MoveToBase()
     {
         AIData contestantData = inRange[0].GetComponent<AIData>();
@@ -135,7 +136,7 @@ public class StatueManager : MonoBehaviour
         destination = contestantData.teamBase;
         movement.Walk(agent, destination);
     }
-//-------------------------------------------------------Check if destination still valid--------------------------------------------
+    //-------------------------------------------------------Check if destination still valid--------------------------------------------
     private void CheckIfDestinationValid()
     {
         if (inRange.Count != 0)
@@ -154,14 +155,14 @@ public class StatueManager : MonoBehaviour
             movement.StopWalking(agent);
         }
     }
-//-------------------------------------------------------------------Output----------------------------------------------------------
+    //-------------------------------------------------------------------Output----------------------------------------------------------
     public void AtBase()
     {
         Teams_EventManager.current.StatueCaptures(inRange[0].GetComponent<AIData>().TeamName);
         Destroy(gameObject);
     }
 
- //-------------------------------------------------------------------Animation----------------------------------------------------------
+    //-------------------------------------------------------------------Animation----------------------------------------------------------
     public void MoveAnimate()
     {
         animator.SetBool("Move", true);

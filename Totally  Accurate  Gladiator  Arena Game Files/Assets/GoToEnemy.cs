@@ -17,11 +17,14 @@ public class GoToEnemy : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float dist = (data.agent.transform.position - data.chosenEnemy.transform.position).magnitude;
-        if (dist < attackDistance)
-            WTP.Walk(data.agent, data.chosenEnemy.transform);
-        else
-            animator.SetBool("Combat", true);
+        if(data.chosenEnemy != null)
+        {
+            float dist = (data.agent.transform.position - data.chosenEnemy.transform.position).magnitude;
+            if (dist < attackDistance)
+                WTP.Walk(data.agent, data.chosenEnemy.transform);
+            else
+                animator.SetBool("Combat", true);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

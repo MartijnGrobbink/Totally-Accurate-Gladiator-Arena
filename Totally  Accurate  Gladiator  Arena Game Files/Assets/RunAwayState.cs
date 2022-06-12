@@ -21,14 +21,17 @@ public class RunAwayState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float dist = (data.agent.transform.position - data.lastDestination.position).magnitude;
-        if(dist <= 1.5f)
+        if(data.lastDestination != null)
         {
-            int rand = Random.Range(0, crossingHolder.childCount);
-            WTP.Walk(data.agent, crossingHolder.GetChild(rand));
-            float randDist = (data.agent.transform.position - crossingHolder.GetChild(rand).position).magnitude;
-            if(randDist <= 1.5f)
-                animator.SetInteger("State", 1);
+            float dist = (data.agent.transform.position - data.lastDestination.position).magnitude;
+            if(dist <= 1.5f)
+            {
+                int rand = Random.Range(0, crossingHolder.childCount);
+                WTP.Walk(data.agent, crossingHolder.GetChild(rand));
+                float randDist = (data.agent.transform.position - crossingHolder.GetChild(rand).position).magnitude;
+                if(randDist <= 1.5f)
+                    animator.SetInteger("State", 1);
+            }
         }
     }
 
