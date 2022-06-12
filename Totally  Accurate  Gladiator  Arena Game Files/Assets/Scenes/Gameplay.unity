@@ -478,6 +478,24 @@ PrefabInstance:
       objectReference: {fileID: 4491915150738617758}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4538e34f35f3f744090ed561b45bb2db, type: 3}
+--- !u!1 &273827822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3309159218938071767, guid: 4538e34f35f3f744090ed561b45bb2db, type: 3}
+  m_PrefabInstance: {fileID: 254832855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &273827823
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273827822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26070943, y: 0.52439964, z: 0.2884683}
+  m_Center: {x: 0.030014237, y: 0.15945885, z: -0.020414144}
 --- !u!1001 &301625960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1094,6 +1112,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6745588415619058360, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745588415619058362, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6745588415751545464, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
       propertyPath: m_LocalPosition.y
       value: 35
@@ -1109,6 +1135,14 @@ PrefabInstance:
     - target: {fileID: 6745588416332632171, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
       propertyPath: m_LocalPosition.y
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745588416351198896, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745588416351198898, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6745588416495538138, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
       propertyPath: m_RootOrder
@@ -1157,6 +1191,22 @@ PrefabInstance:
     - target: {fileID: 6745588416495538139, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
       propertyPath: m_Name
       value: CameraSetUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745588416583277350, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745588416583277352, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745588416945051768, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745588416945051770, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2685ebad722d4e5d9e34765a12d2687, type: 3}

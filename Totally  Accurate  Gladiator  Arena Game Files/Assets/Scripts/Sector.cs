@@ -24,7 +24,8 @@ public class Sector : MonoBehaviour
 
     // When object enters the sector, it's triggered
     private void OnTriggerEnter(Collider other)
-    {
+    {   
+        
         triggered = !triggered;
         tag = other.tag;  
     }
