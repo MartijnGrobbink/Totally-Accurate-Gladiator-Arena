@@ -54,17 +54,14 @@ public class NewCamera : MonoBehaviour
 
     public void IncreasePoints()
     {
-        Debug.Log("\nsetor 1: " + sector1.GetPoints() + " setor 2: " + sector2.GetPoints()+ " setor 3: " + sector3.GetPoints()+ " setor 4: " + sector4.GetPoints());
+        Debug.Log("\nSETOR1: [" + sector1.GetPoints() + "] SETOR2: [" + sector2.GetPoints()+ "] SETOR3: [" + sector3.GetPoints()+ "] SETOR4: " + sector4.GetPoints());
 
         if (sector1.triggered) {
             sector1.AddPoints(1);
 
-            // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
+            // if a statue is on this sector, add 2 points whilst it's inside the sector
             if (sector1.getColliderTag() == "Statue") {
-                while (statues.getBeingContested())
-                {
-                    sector1.AddPoints(2);
-                }
+                sector1.AddPoints(2);
             }
 
             // if an AI received damage while sector1 is triggered, add 1 point
@@ -76,36 +73,27 @@ public class NewCamera : MonoBehaviour
         if (sector2.triggered) {
             sector2.AddPoints(1);
 
-            // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
+            // if a statue is on this sector, add 2 points whilst it's inside the sector
             if (sector2.getColliderTag() == "Statue") {
-                while (statues.getBeingContested())
-                {
-                    sector2.AddPoints(2);
-                }
+                sector2.AddPoints(2);
             }
         }
 
         if (sector3.triggered) {
             sector3.AddPoints(1);
 
-            // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
+            // if a statue is on this sector, add 2 points whilst it's inside the sector
             if (sector3.getColliderTag() == "Statue") {
-                while (statues.getBeingContested())
-                {
-                    sector3.AddPoints(2);
-                }
+                sector3.AddPoints(2);
             }
         }
         
         if (sector4.triggered) {
             sector4.AddPoints(1);
 
-            // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
+            // if a statue is on this sector, add 2 points whilst it's inside the sector
             if (sector4.getColliderTag() == "Statue") {
-                while (statues.getBeingContested())
-                {
-                    sector4.AddPoints(2);
-                }
+                sector4.AddPoints(2);
             }
         }
 
