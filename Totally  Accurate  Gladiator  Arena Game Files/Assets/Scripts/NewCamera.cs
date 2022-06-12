@@ -16,7 +16,6 @@ public class NewCamera : MonoBehaviour
     public Sector currentSector;
     
     private StatueManager statues;
-    private HealthSystem healthSystem;
     
     public float t;
     public float speed;
@@ -29,6 +28,9 @@ public class NewCamera : MonoBehaviour
         sectorList.Add(sector3);
         sectorList.Add(sector4);
 
+        //
+        InvokeRepeating(nameof(IncreasePoints), 0f, 0.5f);
+
         //Start the function at xf seconds and repeat it every yf seconds (sector update)
         InvokeRepeating(nameof(ChangeSector), 10f, 5f);
 
@@ -40,46 +42,25 @@ public class NewCamera : MonoBehaviour
 
     void Update()
     {
-        IncreasePoints();
-
-        
-        
         // Lerp from the current position of the camera to the sector which has the highest number of points
-        if(currentSector && currentSector.getSectorCamera())
+        if (currentSector && currentSector.getSectorCamera())
         {
             Vector3 a = transform.position;
             Vector3 b = currentSector.getSectorCamera().transform.position;   
             // * Time.deltaTime keeps the speed steady across all computers 
             transform.position = Vector3.MoveTowards(a, Vector3.Lerp(a, b, t), speed * Time.deltaTime);
         }
-        
-
-       
     }
 
-    //-------------------------------------------------------------------------------------------------------------
-   
-   /*
-    private void sectorDamaged(string whichSector)
-    {
-        if(whichSector == "sector1")
-            sector1.AddPoints(1);
-        if(whichSector == "sector2")
-            sector2.AddPoints(1);
-        if(whichSector == "sector3")
-            sector3.AddPoints(1);
-        if(whichSector == "sector4")
-            sector4.AddPoints(1);
-    }
-    */
-   
     public void IncreasePoints()
     {
-        if(sector1.triggered) {
+        Debug.Log("\nsetor 1: " + sector1.GetPoints() + "\nsetor 2: " + sector2.GetPoints()+ "\nsetor 3: " + sector3.GetPoints()+ "\nsetor 4: " + sector4.GetPoints());
+
+        if (sector1.triggered) {
             sector1.AddPoints(1);
 
             // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
-            if(sector1.getColliderTag() == "Statue"){
+            if (sector1.getColliderTag() == "Statue") {
                 while (statues.getBeingContested())
                 {
                     sector1.AddPoints(2);
@@ -96,7 +77,7 @@ public class NewCamera : MonoBehaviour
             sector2.AddPoints(1);
 
             // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
-            if(sector2.getColliderTag() == "Statue"){
+            if (sector2.getColliderTag() == "Statue") {
                 while (statues.getBeingContested())
                 {
                     sector2.AddPoints(2);
@@ -108,7 +89,7 @@ public class NewCamera : MonoBehaviour
             sector3.AddPoints(1);
 
             // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
-            if(sector3.getColliderTag() == "Statue"){
+            if (sector3.getColliderTag() == "Statue") {
                 while (statues.getBeingContested())
                 {
                     sector3.AddPoints(2);
@@ -120,7 +101,7 @@ public class NewCamera : MonoBehaviour
             sector4.AddPoints(1);
 
             // if a statue is being contested on this sector, add 2 points whilst it's inside the sector
-            if(sector4.getColliderTag() == "Statue"){
+            if (sector4.getColliderTag() == "Statue") {
                 while (statues.getBeingContested())
                 {
                     sector4.AddPoints(2);
@@ -131,7 +112,7 @@ public class NewCamera : MonoBehaviour
     }
     
     public void DecreasePoints() {
-    //called every 2 seconds to remove 1 point of each sector
+    // called every 2 seconds to remove 1 point of each sector
         for (int i = 0; i < 4; i++) {
             sectorList[i].AddPoints(-1);
         }
@@ -143,7 +124,6 @@ public class NewCamera : MonoBehaviour
     public void ChangeSector()
     {
         var tempSector = CheckHigherPoints();
-
         if (tempSector != currentSector) currentSector = tempSector;
     }
 
@@ -154,7 +134,7 @@ public class NewCamera : MonoBehaviour
         var index = 0;
 
         for(int i = 0; i < sectorList.Count; i++){
-            if(sectorList[i].GetPoints() > max){
+            if (sectorList[i].GetPoints() > max) {
                 max = sectorList[i].GetPoints();
                 index = i;
             }

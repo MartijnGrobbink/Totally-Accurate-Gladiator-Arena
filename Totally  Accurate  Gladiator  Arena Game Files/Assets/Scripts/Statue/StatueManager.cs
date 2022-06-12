@@ -213,13 +213,13 @@ public class StatueManager : MonoBehaviour
         if (destination != null)
         {
             MoveAnimate();
-            Debug.Log("anim");
+            //Debug.Log("anim");
         }
 
         if (destination == null)
         {
             DontMoveAnimate();
-            Debug.Log("anim1");
+            //Debug.Log("anim1");
         }
     }
 }
