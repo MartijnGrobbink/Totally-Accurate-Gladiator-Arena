@@ -28,9 +28,14 @@ public class AIData : MonoBehaviour
 
     public float attackRange;
 
+    public Transform lastDestination;
+    public Transform currentDestination;
+    public Transform nextDestination;
+    /*
     [HideInInspector] public Transform lastDestination;
     [HideInInspector] public Transform currentDestination;
     [HideInInspector] public Transform nextDestination;
+    */
 
     void Start()
     {

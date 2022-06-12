@@ -8,11 +8,16 @@ public class AI_Vikings : MonoBehaviour
     Animator animator;
     HealthSystem healthsystem;
 
+    public float thedist;
     private bool weaponActive;
     private bool weaponSet;
     private bool masterWeapon;
     private float timer;
     private int masterChecked;
+    private bool once;
+    private bool canGroupUp;
+    private bool canAttackLoc;
+    private bool canRecover;
 
     void Start()
     {
@@ -20,7 +25,9 @@ public class AI_Vikings : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         healthsystem = gameObject.GetComponent<HealthSystem>();
         healthsystem.healthMax = 75;
-
+        canGroupUp = true;
+        canAttackLoc = true;
+        canRecover = true;
     }
 
     void Update()
@@ -29,12 +36,23 @@ public class AI_Vikings : MonoBehaviour
         AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
         if (currentState.IsName("Effects") != true)
         {
-            CheckTimer();
-            GettingWeaponState();
-            SetWeaponStats();
+            if (currentState.IsName("AttackLocationState") != true)
+            {
+                if (currentState.IsName("RecoverState") != true)
+                {
+                    CheckTimer();
+                    GettingWeaponState();
+                    SetWeaponStats();
+                    ReachedSender();
+                    CheckEnemies();
+                    SetAttackLocation();
+                    CheckRecover();
+                }
+            }
         }
         
     }
+
     private void SwitchStates(string enterStateName)
     {
         TurnOffVariables();
@@ -58,6 +76,119 @@ public class AI_Vikings : MonoBehaviour
     private void RunAwayState()
     {
         SwitchStates("RunAway");
+    }
+
+    private void CheckRecover()
+    {
+        var c = data.gameObject.GetComponent<HealthSystem>().health;
+        if (c < 30 && canRecover == true)
+        {
+            animator.SetBool("Recover", true);
+            animator.Play("RecoverState");
+            canRecover = false;
+        }
+
+        if (c > data.gameObject.GetComponent<HealthSystem>().healthMax - 10)
+        {
+            canRecover = true;
+        }
+    }
+
+    private void SetAttackLocation()
+    {
+        /*
+        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+        if (currentState.IsName("GoToStatue") == true && canAttackLoc == true)
+        {
+            animator.SetBool("AttackLoc", true);
+            animator.Play("AttackLocationState");
+            canAttackLoc = false;
+        }
+        */
+    }
+
+    private void ReachedSender()
+    {
+        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+        if (currentState.IsName("GroupUpSender") == true || currentState.IsName("GroupUpReciever") == true)
+        {
+            if (data.signalSender != null)
+            {
+                thedist = Vector3.Distance(gameObject.transform.position, data.signalSender.transform.position);
+                if (thedist < 5)
+                {
+                    canGroupUp = false;
+                    if (currentState.IsName("AttackLocationState") != true)
+                    {
+                        SwitchStates("GoToStatue");
+                    }
+                    data.signalSender = null;
+                }
+            }
+            
+        }
+       
+        
+    }
+
+    private void CheckEnemies()
+    {
+        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+        if (currentState.IsName("GoToEnemy") == true)
+        {
+            if (data.enemies.Count != 0)
+            {
+                if (!data.enemies.Contains(data.chosenEnemy))
+                {
+                    data.chosenEnemy = null;
+                    if (currentState.IsName("AttackLocationState") != true)
+                    {
+                        SwitchStates("GoToStatue");
+                    }
+                }
+            }
+            else
+            {
+                data.chosenEnemy = null;
+                if (currentState.IsName("AttackLocationState") != true)
+                {
+                    SwitchStates("GoToStatue");
+                }
+            }
+        }
+
+        if (currentState.IsName("Fight") == true)
+        {
+            if (data.enemies.Count != 0)
+            {
+                if (!data.enemies.Contains(data.chosenEnemy))
+                {
+                    data.chosenEnemy = null;
+                    if (currentState.IsName("AttackLocationState") != true)
+                    {
+                        SwitchStates("GoToStatue");
+                    }
+                }
+            }
+            else
+            {
+                data.chosenEnemy = null;
+                if (currentState.IsName("AttackLocationState") != true)
+                {
+                    SwitchStates("GoToStatue");
+                }
+            }
+            if (data.chosenEnemy != null)
+            {
+                thedist = Vector3.Distance(gameObject.transform.position, data.chosenEnemy.transform.position);
+                if (thedist > 1)
+                {
+                    SwitchStates("GoToEnemy");
+                }
+            }
+            
+        }
+        
     }
 
     private void GettingWeaponState()
@@ -102,7 +233,10 @@ public class AI_Vikings : MonoBehaviour
         }
         else
         {
-            GroupUpState();
+            if (once == false)
+            {
+                GroupUpState();
+            }
         }
            
     }
@@ -111,18 +245,33 @@ public class AI_Vikings : MonoBehaviour
     {
         if (data.enemies.Count != 0)
         {
-            AttackState();
+            if (data.heldWeapon != null && data.enemies != null && data.enemies.Count > 0)
+            {
+                AttackState();
+            }
+               
         }
         else
         {
-            if (data.signalSender == null)
+            if (canGroupUp == true)
             {
-                SwitchStates("GroupUpSender");
+                if (data.signalSender == null)
+                {
+                    if (data.heldWeapon != null)
+                    {
+                        SwitchStates("GroupUpSender");
+                    }
+
+                }
+                else
+                {
+                    if (data.heldWeapon != null)
+                    {
+                        SwitchStates("GroupUpReciever");
+                    }
+                }
             }
-            else
-            {
-                SwitchStates("GroupUpReciever");
-            }
+            
                 
         }
     }
@@ -133,17 +282,21 @@ public class AI_Vikings : MonoBehaviour
         List<GameObject> possibleWeapon = new List<GameObject>();
         foreach (GameObject weapon in data.weapons)
         {
-            if (weapon.GetComponent<WeaponStats>().DesiredTag == "Axe")
+            if (weapon != null)
             {
-                possibleWeapon.Add(weapon);
-                l = l + 1;
-            }
+                if (weapon.GetComponent<WeaponStats>().DesiredTag == "Axe")
+                {
+                    possibleWeapon.Add(weapon);
+                    l = l + 1;
+                }
 
-            if (l == 0 && weapon.GetComponent<WeaponStats>().SwingRate < 5)
-            {
-                possibleWeapon.Add(weapon);
-                l = l + 1;
+                if (l == 0 && weapon.GetComponent<WeaponStats>().SwingRate < 5)
+                {
+                    possibleWeapon.Add(weapon);
+                    l = l + 1;
+                }
             }
+            
         }
 
         if (l == 0)
