@@ -54,7 +54,7 @@ public class NewCamera : MonoBehaviour
 
     public void IncreasePoints()
     {
-        Debug.Log("\nsetor 1: " + sector1.GetPoints() + "\nsetor 2: " + sector2.GetPoints()+ "\nsetor 3: " + sector3.GetPoints()+ "\nsetor 4: " + sector4.GetPoints());
+        Debug.Log("\nsetor 1: " + sector1.GetPoints() + " setor 2: " + sector2.GetPoints()+ " setor 3: " + sector3.GetPoints()+ " setor 4: " + sector4.GetPoints());
 
         if (sector1.triggered) {
             sector1.AddPoints(1);
