@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 7944785765839308213}
   - component: {fileID: 6480212686425655824}
   - component: {fileID: 9082247877449842394}
+  - component: {fileID: 9078228718443221974}
   m_Layer: 6
   m_Name: WeaponKeyboardMesh
   m_TagString: Untagged
@@ -300,3 +301,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9078228718443221974
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280733053391920911}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.001897124, y: 0.022058861, z: 0.027422976}
+  m_Center: {x: -0.004166368, y: -0.0003288872, z: 0.0015209996}
