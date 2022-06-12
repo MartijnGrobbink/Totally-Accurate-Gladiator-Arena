@@ -18,26 +18,48 @@ public class UI_End : MonoBehaviour
     public int Knights;
     public int Gamers;
 
+    public GameObject Envo;
+
+    public GameObject cavsScene;
+    public GameObject romsScene;
+    public GameObject viksScene;
+    public GameObject kigsScene;
+    public GameObject gamsScene;
+
     public GameObject cavs;
     public GameObject roms;
     public GameObject viks;
     public GameObject kigs;
     public GameObject gams;
+
+    public GameObject cavsStart;
+    public GameObject romsStart;
+    public GameObject viksStart;
+    public GameObject kigsStart;
+    public GameObject gamsStart;
+
+    private bool once;
     void Start()
     {
         UI_Finish.SetActive(false);
 
-        cavs.SetActive(false);
-        roms.SetActive(false);
-        viks.SetActive(false);
-        kigs.SetActive(false);
-        gams.SetActive(false);
+        romsScene = Instantiate(roms, romsStart.transform.position, Quaternion.identity, Envo.transform);
+        cavsScene = Instantiate(cavs, cavsStart.transform.position, Quaternion.identity, Envo.transform);
+        viksScene = Instantiate(viks, viksStart.transform.position, Quaternion.identity, Envo.transform);
+        kigsScene = Instantiate(kigs, kigsStart.transform.position, Quaternion.identity, Envo.transform);
+        gamsScene = Instantiate(gams, gamsStart.transform.position, Quaternion.identity, Envo.transform);
 
-        Cavemen = (Teams_Data.ScoreInfo["Cavemen"][1] + 5) + Teams_Data.ScoreInfo["Cavemen"][0];
-        Romans = (Teams_Data.ScoreInfo["Romans"][1] + 5) + Teams_Data.ScoreInfo["Romans"][0];
-        Gamers = (Teams_Data.ScoreInfo["Gamers"][1] + 5) + Teams_Data.ScoreInfo["Gamers"][0];
-        Knights = (Teams_Data.ScoreInfo["Knights"][1] + 5) + Teams_Data.ScoreInfo["Knights"][0];
-        Vikings = (Teams_Data.ScoreInfo["Vikings"][1] + 5) + Teams_Data.ScoreInfo["Vikings"][0];
+        cavsScene.SetActive(false);
+        romsScene.SetActive(false);
+        viksScene.SetActive(false);
+        kigsScene.SetActive(false);
+        gamsScene.SetActive(false);
+
+        Cavemen = (Teams_Data.ScoreInfo["Cavemen"][1] * 5) + Teams_Data.ScoreInfo["Cavemen"][0];
+        Romans = (Teams_Data.ScoreInfo["Romans"][1] * 5) + Teams_Data.ScoreInfo["Romans"][0];
+        Gamers = (Teams_Data.ScoreInfo["Gamers"][1] * 5) + Teams_Data.ScoreInfo["Gamers"][0];
+        Knights = (Teams_Data.ScoreInfo["Knights"][1] * 5) + Teams_Data.ScoreInfo["Knights"][0];
+        Vikings = (Teams_Data.ScoreInfo["Vikings"][1] * 5) + Teams_Data.ScoreInfo["Vikings"][0];
 
         
     }
@@ -51,46 +73,62 @@ public class UI_End : MonoBehaviour
 
     private void SetWinner()
     {
-        teams.Add(Cavemen);
-        teams.Add(Romans);
-        teams.Add(Gamers);
-        teams.Add(Knights);
-        teams.Add(Vikings);
+        if (once == false)
+        {
+            teams.Add(Cavemen);
+            teams.Add(Romans);
+            teams.Add(Gamers);
+            teams.Add(Knights);
+            teams.Add(Vikings);
+            once = true;
+        }
+       
 
         teams.Sort();
-        if (Cavemen == teams[0])
+        if (Cavemen == teams[teams.Count - 1])
         {
-            cavs.SetActive(true);
+            cavsScene.SetActive(true);
             Winner.text = "Cavemen Win!";
-            Points.text = Cavemen + " points";
+            string a = Cavemen.ToString();
+            Points.text = a + " points";
         }
 
-        if (Romans == teams[0])
+        if (Romans == teams[teams.Count - 1])
         {
-            roms.SetActive(true);
+            romsScene.SetActive(true);
             Winner.text = "Romans Win!";
-            Points.text = Romans + " points";
+            string a = Romans.ToString();
+            Points.text = a + " points";
         }
 
-        if (Vikings == teams[0])
+        if (Vikings == teams[teams.Count - 1])
         {
-            viks.SetActive(true);
+            viksScene.SetActive(true);
             Winner.text = "Vikings Win!";
-            Points.text = Vikings + " points";
+            string a = Vikings.ToString();
+            Points.text = a + " points";
         }
 
-        if (Knights == teams[0])
+        if (Knights == teams[teams.Count - 1])
         {
-            kigs.SetActive(true);
+            kigsScene.SetActive(true);
             Winner.text = "Knights Win!";
-            Points.text = Knights + " points";
+            string a = Knights.ToString();
+            Points.text = a + " points";
         }
 
-        if (Gamers == teams[0])
+        if (Gamers == teams[teams.Count - 1])
         {
-            gams.SetActive(true);
+            gamsScene.SetActive(true);
             Winner.text = "Gamers Win!";
-            Points.text = Gamers + " points";
+            string a = Gamers.ToString();
+            Points.text = a + " points";
+        }
+
+        if (teams[teams.Count - 1] == 0)
+        {
+            Winner.text = "No One Wins!";
+            Points.text = "";
         }
     }
 }

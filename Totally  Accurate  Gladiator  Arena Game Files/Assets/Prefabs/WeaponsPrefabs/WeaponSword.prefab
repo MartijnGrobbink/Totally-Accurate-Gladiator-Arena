@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 6347692219001917257}
   - component: {fileID: 8050276574103191788}
   - component: {fileID: 5214223534695461926}
+  - component: {fileID: 2561110970050896278}
   m_Layer: 6
   m_Name: WeaponSwordMesh
   m_TagString: Untagged
@@ -284,3 +285,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2561110970050896278
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006773711559890419}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.035816845, y: 0.02431322, z: 0.040865835}
+  m_Center: {x: -0.0027289488, y: -0.00016324723, z: -0.12789476}

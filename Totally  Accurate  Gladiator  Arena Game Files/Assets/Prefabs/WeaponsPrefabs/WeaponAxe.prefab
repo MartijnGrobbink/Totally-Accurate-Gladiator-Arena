@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 7651502948605153485}
   - component: {fileID: 6737458646331547496}
   - component: {fileID: 8819373775891540898}
+  - component: {fileID: 4564174091413801777}
   m_Layer: 6
   m_Name: WeaponAxeMesh
   m_TagString: Untagged
@@ -283,3 +284,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4564174091413801777
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017815246648019575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03007507, y: 0.020000057, z: 0.039859947}
+  m_Center: {x: 0.029823972, y: 0.0000000078457365, z: -0.008522238}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 779806724914565506}
   - component: {fileID: 4430897173687787047}
   - component: {fileID: 1916636547543837421}
+  - component: {fileID: 8968136453506340136}
   m_Layer: 6
   m_Name: WeaponChickenMesh
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8968136453506340136
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115332968147192632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.013146125, y: 0.051516283, z: 0.020201892}
+  m_Center: {x: -0.054025855, y: -0.0006574113, z: 0.01552527}
 --- !u!1 &8377987086225857640
 GameObject:
   m_ObjectHideFlags: 0

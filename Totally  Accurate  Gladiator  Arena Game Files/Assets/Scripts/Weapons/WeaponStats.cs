@@ -169,7 +169,7 @@ public class WeaponStats : MonoBehaviour
         {
             if (HitSound != null)
             {
-                HitSound.Play();
+                //HitSound.Play();
             }
             
             DamageEnemy();
@@ -180,15 +180,33 @@ public class WeaponStats : MonoBehaviour
     {
         if (DealDamage == false)
         {
+            var g = 1;
+            var t = other.gameObject.transform.parent;
+            var c = other.gameObject.transform.parent;
+            for (int i = 0; i < g; i++)
+            {
+                if (t == null)
+                {
+                    t = c;
+                    g = 0;
+                }
+                else
+                {
+                    c = t;
+                    t = t.gameObject.transform.parent;
+                    g = g + 1;
+                }
+            }
+
             var x = gameObject.transform.parent;
             if (x != null)
             {
-                if (x.gameObject.tag != other.gameObject.tag)
+                if (Wielder.tag != t.tag)
                 {
-                    if (other.gameObject.GetComponent<AIData>())
+                    if (t.GetComponent<AIData>())
                     {
                         Debug.Log("Happens");
-                        EnemyAttacked = other.gameObject;
+                        EnemyAttacked = t.gameObject;
 
                         DealDamage = true;
                     }
@@ -203,6 +221,10 @@ public class WeaponStats : MonoBehaviour
     //If The Weapon Has Colldied The Enemy It Collides With Is Damaged
     private void DamageEnemy()
     {
+        Debug.Log("Wielder -" + Wielder.GetComponent<AIData>().MemberName);
+        Debug.Log("EnemyAttacked -" + EnemyAttacked.GetComponent<AIData>().MemberName);
+        Debug.Log("Wielder -" + Wielder.GetComponent<AIData>().TeamName);
+        Debug.Log("EnemyAttacked -" + EnemyAttacked.GetComponent<AIData>().TeamName);
         if (EnemyAttacked.GetComponent<HealthSystem>().health - Damage <= 0)
         {
             Teams_EventManager.current.HasKilled(Wielder.GetComponent<AIData>().MemberName, Wielder.GetComponent<AIData>().TeamName, DesiredTag, EnemyAttacked.GetComponent<AIData>().MemberName, EnemyAttacked.GetComponent<AIData>().TeamName);
@@ -217,7 +239,7 @@ public class WeaponStats : MonoBehaviour
     {
         if (DazedEffect == true)
         {
-            RealEnemyAttacked = EnemyAttacked.transform.parent.gameObject;
+            RealEnemyAttacked = EnemyAttacked.transform.Find("metarig").gameObject;
             RealEnemyAttacked = RealEnemyAttacked.transform.Find("spine").gameObject;
             pc = RealEnemyAttacked.GetComponent<playerController>();
             pc.stun = true;
