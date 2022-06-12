@@ -7,6 +7,7 @@ public class StatueManager : MonoBehaviour
 {
     public float radius;
     public Transform destination;
+    public float thedist;
     public NavMeshAgent agent;
     public Animator animator;
 
@@ -24,17 +25,34 @@ public class StatueManager : MonoBehaviour
     private void Start()
     {
         movement = gameObject.GetComponent<WalkToPosition>();
-        source = GetComponent<AudioSource>();
+        //Missing audio source
+        source = gameObject.GetComponent<AudioSource>();
+        Debug.Log(source);
     }
 
     private void Update()
     {
+        CheckAnim();
         CheckInRange();
         if (inRange.Count != 0)
         {
             CheckTagsInRange();
         }
         CheckIfDestinationValid();
+
+        if (BeingContested == true)
+        {
+            Teams_EventManager.current.StatueStatus("Contested");
+        }
+        if (destination != null)
+        {
+            thedist = Vector3.Distance(gameObject.transform.position, destination.transform.position);
+            if (thedist < 5)
+            {
+                AtBase();
+            }
+        }
+        
     }
     //-------------------------------------------------------------Range Detection-------------------------------------------------------
 
@@ -124,7 +142,6 @@ public class StatueManager : MonoBehaviour
 
     public void setBeingContested(bool newValue)
     {
-        Teams_EventManager.current.StatueStatus("Contested");
         BeingContested = newValue;
     }
 
@@ -168,8 +185,12 @@ public class StatueManager : MonoBehaviour
         animator.SetBool("Move", true);
         if (mPlaying == false)
         {
-            source.Play();
-            mPlaying = true;
+            if (source != null)
+            {
+                source.Play();
+                mPlaying = true;
+            }
+            
         }
     }
 
@@ -178,21 +199,27 @@ public class StatueManager : MonoBehaviour
         animator.SetBool("Move", false);
         if (mPlaying == true)
         {
-            source.Stop();
-            mPlaying = false;
+            if (source != null)
+            {
+                source.Stop();
+                mPlaying = false;
+            }
+            
         }
     }
 
     public void CheckAnim()
     {
-        if (agent.hasPath == true)
+        if (destination != null)
         {
             MoveAnimate();
+            Debug.Log("anim");
         }
 
-        if (agent.hasPath == false)
+        if (destination == null)
         {
             DontMoveAnimate();
+            Debug.Log("anim1");
         }
     }
 }
