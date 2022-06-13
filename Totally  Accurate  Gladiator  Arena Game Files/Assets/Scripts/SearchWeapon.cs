@@ -26,7 +26,7 @@ public class SearchWeapon : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (movement.currentDistance < 1.5f)
+        if (movement.currentDistance < 3f)
         {
             if (nextDestinationChosen == true)
             {

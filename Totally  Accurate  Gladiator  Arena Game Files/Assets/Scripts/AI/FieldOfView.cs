@@ -98,10 +98,13 @@ public class FieldOfView : MonoBehaviour
     {
         for (int i = 0; i < objectsInView.Count; i++)
         {
-            float dist = (gameObject.transform.position - objectsInView[i].transform.position).magnitude;
-            if (dist > radius)
+            if (objectsInView[i] != null)
             {
-                objectsInView.Remove(objectsInView[i].gameObject);
+                float dist = (gameObject.transform.position - objectsInView[i].transform.position).magnitude;
+                if (dist > radius)
+                {
+                    objectsInView.Remove(objectsInView[i].gameObject);
+                }
             }
         }
         //CheckInLayer();
@@ -124,19 +127,23 @@ public class FieldOfView : MonoBehaviour
     {
         for (int i = 0; i < rawData.Count; i++)
         {
-
-            if (rawData[i].tag == gameObject.tag && data.ally.Contains(rawData[i]) != true)
+            if (rawData[i] != null)
             {
-                data.ally.Add(rawData[i]);
+                if (rawData[i].tag == gameObject.tag && data.ally.Contains(rawData[i]) != true)
+                {
+                    data.ally.Add(rawData[i]);
+                }
+                else if (rawData[i].CompareTag("Weapon") && data.weapons.Contains(rawData[i]) != true)
+                {
+                    data.weapons.Add(rawData[i]);
+                }
+                else if (data.enemies.Contains(rawData[i]) != true && data.weapons.Contains(rawData[i]) != true && data.ally.Contains(rawData[i]) != true)
+                {
+                    data.enemies.Add(rawData[i]);
+                }
             }
-            else if (rawData[i].CompareTag("Weapon") && data.weapons.Contains(rawData[i]) != true)
-            {
-                data.weapons.Add(rawData[i]);
-            }
-            else if (data.enemies.Contains(rawData[i]) != true && data.weapons.Contains(rawData[i]) != true && data.ally.Contains(rawData[i]) != true)
-            {
-                data.enemies.Add(rawData[i]);
-            }
+            else
+                rawData.Remove(rawData[i]);
         }
     }
 
