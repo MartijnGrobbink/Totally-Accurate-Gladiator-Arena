@@ -8,6 +8,7 @@ public class Caveman_AI : MonoBehaviour
     Animator animator;
     bool EZKill = false;
     bool fleeing = false;
+    bool no_enemies = false;
     public bool supported = false;
 
     void Start()
@@ -17,12 +18,23 @@ public class Caveman_AI : MonoBehaviour
         InvokeRepeating("check_supported", 0f, 5.0f);
     }
 
+    private void setState(string name)
+    {
+        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+        if (state.IsName(name) != true)
+        {
+            animator.Play(name);
+        }
+    }
+
     void Offense()
     {
         for(int cou = 0; cou < data.enemies.Count; cou++)
         {
-            if (data.enemies[cou].GetComponent<AIData>() == null)
+            if (data.enemies[cou] == null) {
+                no_enemies = true;
                 break;
+            }
             var enemy_data = data.enemies[cou].GetComponent<AIData>();
             if (enemy_data.heldWeapon == null) {
                 EZKill = true;
@@ -44,12 +56,17 @@ public class Caveman_AI : MonoBehaviour
             }
         }
         EZKill = false;
-        if (fleeing == false){
-            animator.Play("GoToEnemy");
+        if (no_enemies == false){
+            if (fleeing == false){
+                setState("GoToEnemy");
+            }
+            else {
+                setState("RunAway");
+            }
         }
-        else {
-            animator.Play("RunAway");
-        }
+        else
+            setState("SearchWeapon");
+        no_enemies = false;
         fleeing = false;
     }
     
@@ -84,16 +101,14 @@ public class Caveman_AI : MonoBehaviour
         }*/
         if (data.enemies.Count == 0) {
             data.chosenEnemy = null;
-            animator.Play("SearchWeapon");
+            setState("SearchWeapon");
         }
-        if (data.heldWeapon == true && data.statue != null)
-            animator.Play("GroupUpReceiver");
         if (data.weapons.Count > 0 && data.heldWeapon == null)
             data.chosenWeapon = data.weapons[0];
         else if (data.enemies.Count > 0)
         {
             if (data.heldWeapon == null) {
-                animator.Play("RunAway");
+                setState("RunAway");
             }
             else
             {

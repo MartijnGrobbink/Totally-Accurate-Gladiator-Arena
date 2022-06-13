@@ -52,7 +52,7 @@ public class WeaponStats : MonoBehaviour
         {
             SwingSpeed = 5;
             SwingRate = 10;
-            Damage = 15;
+            Damage = 90;
 
             DazedEffect = false;
             AOEEffect = false;
@@ -68,7 +68,7 @@ public class WeaponStats : MonoBehaviour
         {
             SwingSpeed = 10;
             SwingRate = 2;
-            Damage = 7;
+            Damage = 30;
 
             DazedEffect = false;
             AOEEffect = true;
@@ -84,7 +84,7 @@ public class WeaponStats : MonoBehaviour
         {
             SwingSpeed = 12;
             SwingRate = 2;
-            Damage = 7;
+            Damage = 30;
 
             DazedEffect = true;
             AOEEffect = false;
@@ -100,7 +100,7 @@ public class WeaponStats : MonoBehaviour
         {
             SwingSpeed = 15;
             SwingRate = 1;
-            Damage = 8;
+            Damage = 45;
 
             DazedEffect = false;
             AOEEffect = false;
@@ -116,7 +116,7 @@ public class WeaponStats : MonoBehaviour
         {
             SwingSpeed = 7;
             SwingRate = 4;
-            Damage = 13;
+            Damage = 70;
 
             DazedEffect = false;
             AOEEffect = true;
@@ -132,7 +132,7 @@ public class WeaponStats : MonoBehaviour
         {
             SwingSpeed = 15;
             SwingRate = 10;
-            Damage = 15;
+            Damage = 90;
 
             DazedEffect = true;
             AOEEffect = false;
@@ -148,7 +148,7 @@ public class WeaponStats : MonoBehaviour
         {
             SwingSpeed = 10;
             SwingRate = 2;
-            Damage = 9;
+            Damage = 50;
 
             DazedEffect = true;
             AOEEffect = false;
@@ -169,7 +169,7 @@ public class WeaponStats : MonoBehaviour
         {
             if (HitSound != null)
             {
-                //HitSound.Play();
+                HitSound.Play();
             }
             
             DamageEnemy();
@@ -207,7 +207,6 @@ public class WeaponStats : MonoBehaviour
                     {
                         if (t.GetComponent<AIData>())
                         {
-                            Debug.Log("Happens");
                             EnemyAttacked = t.gameObject;
 
                             DealDamage = true;
@@ -225,10 +224,12 @@ public class WeaponStats : MonoBehaviour
     //If The Weapon Has Colldied The Enemy It Collides With Is Damaged
     private void DamageEnemy()
     {
+        /*
         Debug.Log("Wielder -" + Wielder.GetComponent<AIData>().MemberName);
         Debug.Log("EnemyAttacked -" + EnemyAttacked.GetComponent<AIData>().MemberName);
         Debug.Log("Wielder -" + Wielder.GetComponent<AIData>().TeamName);
         Debug.Log("EnemyAttacked -" + EnemyAttacked.GetComponent<AIData>().TeamName);
+        */
         if (EnemyAttacked.GetComponent<HealthSystem>().health - Damage <= 0)
         {
             Teams_EventManager.current.HasKilled(Wielder.GetComponent<AIData>().MemberName, Wielder.GetComponent<AIData>().TeamName, DesiredTag, EnemyAttacked.GetComponent<AIData>().MemberName, EnemyAttacked.GetComponent<AIData>().TeamName);

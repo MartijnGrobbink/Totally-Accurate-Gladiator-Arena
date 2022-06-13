@@ -318,18 +318,24 @@ public class AI_Vikings : MonoBehaviour
         List<GameObject> possibleEnemies = new List<GameObject>();
         foreach (GameObject enemy in data.enemies)
         {
-            var a = enemy.GetComponent<AIData>();
-            if (a != null)
+            if (enemy != null)
             {
-                if (a.heldWeapon != null)
+                if (enemy.GetComponent<AIData>())
                 {
-                    var b = a.heldWeapon;
-                    var c = b.GetComponent<WeaponStats>();
-
-                    if (c.Damage > 10)
+                    var a = enemy.GetComponent<AIData>();
+                    if (a != null)
                     {
-                        possibleEnemies.Add(enemy);
-                        l = l + 1;
+                        if (a.heldWeapon != null)
+                        {
+                            var b = a.heldWeapon;
+                            var c = b.GetComponent<WeaponStats>();
+
+                            if (c.Damage > 10)
+                            {
+                                possibleEnemies.Add(enemy);
+                                l = l + 1;
+                            }
+                        }
                     }
                 }
             }

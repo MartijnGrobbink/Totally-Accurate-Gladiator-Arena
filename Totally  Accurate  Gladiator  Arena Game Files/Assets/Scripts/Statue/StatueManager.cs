@@ -83,10 +83,13 @@ public class StatueManager : MonoBehaviour
     {
         for (int i = 0; i < inRange.Count; i++)
         {
-            float dist = (gameObject.transform.position - inRange[i].transform.position).magnitude;
-            if (dist > radius)
+            if(inRange[i] != null)
             {
-                inRange.Remove(inRange[i].gameObject);
+                float dist = (gameObject.transform.position - inRange[i].transform.position).magnitude;
+                if (dist > radius)
+                {
+                    inRange.Remove(inRange[i].gameObject);
+                }
             }
         }
     }

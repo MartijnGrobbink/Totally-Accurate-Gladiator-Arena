@@ -22,44 +22,47 @@ public class GroupUpSender : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float dist = (data.agent.transform.position - data.statue.transform.position).magnitude;
-        if (dist < statueGroupDistance)
+        if (data.statue != null)
         {
-            WTP.StopWalking(data.agent);
+            float dist = (data.agent.transform.position - data.statue.transform.position).magnitude;
+            if (dist < statueGroupDistance)
+            {
+                WTP.StopWalking(data.agent);
 
-            if (timer > 0)
-            {
-                for (int i = 0; i < characters.Length; i++)
-                {
-                    thisAI = animator.gameObject;
-                    CheckForParents(characters[i]);
-                }
-            }
-            else
-            {
-                if (animator.GetBool("AttackStatue") != true)
+                if (timer > 0)
                 {
                     for (int i = 0; i < characters.Length; i++)
                     {
-                        AIData localData;
-                        if (characters[i].transform.parent != null)
-                            localData = characters[i].GetComponent<AIData>();
-                        else
-                            localData = characters[i].GetComponent<AIData>();
-
-                        if(localData != null)
-                        {
-                            if (localData.heldWeapon != null && characters[i] != animator.gameObject)
-                            {
-                                localData.GetComponent<Animator>().SetBool("AttackStatue", true);
-                            }
-                            localData.signalSender = null;
-                        }
+                        thisAI = animator.gameObject;
+                        CheckForParents(characters[i]);
                     }
-                    animator.SetBool("AttackStatue", true);
                 }
+                else
+                {
+                    if (animator.GetBool("AttackStatue") != true)
+                    {
+                        for (int i = 0; i < characters.Length; i++)
+                        {
+                            AIData localData;
+                            if (characters[i].transform.parent != null)
+                                localData = characters[i].GetComponent<AIData>();
+                            else
+                                localData = characters[i].GetComponent<AIData>();
+
+                            if (localData != null)
+                            {
+                                if (localData.heldWeapon != null && characters[i] != animator.gameObject)
+                                {
+                                    localData.GetComponent<Animator>().SetBool("AttackStatue", true);
+                                }
+                                localData.signalSender = null;
+                            }
+                        }
+                        animator.SetBool("AttackStatue", true);
+                    }
+                }
+                timer -= Time.deltaTime;
             }
-            timer -= Time.deltaTime;
         }
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
