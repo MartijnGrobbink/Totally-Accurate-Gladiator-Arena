@@ -98,10 +98,13 @@ public class FieldOfView : MonoBehaviour
     {
         for (int i = 0; i < objectsInView.Count; i++)
         {
-            float dist = (gameObject.transform.position - objectsInView[i].transform.position).magnitude;
-            if (dist > radius)
+            if (objectsInView[i] != null)
             {
-                objectsInView.Remove(objectsInView[i].gameObject);
+                float dist = (gameObject.transform.position - objectsInView[i].transform.position).magnitude;
+                if (dist > radius)
+                {
+                    objectsInView.Remove(objectsInView[i].gameObject);
+                }
             }
         }
         //CheckInLayer();
