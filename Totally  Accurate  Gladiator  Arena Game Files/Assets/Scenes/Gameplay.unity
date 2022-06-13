@@ -2074,6 +2074,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4714736832918319709, guid: 05b041147904a408d958d00b3b580c4f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714736832918319709, guid: 05b041147904a408d958d00b3b580c4f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714736832918319709, guid: 05b041147904a408d958d00b3b580c4f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714736832918319709, guid: 05b041147904a408d958d00b3b580c4f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714736832918319709, guid: 05b041147904a408d958d00b3b580c4f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 43.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714736832918319709, guid: 05b041147904a408d958d00b3b580c4f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714736832918319709, guid: 05b041147904a408d958d00b3b580c4f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70710677
+      objectReference: {fileID: 0}
     - target: {fileID: 5108389666789703585, guid: 05b041147904a408d958d00b3b580c4f, type: 3}
       propertyPath: m_Name
       value: Envo

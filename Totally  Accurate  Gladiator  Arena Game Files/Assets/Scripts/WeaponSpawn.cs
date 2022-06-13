@@ -74,7 +74,7 @@ public class WeaponSpawn : MonoBehaviour
         positions.Insert(19, position19);
 
         spawnWeapons();
-        InvokeRepeating(nameof(CheckWeaponInRange), 5f, 5f);
+        InvokeRepeating(nameof(CheckWeaponInRange), 5f, 15f);
     }
 
     
