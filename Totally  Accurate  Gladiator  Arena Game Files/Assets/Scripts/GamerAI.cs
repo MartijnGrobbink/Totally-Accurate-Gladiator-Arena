@@ -49,6 +49,7 @@ public class GamerAI : MonoBehaviour
 
                     // when the closestWeapon has been detected, change to state GrabWeapon 
                     data.chosenWeapon = closestWeapon;
+                    Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
                     state = State.GrabWeapon;
                     break;
                 }
@@ -61,7 +62,7 @@ public class GamerAI : MonoBehaviour
                 if(data.heldWeapon != null) {
                     // america exprain this, shouldnt it be data.heldWeapon instead of chosen? 
 
-                    //Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
+                    
                     
                     // if no other teammate sent a groupUp, send one yourself
                     if (data.signalSender == null) 
