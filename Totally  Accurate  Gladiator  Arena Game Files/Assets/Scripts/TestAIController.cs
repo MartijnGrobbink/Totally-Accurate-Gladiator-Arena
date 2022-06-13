@@ -21,13 +21,11 @@ public class TestAIController : MonoBehaviour
     private void SwitchStates(string enterStateName)
     {
         AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-        if (currentState.IsName(enterStateName) != true)
-        {
+        //if (currentState.IsName(enterStateName) != true)
+        //{
             Debug.Log(currentState);
             animator.Play(enterStateName);
-        }
-        else
-            return;
+       // }
     }
 
     private void AttackState()
@@ -55,7 +53,8 @@ public class TestAIController : MonoBehaviour
     {
         if (data.heldWeapon == null)
         {
-            if (data.weapons.Count != 0)
+            Debug.Log("Test");
+            if (data.weapons.Count !=  0)
             {
                 data.chosenWeapon = data.weapons[0];
                 SwitchStates("GrabWeapon");
