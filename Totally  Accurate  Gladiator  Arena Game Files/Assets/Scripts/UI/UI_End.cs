@@ -127,6 +127,11 @@ public class UI_End : MonoBehaviour
 
         if (teams[teams.Count - 1] == 0)
         {
+            cavsScene.SetActive(false);
+            romsScene.SetActive(false);
+            viksScene.SetActive(false);
+            kigsScene.SetActive(false);
+            gamsScene.SetActive(false);
             Winner.text = "No One Wins!";
             Points.text = "";
         }
