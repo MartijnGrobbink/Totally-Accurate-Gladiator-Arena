@@ -29,6 +29,8 @@ public class GrabWeapon : WalkToPosition
     private void PickUpItem(GameObject weapon)
     {
         weapon = data.chosenWeapon;
+        if (data.heldWeapon != null)
+            DropItem();
         if(weapon != null)
         {
             Rigidbody rigidBody = weapon.GetComponent<Rigidbody>();
@@ -60,8 +62,6 @@ public class GrabWeapon : WalkToPosition
         Rigidbody rigidBody = data.heldWeapon.GetComponent<Rigidbody>();
         rigidBody.useGravity = true;
         rigidBody.constraints = RigidbodyConstraints.None;
-
-        data.heldWeapon.GetComponent<WeaponStats>().Wielder = null;
 
         data.heldWeapon = null;
     }

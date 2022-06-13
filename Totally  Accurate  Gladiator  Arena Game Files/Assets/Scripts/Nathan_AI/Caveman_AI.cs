@@ -94,16 +94,11 @@ public class Caveman_AI : MonoBehaviour
             supported = true;
             StartCoroutine(support_cooldown());
         }
-/*        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-        if (currentState.IsName("SearchWeapon") != true)
-        { 
-            print("test");
-        }*/
         if (data.enemies.Count == 0) {
             data.chosenEnemy = null;
             setState("SearchWeapon");
         }
-        if (data.weapons.Count > 0 && data.heldWeapon == null)
+        if (data.weapons.Count > 0 && data.heldWeapon == null && data.chosenWeapon == null)
             data.chosenWeapon = data.weapons[0];
         else if (data.enemies.Count > 0)
         {
