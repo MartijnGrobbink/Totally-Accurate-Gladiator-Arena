@@ -15,9 +15,11 @@ public class GamerAI : MonoBehaviour
         GrabWeapon,
         GroupUpReciever,
         GroupUpSender,
+        GoToStatue,
     };
 
     private State state;
+    private int healthThreshold = 30;
     
     // Awake is called before start, even if the script is disabled  
     void Awake() {
@@ -39,31 +41,28 @@ public class GamerAI : MonoBehaviour
                 animator.Play(state.ToString());
 
                 // while on searchWeapon state, check for the closest weapon to the gamer with euclidean distance
-                if(data.heldWeapon == null & data.weapons.Count != 0){
+                if (data.heldWeapon == null & data.weapons.Count != 0){
                     GameObject closestWeapon = data.weapons[0];
 
-                    foreach(GameObject weapon in data.weapons){
+                    foreach (GameObject weapon in data.weapons){
                         if(Vector3.Distance(weapon.transform.position, transform.position) < Vector3.Distance(closestWeapon.transform.position, transform.position) )
                             closestWeapon = weapon;
                     }
 
-                    // when the closestWeapon has been detected, change to state GrabWeapon 
+                    // when the closestWeapon has been detected, choose it and change to state GrabWeapon 
                     data.chosenWeapon = closestWeapon;
                     Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
                     state = State.GrabWeapon;
                     break;
                 }
+                Debug.Log(state.ToString());
                 break;
 
             case State.GrabWeapon:
                 animator.Play(state.ToString());
 
                 // when the gamer finally grabs a weapon
-                if(data.heldWeapon != null) {
-                    // america exprain this, shouldnt it be data.heldWeapon instead of chosen? 
-
-                    
-                    
+                if (data.heldWeapon != null) {
                     // if no other teammate sent a groupUp, send one yourself
                     if (data.signalSender == null) 
                         state = State.GroupUpSender;
@@ -75,43 +74,73 @@ public class GamerAI : MonoBehaviour
                     break;
                 } 
                 
+                Debug.Log(state.ToString());
                 break;
 
-            // TODO if health < threshold: runaway
             case State.GoToEnemy:
-                var healthThreshold = 30.0f; 
-
-
-                // run away if the player has no weapon
-                if(data.heldWeapon == null) {
+                // gamer's health 
+                var health = data.gameObject.GetComponent<HealthSystem>().health;
+                
+                // run away if the player has no weapon or health critical (below threshold)
+                if (data.heldWeapon == null | health <= healthThreshold) {
                     state = State.RunAway;
                     break;
                 }
 
+                // if there are no enemies on the FOV, go to statue, get those points
+                if (data.enemies.Count == 0) {
+                    state = State.GoToStatue;
+                    break;
+                }
+
+                // if there's yet no chosenEnemy
+                if (data.chosenEnemy == null) {
+                    foreach (GameObject enemy in data.enemies) {
+                        var enemyData = enemy.GetComponent<AIData>();
+                        var enemyHealth = enemy.gameObject.GetComponent<HealthSystem>().health;
+
+                        // if any enemy in the FOV doesn't have a weapon, choose them immediately as enemy and attack
+                        if (enemyData.heldWeapon == null) {
+                            data.chosenEnemy = enemy;
+                            break;
+
+                        // otherwise, choose an enemy that has a health lower than ours, smort
+                        } else if (enemyHealth < health) {
+                            data.chosenEnemy = enemy;
+
+                        // if none of those cases are true, simply pick the last enemy on data.enemies
+                        } else {
+                            data.chosenEnemy = enemy;
+                        }
+                    }
+                } 
+
                 animator.Play(state.ToString());
+                Debug.Log(state.ToString());
                 break;
 
-            // TODO might need some more if cases
             case State.RunAway:
-                // while running again, if the gamer no longer has any enimies in his FOV
-                if(data.enemies.Count == 0) {
+                // while running away, when the gamer no longer has any enemies in his FOV
+                if (data.enemies.Count == 0) {
                     // if he doesnt have a weapon, change to state Search Weapon
                     if (data.heldWeapon == null) {
                         state = State.SearchWeapon;
                         break;
-                    }
-                    
-                    // else if no other teammate sent a group up signal, request GroupUp 
-                    else if (data.signalSender == null) {
-                        state = State.GroupUpSender;
-                        break;
+                    } else {
+                        if (data.signalSender == null) {
+                            state = State.GroupUpSender;
+                            break;
+                        } else {
+                            state = State.GroupUpReciever;
+                            break;
+                        }
                     }
                 }
 
                 animator.Play(state.ToString());
+                Debug.Log(state.ToString());
                 break;
 
-            // TODO do they leave these states ????????????? 
             case State.GroupUpReciever:
                 // the player will not join the others in case of receiving a GroupUp IF he does not yet have a weapon
                 // therefore he will go back a the SearchWeapon state 
@@ -120,31 +149,48 @@ public class GamerAI : MonoBehaviour
                     break;
                 } 
 
-                // if (data.ally.Count < ) {
-
-                // }
+                // if there are more enemies than allies, ignore them and go to statue
+                if (data.enemies.Count > data.ally.Count) {
+                    state = State.GoToStatue;
+                    break;
+                }
 
                 animator.Play(state.ToString());
+                Debug.Log(state.ToString());
                 break;
 
             case State.GroupUpSender:
-                // nerd gamer 1: signalSender
-                // nerd gamer 2: heldWeapon == null
-                // nerd gamer 3: heldWeapon != null
                 animator.Play(state.ToString());
-
+                
+                // if the gamer doesn't have a weapon, go search for one
                 if (data.heldWeapon == null) {
                     state = State.SearchWeapon;
                     break;
                 } 
 
+                // if the gamer is nearby at least one ally, go to statue
+                if (data.ally.Count >= 1) {
+                    state = State.GoToStatue;
+                    break;
+                }
+
+                Debug.Log(state.ToString());
+                break;
+
+            case State.GoToStatue:
+                animator.Play(state.ToString());
+
+                // when statue reaches a base (== null), attack any nearby enemies
+                if (data.statue == null && data.enemies.Count > 0) {
+                    state = State.GoToEnemy;
+                    break;
+                }   
+
+                Debug.Log(state.ToString());
                 break;
 
             default:
                 break;
         }
     }
-
-    
-
 }
