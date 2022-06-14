@@ -51,7 +51,7 @@ public class StatueManager : MonoBehaviour
                 AtBase();
             }
         }
-        
+
     }
     //-------------------------------------------------------------Range Detection-------------------------------------------------------
 
@@ -63,6 +63,8 @@ public class StatueManager : MonoBehaviour
         {
             CheckForParents(rangeChecks[i].gameObject);
         }
+
+        CleanUp();
 
         if (inRange.Count != 0)
             CheckIfStillInRange();
@@ -83,33 +85,45 @@ public class StatueManager : MonoBehaviour
     {
         for (int i = 0; i < inRange.Count; i++)
         {
-            if(inRange[i] != null)
+            float dist = (gameObject.transform.position - inRange[i].transform.position).magnitude;
+            if (dist > radius)
             {
-                float dist = (gameObject.transform.position - inRange[i].transform.position).magnitude;
-                if (dist > radius)
-                {
-                    inRange.Remove(inRange[i].gameObject);
-                }
+                inRange.Remove(inRange[i].gameObject);
             }
         }
     }
+    //-----------------------------------------------------------Check If Not Deleted------------------------------------------------------
+    private void CleanUp()
+    {
+        for (int i = 0; i < inRange.Count; i++)
+        {
+            if (inRange[i] == null)
+                inRange.RemoveAt(i);
+        }
+    }
+
     //--------------------------------------------------------------Contested Check------------------------------------------------------
     private void CheckTagsInRange()
     {
-        string firstTag = inRange[0].tag;
-
-        for (int i = 0; i < inRange.Count; i++)
+        if (inRange.Count != 0)
         {
-            if (inRange[i].tag != firstTag)
+            string firstTag = inRange[0].tag;
+
+            for (int i = 0; i < inRange.Count; i++)
             {
-                Contested();
-                return;
+                if (inRange[i].tag != firstTag)
+                {
+                    Contested();
+                    return;
+                }
+                if (i == inRange.Count - 1)
+                {
+                    NotContested();
+                }
             }
-            if (i == inRange.Count - 1)
-            {
-                NotContested();
-            }
+
         }
+
     }
 
     private void Contested()
@@ -192,7 +206,7 @@ public class StatueManager : MonoBehaviour
                 source.Play();
                 mPlaying = true;
             }
-            
+
         }
     }
 
@@ -206,7 +220,7 @@ public class StatueManager : MonoBehaviour
                 source.Stop();
                 mPlaying = false;
             }
-            
+
         }
     }
 

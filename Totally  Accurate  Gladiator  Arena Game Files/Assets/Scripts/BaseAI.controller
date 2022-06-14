@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0276678534dce24c8f197d123007244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 1
+  attackDistance: 0.2
 --- !u!1101 &4170766956387048556
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

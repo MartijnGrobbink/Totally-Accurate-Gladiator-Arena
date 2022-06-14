@@ -25,8 +25,10 @@ public class GroupUpReciever : StateMachineBehaviour
                 WTP.StopWalking(data.agent);
             else
                 SetDestination(data, data.signalSender);
+            
         }
-
+        if(data.signalSender == null)
+            animator.SetBool("AttackStatue", true);
     }
 
     private void SetDestination(AIData data, GameObject WalkToAI)
