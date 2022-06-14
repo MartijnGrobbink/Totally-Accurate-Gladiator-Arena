@@ -16,6 +16,7 @@ public class GroupUpSender : StateMachineBehaviour
         WTP = animator.gameObject.GetComponent<WalkToPosition>();
         data = animator.gameObject.GetComponent<AIData>();
         characters = GameObject.FindGameObjectsWithTag(animator.gameObject.tag);
+        if(data.statue != null)
         WTP.Walk(data.agent, data.statue.transform);
     }
 
@@ -44,18 +45,21 @@ public class GroupUpSender : StateMachineBehaviour
                         for (int i = 0; i < characters.Length; i++)
                         {
                             AIData localData;
-                            if (characters[i].transform.parent != null)
-                                localData = characters[i].GetComponent<AIData>();
-                            else
-                                localData = characters[i].GetComponent<AIData>();
-
-                            if (localData != null)
+                            if (characters[i] != null)
                             {
-                                if (localData.heldWeapon != null && characters[i] != animator.gameObject)
+                                if (characters[i].transform.parent != null)
+                                    localData = characters[i].GetComponent<AIData>();
+                                else
+                                    localData = characters[i].GetComponent<AIData>();
+
+                                if (localData != null)
                                 {
-                                    localData.GetComponent<Animator>().SetBool("AttackStatue", true);
+                                    if (localData.heldWeapon != null && characters[i] != animator.gameObject)
+                                    {
+                                        localData.GetComponent<Animator>().SetBool("AttackStatue", true);
+                                    }
+                                    localData.signalSender = null;
                                 }
-                                localData.signalSender = null;
                             }
                         }
                         animator.SetBool("AttackStatue", true);
@@ -69,10 +73,13 @@ public class GroupUpSender : StateMachineBehaviour
 
     private void CheckForParents(GameObject rangeCheck)
     {
-        if (rangeCheck.transform.parent == null)
-            rangeCheck.GetComponent<AIData>().signalSender = thisAI;
-        else
-            rangeCheck.GetComponentInParent<AIData>().signalSender = thisAI;
+        if (rangeCheck != null)
+        {
+            if (rangeCheck.transform.parent == null)
+                rangeCheck.GetComponent<AIData>().signalSender = thisAI;
+            else
+                rangeCheck.GetComponentInParent<AIData>().signalSender = thisAI;
+        }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

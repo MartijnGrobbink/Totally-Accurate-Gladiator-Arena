@@ -48,10 +48,10 @@ public class WalkToPosition : MonoBehaviour
         {
             float dist = (agent.transform.position - destination.position).magnitude;
             currentDistance = dist;
-            if (dist < 1.5f)
+            if (dist < 2f)
             {
                 InRangeOfPosition();
-                agent.ResetPath();
+                //agent.ResetPath();
             }
         }
     }
