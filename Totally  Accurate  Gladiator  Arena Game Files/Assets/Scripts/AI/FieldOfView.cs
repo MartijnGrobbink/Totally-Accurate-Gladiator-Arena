@@ -59,8 +59,7 @@ public class FieldOfView : MonoBehaviour
     {
         if (rangeCheck.transform.parent == null)
         {
-            if (objectsInView.Contains(rangeCheck.gameObject) != true)
-                CheckInView(rangeCheck.gameObject);
+            CheckInView(rangeCheck.gameObject);
         }
         else
             CheckForParents(rangeCheck.transform.parent.gameObject);

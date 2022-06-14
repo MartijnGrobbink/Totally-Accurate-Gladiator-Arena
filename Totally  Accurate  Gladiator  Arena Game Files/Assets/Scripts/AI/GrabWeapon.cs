@@ -12,6 +12,7 @@ public class GrabWeapon : WalkToPosition
     void Start()
     {
         data = gameObject.GetComponent<AIData>();
+        CheckHand();
     }
 
     public void WalkToItem(GameObject weapon)
@@ -28,15 +29,15 @@ public class GrabWeapon : WalkToPosition
 
     private void PickUpItem(GameObject weapon)
     {
-        weapon = data.chosenWeapon;
-        if (data.heldWeapon != null)
-            DropItem();
-        if(weapon != null)
+        if (weapon != null)
         {
+            if (data.heldWeapon != null)
+                DropItem();
+
             Rigidbody rigidBody = weapon.GetComponent<Rigidbody>();
             rigidBody.useGravity = false;
             rigidBody.constraints = RigidbodyConstraints.FreezeAll;
-            
+
             weapon.transform.SetParent(handPivot, false);
             weapon.transform.SetPositionAndRotation(handPivot.position, handPivot.rotation);
 
@@ -51,7 +52,7 @@ public class GrabWeapon : WalkToPosition
 
     private void Reset()
     {
-        
+
     }
 
     public void DropItem()
@@ -64,5 +65,14 @@ public class GrabWeapon : WalkToPosition
         rigidBody.constraints = RigidbodyConstraints.None;
 
         data.heldWeapon = null;
+    }
+
+    private void CheckHand()
+    {
+        if(data.heldWeapon != null)
+        {
+            if (handPivot.childCount == 0)
+                Debug.LogError("Thinks has something but doesnt");
+        }
     }
 }
