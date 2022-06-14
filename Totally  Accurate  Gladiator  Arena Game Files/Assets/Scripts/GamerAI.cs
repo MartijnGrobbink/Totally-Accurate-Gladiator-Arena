@@ -55,7 +55,7 @@ public class GamerAI : MonoBehaviour
                     state = State.GrabWeapon;
                     break;
                 }
-                Debug.Log(state.ToString());
+                //Debug.Log(state.ToString());
                 break;
 
             case State.GrabWeapon:
@@ -74,7 +74,7 @@ public class GamerAI : MonoBehaviour
                     break;
                 } 
                 
-                Debug.Log(state.ToString());
+                //Debug.Log(state.ToString());
                 break;
 
             case State.GoToEnemy:
@@ -116,7 +116,7 @@ public class GamerAI : MonoBehaviour
                 } 
 
                 animator.Play(state.ToString());
-                Debug.Log(state.ToString());
+                //Debug.Log(state.ToString());
                 break;
 
             case State.RunAway:
@@ -138,7 +138,7 @@ public class GamerAI : MonoBehaviour
                 }
 
                 animator.Play(state.ToString());
-                Debug.Log(state.ToString());
+                //Debug.Log(state.ToString());
                 break;
 
             case State.GroupUpReciever:
@@ -156,7 +156,7 @@ public class GamerAI : MonoBehaviour
                 }
 
                 animator.Play(state.ToString());
-                Debug.Log(state.ToString());
+                //Debug.Log(state.ToString());
                 break;
 
             case State.GroupUpSender:
@@ -174,7 +174,7 @@ public class GamerAI : MonoBehaviour
                     break;
                 }
 
-                Debug.Log(state.ToString());
+                //Debug.Log(state.ToString());
                 break;
 
             case State.GoToStatue:
@@ -186,7 +186,7 @@ public class GamerAI : MonoBehaviour
                     break;
                 }   
 
-                Debug.Log(state.ToString());
+                //Debug.Log(state.ToString());
                 break;
 
             default:
