@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestAIController : MonoBehaviour
+public class KnightAI : MonoBehaviour
 {
     private AIData data;
     private Animator animator;
+    private AnimatorStateInfo currentState;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,19 @@ public class TestAIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GettingWeaponState();
+        currentState = animator.GetCurrentAnimatorStateInfo(0);
+        if (currentState.IsName("GoToEnemy") == true || currentState.IsName("Fight") == true || data.enemies.Count != 0)
+            AttackState();
+        else if (currentState.IsName("GroupUpSender") == true || currentState.IsName("GroupUpReciever") == true)
+            GroupUpState();
+        else if (currentState.IsName("GoToStatue") == true)
+            Statue();
+        else
+            GettingWeaponState();
+
     }
     private void SwitchStates(string enterStateName)
     {
-        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
         if (currentState.IsName(enterStateName) != true)
         {
             animator.Play(enterStateName);
@@ -29,6 +38,9 @@ public class TestAIController : MonoBehaviour
 
     private void AttackState()
     {
+        if (data.enemies.Contains(data.chosenEnemy) != true)
+            data.chosenEnemy = null;
+
         if (data.chosenEnemy != null)
         {
             if (data.ally.Count != 0)
@@ -47,6 +59,11 @@ public class TestAIController : MonoBehaviour
                 SwitchStates("GoToEnemy");
             }
         }
+        if (data.chosenEnemy == null)
+            SwitchStates("GoToStatue");
+
+        if (data.heldWeapon == null)
+            SwitchStates("GrabWeapon");
     }
     private void RunAwayState()
     {
@@ -61,7 +78,7 @@ public class TestAIController : MonoBehaviour
             {
                 ChooseWeapon();
                 if (data.chosenWeapon != null)
-                SwitchStates("GrabWeapon");
+                    SwitchStates("GrabWeapon");
             }
         }
         else if (data.chosenEnemy != null)
@@ -88,25 +105,39 @@ public class TestAIController : MonoBehaviour
         }
     }
 
+    private void Statue()
+    {
+        if (data.heldWeapon != null)
+        {
+            if (data.enemies.Count != 0)
+            {
+                SwitchStates("GoToEnemy");
+            }
+        }
+        else
+            SwitchStates("GrabWeapon");
+    }
+
     private void ChooseWeapon()
     {
+        int mostDamage = 0;
+        GameObject bestWeapon = null;
         for (int i = 0; i < data.weapons.Count; i++)
         {
             if (data.weapons[i] != null)
             {
-                if (data.chosenWeapon == null)
+                WeaponStats stats = data.weapons[i].GetComponent<WeaponStats>();
+                if (stats.Damage > mostDamage)
                 {
-                    WeaponStats stats = data.weapons[i].GetComponent<WeaponStats>();
-                    if (gameObject.tag == stats.DesiredTag)
-                        data.chosenWeapon = data.weapons[i];
-
+                    mostDamage = stats.Damage;
+                    bestWeapon = data.weapons[i];
                 }
-                else
-                    return;
-            }
-            if(i == data.weapons.Count -1)
-            {
-                data.chosenWeapon = data.weapons[0];
+                if (i == data.weapons.Count - 1)
+                {
+                    data.chosenWeapon = bestWeapon;
+                    mostDamage = 0;
+                    bestWeapon = null;
+                }
             }
         }
     }
