@@ -15,8 +15,6 @@ public class NewCamera : MonoBehaviour
 
     public Sector currentSector;
     
-    private StatueManager statues;
-    
     public float t;
     public float speed;
 
