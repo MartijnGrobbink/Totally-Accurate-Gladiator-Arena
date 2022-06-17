@@ -19,7 +19,7 @@ public class Durability : MonoBehaviour
         if (curDurability <= 0)
             Destroy(gameObject);
         {
-            Debug.Log(gameObject.name + " is broken!"); 
+         
         }
     }
 }
