@@ -99,7 +99,10 @@ public class Caveman_AI : MonoBehaviour
             setState("SearchWeapon");
         }
         if (data.weapons.Count > 0 && data.heldWeapon == null && data.chosenWeapon == null)
+        {
             data.chosenWeapon = data.weapons[0];
+            Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
+        } 
         else if (data.enemies.Count > 0)
         {
             if (data.heldWeapon == null) {

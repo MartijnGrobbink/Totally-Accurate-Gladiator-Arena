@@ -113,6 +113,10 @@ public class AI_Romans : MonoBehaviour
             if (data.enemies.Count > 0)
             {
                 data.chosenEnemy = GetClosestEnemy();
+                if (data.chosenWeapon != null)
+                {
+                    Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
+                }
                 state = State.GoToEnemy;
             }
             else
@@ -129,6 +133,10 @@ public class AI_Romans : MonoBehaviour
             if (data.chosenWeapon.GetComponent<WeaponStats>().Wielder != null)
             {
                 data.chosenWeapon = GetClosestWeapon();
+                if (data.chosenWeapon != null)
+                {
+                    Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
+                }
             }
             data.weapons.Clear();
             try
@@ -140,6 +148,10 @@ public class AI_Romans : MonoBehaviour
         else if (data.chosenWeapon == null)
         {
             data.chosenWeapon = GetClosestWeapon();
+            if (data.chosenWeapon != null)
+            {
+                Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
+            }
         }
 
         animator.Play(state.ToString());

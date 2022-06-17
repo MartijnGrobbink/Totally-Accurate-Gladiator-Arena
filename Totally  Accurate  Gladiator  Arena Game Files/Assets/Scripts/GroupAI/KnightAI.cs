@@ -135,6 +135,7 @@ public class KnightAI : MonoBehaviour
                 if (i == data.weapons.Count - 1)
                 {
                     data.chosenWeapon = bestWeapon;
+                    Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
                     mostDamage = 0;
                     bestWeapon = null;
                 }

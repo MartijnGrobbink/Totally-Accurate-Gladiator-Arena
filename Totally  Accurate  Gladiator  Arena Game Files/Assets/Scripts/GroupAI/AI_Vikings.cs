@@ -16,7 +16,6 @@ public class AI_Vikings : MonoBehaviour
     private int masterChecked;
     private bool once;
     private bool canGroupUp;
-    private bool canAttackLoc;
     private bool canRecover;
 
     void Start()
@@ -26,26 +25,24 @@ public class AI_Vikings : MonoBehaviour
         healthsystem = gameObject.GetComponent<HealthSystem>();
         healthsystem.healthMax = 75;
         canGroupUp = true;
-        canAttackLoc = true;
         canRecover = true;
     }
 
     void Update()
     {
-        //Added
-        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-        if (currentState.IsName("Effects") != true)
+        //Setting states and checking for states if certain states are not already active
+        AnimatorStateInfo setState = animator.GetCurrentAnimatorStateInfo(0);
+        if (setState.IsName("Effects") != true)
         {
-            if (currentState.IsName("AttackLocationState") != true)
+            if (setState.IsName("AttackLocationState") != true)
             {
-                if (currentState.IsName("RecoverState") != true)
+                if (setState.IsName("RecoverState") != true)
                 {
                     CheckTimer();
-                    GettingWeaponState();
+                    FindWeapon();
                     SetWeaponStats();
                     ReachedSender();
                     CheckEnemies();
-                    SetAttackLocation();
                     CheckRecover();
                 }
             }
@@ -53,14 +50,14 @@ public class AI_Vikings : MonoBehaviour
         
     }
 
-    private void SwitchStates(string enterStateName)
+    private void ChangeStates(string nextState)
     {
         TurnOffVariables();
-
-        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-        if (currentState.IsName(enterStateName) != true)
+        //setting next state
+        AnimatorStateInfo setState = animator.GetCurrentAnimatorStateInfo(0);
+        if (setState.IsName(nextState) != true)
         {
-            animator.Play(enterStateName);
+            animator.Play(nextState);
         }
         else
         {
@@ -68,18 +65,77 @@ public class AI_Vikings : MonoBehaviour
         }
 
     }
-    private void AttackState()
+
+    //States and checks
+
+    private void FindWeapon()
+    {
+        if (data.heldWeapon == null)
+        {
+            if (data.weapons.Count != 0)
+            {
+                if (timer <= 0 && masterChecked < 2)
+                {
+                    //find the optimal weapon
+                    MasterWeapon();
+                }
+
+                if (masterWeapon == true)
+                {
+                    //set the optimal weapon
+                    masterChecked = 0;
+                    Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
+                    ChangeStates("GrabWeapon");
+
+                }
+
+                if (masterChecked >= 2)
+                {
+                    //set a weapon
+                    data.chosenWeapon = data.weapons[0];
+                    Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
+                    ChangeStates("GrabWeapon");
+                }
+
+            }
+        }
+        else if (data.chosenEnemy != null)
+        {
+            if (data.heldWeapon != null && data.enemies != null && data.enemies.Count > 0)
+            {
+                //if has a weapon and there are enemies attack
+                Attack();
+            }
+            else
+            {
+                //if does not have a weapon and there are enemies runaway
+                RunAway();
+            }
+
+        }
+        else
+        {
+            if (once == false)
+            {
+                //if there are no enemies group up
+                GroupUp();
+            }
+        }
+
+    }
+    private void Attack()
     {
         CheckHighestDamage();
-        SwitchStates("GoToEnemy");
+        ChangeStates("GoToEnemy");
     }
-    private void RunAwayState()
+    private void RunAway()
     {
-        SwitchStates("RunAway");
+        ChangeStates("RunAway");
     }
 
     private void CheckRecover()
     {
+        //if the health is below a value then recover
         var c = data.gameObject.GetComponent<HealthSystem>().health;
         if (c < 30 && canRecover == true)
         {
@@ -87,28 +143,16 @@ public class AI_Vikings : MonoBehaviour
             animator.Play("RecoverState");
             canRecover = false;
         }
-
+        //reset when the character can recover again
         if (c > data.gameObject.GetComponent<HealthSystem>().healthMax - 10)
         {
             canRecover = true;
         }
     }
 
-    private void SetAttackLocation()
-    {
-        /*
-        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-        if (currentState.IsName("GoToStatue") == true && canAttackLoc == true)
-        {
-            animator.SetBool("AttackLoc", true);
-            animator.Play("AttackLocationState");
-            canAttackLoc = false;
-        }
-        */
-    }
-
     private void ReachedSender()
     {
+        //set so once the character has been joined by group members or the character has joined its group members the character will go to the statue
         AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
         if (currentState.IsName("GroupUpSender") == true || currentState.IsName("GroupUpReciever") == true)
         {
@@ -120,7 +164,7 @@ public class AI_Vikings : MonoBehaviour
                     canGroupUp = false;
                     if (currentState.IsName("AttackLocationState") != true)
                     {
-                        SwitchStates("GoToStatue");
+                        ChangeStates("GoToStatue");
                     }
                     data.signalSender = null;
                 }
@@ -133,6 +177,7 @@ public class AI_Vikings : MonoBehaviour
 
     private void CheckEnemies()
     {
+        //check if the enemy is still in range
         AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
         if (currentState.IsName("GoToEnemy") == true)
         {
@@ -143,7 +188,7 @@ public class AI_Vikings : MonoBehaviour
                     data.chosenEnemy = null;
                     if (currentState.IsName("AttackLocationState") != true)
                     {
-                        SwitchStates("GoToStatue");
+                        ChangeStates("GoToStatue");
                     }
                 }
             }
@@ -152,11 +197,11 @@ public class AI_Vikings : MonoBehaviour
                 data.chosenEnemy = null;
                 if (currentState.IsName("AttackLocationState") != true)
                 {
-                    SwitchStates("GoToStatue");
+                    ChangeStates("GoToStatue");
                 }
             }
         }
-
+        //check if the enemy is still in range
         if (currentState.IsName("Fight") == true)
         {
             if (data.enemies.Count != 0)
@@ -166,7 +211,7 @@ public class AI_Vikings : MonoBehaviour
                     data.chosenEnemy = null;
                     if (currentState.IsName("AttackLocationState") != true)
                     {
-                        SwitchStates("GoToStatue");
+                        ChangeStates("GoToStatue");
                     }
                 }
             }
@@ -175,7 +220,7 @@ public class AI_Vikings : MonoBehaviour
                 data.chosenEnemy = null;
                 if (currentState.IsName("AttackLocationState") != true)
                 {
-                    SwitchStates("GoToStatue");
+                    ChangeStates("GoToStatue");
                 }
             }
             if (data.chosenEnemy != null)
@@ -183,7 +228,7 @@ public class AI_Vikings : MonoBehaviour
                 thedist = Vector3.Distance(gameObject.transform.position, data.chosenEnemy.transform.position);
                 if (thedist > 1)
                 {
-                    SwitchStates("GoToEnemy");
+                    ChangeStates("GoToEnemy");
                 }
             }
             
@@ -191,63 +236,16 @@ public class AI_Vikings : MonoBehaviour
         
     }
 
-    private void GettingWeaponState()
-    {
-        if (data.heldWeapon == null)
-        {
-            if (data.weapons.Count != 0)
-            {
-                if (timer <= 0 && masterChecked < 2)
-                {
-                    MasterWeapon();
-                }
+    
 
-                if (masterWeapon == true)
-                {
-                    masterChecked = 0;
-                    Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
-                    SwitchStates("GrabWeapon");
-                    
-                }
-
-                if (masterChecked >= 2)
-                {
-                    data.chosenWeapon = data.weapons[0];
-                    Teams_EventManager.current.WeaponUsed(data.TeamName, data.MemberName, data.chosenWeapon.GetComponent<WeaponStats>().DesiredTag);
-                    SwitchStates("GrabWeapon");
-                }
-                
-            }
-        }
-        else if (data.chosenEnemy != null)
-        {
-            if (data.heldWeapon != null && data.enemies != null && data.enemies.Count > 0)
-            {
-                AttackState();
-            }
-            else
-            {
-                RunAwayState();
-            }
-                
-        }
-        else
-        {
-            if (once == false)
-            {
-                GroupUpState();
-            }
-        }
-           
-    }
-
-    private void GroupUpState()
+    private void GroupUp()
     {
         if (data.enemies.Count != 0)
         {
             if (data.heldWeapon != null && data.enemies != null && data.enemies.Count > 0)
             {
-                AttackState();
+                //if the character has a weapon and there are enemies
+                Attack();
             }
                
         }
@@ -259,7 +257,8 @@ public class AI_Vikings : MonoBehaviour
                 {
                     if (data.heldWeapon != null)
                     {
-                        SwitchStates("GroupUpSender");
+                        //if no group member has sent a groupup signal then this character will send the signal
+                        ChangeStates("GroupUpSender");
                     }
 
                 }
@@ -267,7 +266,8 @@ public class AI_Vikings : MonoBehaviour
                 {
                     if (data.heldWeapon != null)
                     {
-                        SwitchStates("GroupUpReciever");
+                        //if a group member has already sent the signal then this character will recieve the signal and join them
+                        ChangeStates("GroupUpReciever");
                     }
                 }
             }
@@ -278,6 +278,7 @@ public class AI_Vikings : MonoBehaviour
 
     private void MasterWeapon()
     {
+        //check if the weapon is the weapon wanted
         var l = 0;
         List<GameObject> possibleWeapon = new List<GameObject>();
         foreach (GameObject weapon in data.weapons)
@@ -298,13 +299,13 @@ public class AI_Vikings : MonoBehaviour
             }
             
         }
-
+        //if the weapon is not optimal then add to the masterChecked (if masterChecked reaches 2 then character will choose this weapon or the next weapon)
         if (l == 0)
         {
             masterChecked = masterChecked + 1;
             timer = 3f;
         }
-
+        // if the weapon is optimal then set it as the weapon to be picked up
         if (l >= 1)
         {
             data.chosenWeapon = possibleWeapon[0];
@@ -314,6 +315,7 @@ public class AI_Vikings : MonoBehaviour
 
     private void CheckHighestDamage()
     {
+        //go through each enemy and check which enemy has the weapon with the highest damage
         var l = 0;
         List<GameObject> possibleEnemies = new List<GameObject>();
         foreach (GameObject enemy in data.enemies)
@@ -342,12 +344,12 @@ public class AI_Vikings : MonoBehaviour
             
             
         }
-
+        //if there was no enemy found choose an enemy from the currently in zone enemies
         if (l == 0)
         {
             data.chosenEnemy = data.enemies[0];
         }
-
+        //if there was an enemy found set it as the enemy to attack
         if (l >= 1)
         {
             data.chosenEnemy = possibleEnemies[0];
@@ -356,17 +358,18 @@ public class AI_Vikings : MonoBehaviour
 
     private void SetWeaponStats()
     {
+        //check if the character does not have a weapon
         if (data.heldWeapon == null && weaponActive == true && weaponSet == true)
         {
             weaponActive = false;
         }
-
+        //check has a weapon
         if (data.heldWeapon != null && weaponActive == false)
         {
             weaponSet = false;
             weaponActive = true;
         }
-
+        //if the character does have a weapon apply stat changes
         if (weaponActive == true && weaponSet == false)
         {
             data.heldWeapon.GetComponent<WeaponStats>().SwingRate = data.heldWeapon.GetComponent<WeaponStats>().SwingRate / 2;
@@ -376,6 +379,7 @@ public class AI_Vikings : MonoBehaviour
 
     private void CheckTimer()
     {
+        //reduce the timer for the next time the character can check for a weapon
         if (timer > 0)
         {
             timer -= Time.deltaTime;
@@ -384,6 +388,7 @@ public class AI_Vikings : MonoBehaviour
 
     private void TurnOffVariables()
     {
+        //reset variables
         masterWeapon = false;
     }
 }

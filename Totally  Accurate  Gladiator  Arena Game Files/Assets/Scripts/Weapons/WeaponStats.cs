@@ -180,6 +180,7 @@ public class WeaponStats : MonoBehaviour
     {
         if (DealDamage == false)
         {
+            //finds the parent object contining AI data of the attacked enemy
             var g = 1;
             var t = other.gameObject.transform.parent;
             var c = other.gameObject.transform.parent;
@@ -205,6 +206,7 @@ public class WeaponStats : MonoBehaviour
                 {
                     if (Wielder.tag != t.tag)
                     {
+                        //sets the attacked enemy as a variable that can be called on later
                         if (t.GetComponent<AIData>())
                         {
                             EnemyAttacked = t.gameObject;
@@ -224,12 +226,6 @@ public class WeaponStats : MonoBehaviour
     //If The Weapon Has Colldied The Enemy It Collides With Is Damaged
     private void DamageEnemy()
     {
-        /*
-        Debug.Log("Wielder -" + Wielder.GetComponent<AIData>().MemberName);
-        Debug.Log("EnemyAttacked -" + EnemyAttacked.GetComponent<AIData>().MemberName);
-        Debug.Log("Wielder -" + Wielder.GetComponent<AIData>().TeamName);
-        Debug.Log("EnemyAttacked -" + EnemyAttacked.GetComponent<AIData>().TeamName);
-        */
         if (EnemyAttacked.GetComponent<HealthSystem>().health - Damage <= 0)
         {
             Teams_EventManager.current.HasKilled(Wielder.GetComponent<AIData>().MemberName, Wielder.GetComponent<AIData>().TeamName, DesiredTag, EnemyAttacked.GetComponent<AIData>().MemberName, EnemyAttacked.GetComponent<AIData>().TeamName);
@@ -242,6 +238,21 @@ public class WeaponStats : MonoBehaviour
     //When Damaging The Enemy Effects Will Also Be Applied To The Enemy And Character
     private void ApplyEffects()
     {
+        //dazed the enemy if the correct weapon is being used
+        Dazed();
+
+        //applies damage to enemies wihtin a radius if the correct weapon is being used
+        AOE();
+
+        //applies damage to the weapon if the correct weapon is being used
+        Durability();
+
+        //has the character wait until they can attack if the correct weapon is used
+        Wait(); 
+    }
+
+    private void Dazed()
+    {
         if (DazedEffect == true)
         {
             RealEnemyAttacked = EnemyAttacked.transform.Find("metarig").gameObject;
@@ -250,7 +261,10 @@ public class WeaponStats : MonoBehaviour
             pc.stun = true;
             Wielder.GetComponent<Animator>().SetBool("Effects", true);
         }
+    }
 
+    private void AOE()
+    {
         if (AOEEffect)
         {
             Collider[] rangeChecks = Physics.OverlapSphere(EnemyAttacked.transform.position, radius, targetMask);
@@ -260,13 +274,18 @@ public class WeaponStats : MonoBehaviour
                     rangeChecks[i].gameObject.GetComponent<HealthSystem>().Damage(5);
             }
         }
-        
+    }
 
+    private void Durability()
+    {
         if (DurabilityEffect == true)
         {
             gameObject.GetComponent<Durability>().HitSomething();
         }
+    }
 
+    private void Wait()
+    {
         if (WaitEffect == true)
         {
             Wielder.GetComponent<Animator>().SetBool("Effects", true);
